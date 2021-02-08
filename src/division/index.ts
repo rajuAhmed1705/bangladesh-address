@@ -15,7 +15,7 @@ export const allDivision = () => {
     return division.map((d: any) => d.division);
 };
 
-export const divisionalDataOf = (division: DivisonName | string) => {
+export const divisionalDataOf = (division: DivisonName) => {
     const filteredDivision = getDivision(division);
 
     let allDistrict: any = [];
