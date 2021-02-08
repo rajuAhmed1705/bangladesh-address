@@ -1,6 +1,10 @@
 {
   "name": "@bangladeshi/bangladesh-address",
   "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rajuAhmed1705/bangladesh-address"
+  },
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "files": [
@@ -11,10 +15,17 @@
     "build": "npm run clean && tsc",
     "start": "ts-node src/index.ts"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": [
+    "Bangladesh",
+    "bd-address",
+    "banglades-address",
+    "distict",
+    "division",
+    "upazila"
+  ],
+  "author": "Raju Ahmed",
+  "license": "MIT",
+  "description": "It's a simple npm package that exports methods representing divisions, districts and upazilas of Bangladesh.",
   "dependencies": {
     "@types/lodash": "^4.14.168",
     "lodash": "^4.17.20"
