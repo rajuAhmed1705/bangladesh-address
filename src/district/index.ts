@@ -1,12 +1,11 @@
 import data from "../json/bd-upazila.json";
 import _ from "lodash";
+import { getDivision } from "../division/division";
 
-export const district = (division: string) => {
-    const filteredDistrict = _.filter(data, {
-        division: _.upperFirst(division),
-    });
+export const districtsOf = (division: string) => {
+    const filteredDivision = getDivision(division);
 
-    const uniqueDistrict = _.uniqBy(filteredDistrict, "district");
+    const uniqueDistrict = _.uniqBy(filteredDivision, "district");
 
     var district: any = [];
 
