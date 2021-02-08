@@ -1,8 +1,9 @@
 import data from "../json/bd-upazila.json";
 import _ from "lodash";
 import { getDivision } from "../division/division";
+import { DivisonName } from "../division/types/division-name";
 
-export const districtsOf = (division: string) => {
+export const districtsOf = (division: DivisonName | string) => {
     const filteredDivision = getDivision(division);
 
     const uniqueDistrict = _.uniqBy(filteredDivision, "district");

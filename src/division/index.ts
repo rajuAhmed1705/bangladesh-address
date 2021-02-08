@@ -1,7 +1,7 @@
 import data from "../json/bd-upazila.json";
 import _ from "lodash";
 import { getDivision } from "./division";
-import { allDistict } from "../district";
+import { DivisonName } from "./types/division-name";
 
 export const allDivision = () => {
     let uniqueDivision = _.uniqBy(data, "division");
@@ -15,7 +15,7 @@ export const allDivision = () => {
     return division.map((d: any) => d.division);
 };
 
-export const divisionalDataOf = (division: string) => {
+export const divisionalDataOf = (division: DivisonName | string) => {
     const filteredDivision = getDivision(division);
 
     let allDistrict: any = [];
