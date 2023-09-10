@@ -47,7 +47,7 @@ upazila
 Types
 
     DivisionName.Dhaka
-    DivisionName.Chittogram
+    DivisionName.Chattogram
     DivisionName.Mymensingh
     DivisionName.Khulna
     DivisionName.Rajshahi
