@@ -1,6 +1,6 @@
 import data from "../json/bd-upazila.json";
 import { getDivision } from "../division/division";
-import { DivisonName } from "../division/types/division-name";
+import { DivisionName } from "../division/types/division-name";
 import { Upazila } from "../types";
 
 // Pre-computed set for O(1) district validation
@@ -19,7 +19,7 @@ const districtToDivisionMap = new Map<string, string>();
  * @param division - The division name
  * @returns Array of district names in the division
  */
-export const districtsOf = (division: DivisonName): string[] => {
+export const districtsOf = (division: DivisionName): string[] => {
   const filteredDivision = getDivision(division);
   const districts = new Set<string>();
   filteredDivision.forEach((item) => districts.add(item.district));
@@ -28,19 +28,13 @@ export const districtsOf = (division: DivisonName): string[] => {
 
 /**
  * Get all districts in Bangladesh
- * @returns Array of all district names
+ * @returns Array of all district names (64 districts)
  */
-export const allDistict = (): string[] => {
+export const allDistricts = (): string[] => {
   const districts = new Set<string>();
   (data as Upazila[]).forEach((item) => districts.add(item.district));
   return Array.from(districts);
 };
-
-/**
- * Get all districts in Bangladesh (correctly spelled alias)
- * @returns Array of all district names
- */
-export const allDistricts = allDistict;
 
 /**
  * Check if a name is a valid district

@@ -1,6 +1,6 @@
 import {
   allDivision,
-  allDistict,
+  allDistricts,
   allUpazila,
   districtsOf,
   upazilasOf,
@@ -12,7 +12,7 @@ import {
   getThana,
   getUpazila,
 } from "../index";
-import { DivisonName, DivisionName } from "../division/types/division-name";
+import { DivisionName } from "../division/types/division-name";
 import { DistrictName } from "../types";
 
 describe("Data Integrity", () => {
@@ -21,38 +21,38 @@ describe("Data Integrity", () => {
       expect(allDivision()).toHaveLength(8);
     });
 
-    it("should match DivisonName enum values", () => {
+    it("should match DivisionName enum values", () => {
       const divisions = allDivision();
-      const enumValues = Object.values(DivisonName);
+      const enumValues = Object.values(DivisionName);
       expect(divisions.sort()).toEqual(enumValues.sort());
     });
   });
 
   describe("District counts", () => {
     it("should have exactly 64 districts", () => {
-      expect(allDistict()).toHaveLength(64);
+      expect(allDistricts()).toHaveLength(64);
     });
 
     it("should have correct district count per division", () => {
-      const divisionDistrictCounts: Record<DivisonName, number> = {
-        [DivisonName.Barisal]: 6,
-        [DivisonName.Chattogram]: 11,
-        [DivisonName.Dhaka]: 13,
-        [DivisonName.Khulna]: 10,
-        [DivisonName.Mymensingh]: 4,
-        [DivisonName.Rajshahi]: 8,
-        [DivisonName.Rangpur]: 8,
-        [DivisonName.Sylhet]: 4,
+      const divisionDistrictCounts: Record<DivisionName, number> = {
+        [DivisionName.Barisal]: 6,
+        [DivisionName.Chattogram]: 11,
+        [DivisionName.Dhaka]: 13,
+        [DivisionName.Khulna]: 10,
+        [DivisionName.Mymensingh]: 4,
+        [DivisionName.Rajshahi]: 8,
+        [DivisionName.Rangpur]: 8,
+        [DivisionName.Sylhet]: 4,
       };
 
       Object.entries(divisionDistrictCounts).forEach(([division, expectedCount]) => {
-        const districts = districtsOf(division as DivisonName);
+        const districts = districtsOf(division as DivisionName);
         expect(districts.length).toBe(expectedCount);
       });
     });
 
     it("total districts from all divisions should equal 64", () => {
-      const divisions = Object.values(DivisonName);
+      const divisions = Object.values(DivisionName);
       const allDistrictNames = new Set<string>();
 
       divisions.forEach((division) => {
@@ -70,7 +70,7 @@ describe("Data Integrity", () => {
     });
 
     it("every district should have at least one upazila", () => {
-      const districts = allDistict();
+      const districts = allDistricts();
       districts.forEach((district) => {
         const upazilas = upazilasOf(district);
         expect(upazilas.length).toBeGreaterThan(0);
@@ -119,7 +119,7 @@ describe("Data Integrity", () => {
   describe("Data consistency", () => {
     it("all upazilas should have valid division references", () => {
       const validDivisions = allDivision();
-      const districts = allDistict();
+      const districts = allDistricts();
 
       districts.forEach((district) => {
         const upazilas = upazilasOf(district);
@@ -130,8 +130,8 @@ describe("Data Integrity", () => {
     });
 
     it("all upazilas should have valid district references", () => {
-      const validDistricts = allDistict();
-      const districts = allDistict();
+      const validDistricts = allDistricts();
+      const districts = allDistricts();
 
       districts.forEach((district) => {
         const upazilas = upazilasOf(district);
@@ -147,11 +147,13 @@ describe("Data Integrity", () => {
         expect(thana).toHaveProperty("thana");
         expect(thana).toHaveProperty("district");
         expect(thana).toHaveProperty("division");
+        expect(thana).toHaveProperty("type");
+        expect(thana.type).toBe("thana");
       });
     });
 
     it("all thanas should have valid district references", () => {
-      const validDistricts = allDistict();
+      const validDistricts = allDistricts();
       const thanas = allThana();
       thanas.forEach((thana) => {
         expect(validDistricts).toContain(thana.district);
@@ -167,7 +169,7 @@ describe("Data Integrity", () => {
     });
   });
 
-  describe("New v1.3.0 functions", () => {
+  describe("Utility functions", () => {
     it("allThanaNames should return same count as allThana", () => {
       expect(allThanaNames().length).toBe(allThana().length);
     });
@@ -213,9 +215,8 @@ describe("Data Integrity", () => {
     });
   });
 
-  describe("v1.4.0 Type Safety", () => {
-    it("DivisionName should be an alias for DivisonName", () => {
-      expect(DivisionName).toBe(DivisonName);
+  describe("Type Safety", () => {
+    it("DivisionName enum should have correct values", () => {
       expect(DivisionName.Dhaka).toBe("Dhaka");
       expect(DivisionName.Chattogram).toBe("Chattogram");
     });

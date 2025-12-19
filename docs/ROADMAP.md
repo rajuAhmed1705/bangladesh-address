@@ -4,14 +4,14 @@ This document outlines the development roadmap for `@bangladeshi/bangladesh-addr
 
 ---
 
-## Current Version: v1.5.0
+## Current Version: v2.0.0
 
 ### What's Working
 - 8 divisions of Bangladesh
 - 64 districts
 - 495 upazilas (updated July 2021)
 - 26 metropolitan thanas (Dhaka, Chattogram, Rajshahi, Khulna)
-- Functions: `allDivision()`, `divisionalDataOf()`, `districtsOf()`, `allDistict()`, `allDistricts()`, `upazilasOf()`, `allUpazila()`, `isUpazila()`, `getUpazila()`, `allThana()`, `allThanaNames()`, `thanasOf()`, `isThana()`, `getThana()`, `isValidDivision()`, `isValidDistrict()`, `getDivisionOfDistrict()`, `getDistrictOfUpazila()`, `upazilasOfDivision()`, `searchLocations()`
+- Functions: `allDivision()`, `divisionalDataOf()`, `districtsOf()`, `allDistricts()`, `upazilasOf()`, `upazilaNamesOf()`, `allUpazila()`, `isUpazila()`, `getUpazila()`, `allThana()`, `allThanaNames()`, `thanasOf()`, `thanaNamesOf()`, `isThana()`, `getThana()`, `isValidDivision()`, `isValidDistrict()`, `getDivisionOfDistrict()`, `getDistrictOfUpazila()`, `upazilasOfDivision()`, `upazilaNamesOfDivision()`, `searchLocations()`
 
 ---
 
@@ -117,21 +117,26 @@ Focus: New utility functions and reverse lookups.
 
 ---
 
-## v2.0.0 - Breaking Changes (Planned)
+## v2.0.0 - Breaking Changes (Completed)
 
 Focus: Clean up deprecated APIs.
 
 ### Removals
-- [ ] Remove `DivisonName` enum (use `DivisionName`)
-- [ ] Remove `allDistict()` function (use `allDistricts()`)
+- [x] Remove `DivisonName` enum (use `DivisionName`)
+- [x] Remove `allDistict()` function (use `allDistricts()`)
 
 ### API Consistency
-- [ ] Standardize return types across all functions
-- [ ] All `*Of` functions return objects, add `*Names` variants for strings
-- [ ] Add `type` field to Thana interface for consistency with Upazila
+- [x] Standardize return types across all functions
+- [x] All `*Of` functions return objects, add `*Names` variants for strings
+- [x] Add `type` field to Thana interface for consistency with Upazila
+
+### New Functions
+- [x] `upazilaNamesOf(district)` - Get upazila names for a district
+- [x] `thanaNamesOf(district)` - Get thana names for a district
+- [x] `upazilaNamesOfDivision(division)` - Get upazila names for a division
 
 ### Migration Guide
-A migration guide will be provided for users upgrading from v1.x to v2.0.
+See [MIGRATION.md](MIGRATION.md) for upgrading from v1.x to v2.0.0.
 
 ---
 
@@ -149,13 +154,6 @@ These items are under consideration for future versions:
 ---
 
 ## Known Issues
-
-### Typos in Public API
-These typos exist in the public API and will be fixed in v2.0.0:
-- `DivisonName` should be `DivisionName` (missing 'i')
-- `allDistict()` should be `allDistrict()` (missing 'r')
-
-Aliases have been added in v1.1.0 (`allDistricts()`). Users should migrate to the correct spellings.
 
 ### Duplicate Names
 Some thana names appear in multiple districts (e.g., "Kotwali" in both Dhaka and Chattogram). Use `thanasOf(district)` to disambiguate.

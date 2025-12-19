@@ -1,15 +1,18 @@
 import {
   upazilasOf,
+  upazilaNamesOf,
   allUpazila,
   allThana,
   allThanaNames,
   thanasOf,
+  thanaNamesOf,
   isThana,
   isUpazila,
   getThana,
   getUpazila,
   getDistrictOfUpazila,
   upazilasOfDivision,
+  upazilaNamesOfDivision,
   searchLocations,
   upazilaData,
   thanaData,
@@ -506,6 +509,77 @@ describe("Upazila functions", () => {
         expect(item).toHaveProperty("thana");
         expect(item).toHaveProperty("district");
         expect(item).toHaveProperty("division");
+      });
+    });
+  });
+
+  describe("*NamesOf functions (v2.0.0)", () => {
+    describe("upazilaNamesOf", () => {
+      it("should return upazila names for a district", () => {
+        const names = upazilaNamesOf("Dhaka");
+        expect(names.length).toBeGreaterThan(0);
+        names.forEach((name) => {
+          expect(typeof name).toBe("string");
+        });
+      });
+
+      it("should return same count as upazilasOf", () => {
+        const objects = upazilasOf("Dhaka");
+        const names = upazilaNamesOf("Dhaka");
+        expect(names.length).toBe(objects.length);
+      });
+
+      it("should return empty array for invalid district", () => {
+        expect(upazilaNamesOf("InvalidDistrict")).toHaveLength(0);
+      });
+    });
+
+    describe("thanaNamesOf", () => {
+      it("should return thana names for a district", () => {
+        const names = thanaNamesOf("Dhaka");
+        expect(names.length).toBe(15);
+        names.forEach((name) => {
+          expect(typeof name).toBe("string");
+        });
+      });
+
+      it("should return same count as thanasOf", () => {
+        const objects = thanasOf("Dhaka");
+        const names = thanaNamesOf("Dhaka");
+        expect(names.length).toBe(objects.length);
+      });
+
+      it("should return empty array for districts without thanas", () => {
+        expect(thanaNamesOf("Tangail")).toHaveLength(0);
+      });
+    });
+
+    describe("upazilaNamesOfDivision", () => {
+      it("should return upazila names for a division", () => {
+        const names = upazilaNamesOfDivision("Dhaka");
+        expect(names.length).toBeGreaterThan(0);
+        names.forEach((name) => {
+          expect(typeof name).toBe("string");
+        });
+      });
+
+      it("should return same count as upazilasOfDivision", () => {
+        const objects = upazilasOfDivision("Dhaka");
+        const names = upazilaNamesOfDivision("Dhaka");
+        expect(names.length).toBe(objects.length);
+      });
+
+      it("should return empty array for invalid division", () => {
+        expect(upazilaNamesOfDivision("InvalidDivision")).toHaveLength(0);
+      });
+
+      it("total upazila names from all divisions should equal 495", () => {
+        const divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barisal", "Sylhet", "Rangpur", "Mymensingh"];
+        let totalCount = 0;
+        divisions.forEach((division) => {
+          totalCount += upazilaNamesOfDivision(division).length;
+        });
+        expect(totalCount).toBe(495);
       });
     });
   });

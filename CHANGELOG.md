@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2025-12-19
+
+### Breaking Changes
+- **Removed `DivisonName` enum** - Use `DivisionName` instead (typo fix)
+- **Removed `allDistict()` function** - Use `allDistricts()` instead (typo fix)
+- **Thana interface now requires `type` field** - All thana objects now include `type: "thana"`
+
+### Added
+- `upazilaNamesOf(district)` - Get upazila names (strings) for a district
+- `thanaNamesOf(district)` - Get thana names (strings) for a district
+- `upazilaNamesOfDivision(division)` - Get upazila names (strings) for a division
+- Migration guide: see [MIGRATION.md](docs/MIGRATION.md)
+
+### Changed
+- Thana interface now includes `type: "thana"` field for consistency
+- All thana data in `bd-thana.json` now includes `type` field
+
 ## [1.5.0] - 2025-12-19
 
 ### Added

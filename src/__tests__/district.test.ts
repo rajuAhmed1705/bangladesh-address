@@ -1,51 +1,51 @@
-import { districtsOf, allDistict, allDistricts, isValidDistrict, getDivisionOfDistrict } from "../district";
-import { DivisonName } from "../division/types/division-name";
+import { districtsOf, allDistricts, isValidDistrict, getDivisionOfDistrict } from "../district";
+import { DivisionName } from "../division/types/division-name";
 
 describe("District functions", () => {
   describe("districtsOf", () => {
     it("should return districts for Dhaka division", () => {
-      const districts = districtsOf(DivisonName.Dhaka);
+      const districts = districtsOf(DivisionName.Dhaka);
       expect(districts.length).toBeGreaterThan(0);
       expect(districts).toContain("Dhaka");
       expect(districts).toContain("Gazipur");
     });
 
     it("should return districts for Chattogram division", () => {
-      const districts = districtsOf(DivisonName.Chattogram);
+      const districts = districtsOf(DivisionName.Chattogram);
       expect(districts.length).toBeGreaterThan(0);
       expect(districts).toContain("Chattogram");
       expect(districts).toContain("Cox's Bazar");
     });
 
     it("should return an array of strings", () => {
-      const districts = districtsOf(DivisonName.Rajshahi);
+      const districts = districtsOf(DivisionName.Rajshahi);
       districts.forEach((district) => {
         expect(typeof district).toBe("string");
       });
     });
 
     it("should return unique district names", () => {
-      const districts = districtsOf(DivisonName.Khulna);
+      const districts = districtsOf(DivisionName.Khulna);
       const uniqueDistricts = [...new Set(districts)];
       expect(districts.length).toBe(uniqueDistricts.length);
     });
   });
 
-  describe("allDistict", () => {
+  describe("allDistricts", () => {
     it("should return all 64 districts of Bangladesh", () => {
-      const districts = allDistict();
+      const districts = allDistricts();
       expect(districts).toHaveLength(64);
     });
 
     it("should return an array of strings", () => {
-      const districts = allDistict();
+      const districts = allDistricts();
       districts.forEach((district) => {
         expect(typeof district).toBe("string");
       });
     });
 
     it("should contain major districts", () => {
-      const districts = allDistict();
+      const districts = allDistricts();
       expect(districts).toContain("Dhaka");
       expect(districts).toContain("Chattogram");
       expect(districts).toContain("Sylhet");
@@ -53,21 +53,9 @@ describe("District functions", () => {
     });
 
     it("should return unique district names", () => {
-      const districts = allDistict();
+      const districts = allDistricts();
       const uniqueDistricts = [...new Set(districts)];
       expect(districts.length).toBe(uniqueDistricts.length);
-    });
-  });
-
-  describe("allDistricts (alias)", () => {
-    it("should be an alias for allDistict", () => {
-      expect(allDistricts).toBe(allDistict);
-    });
-
-    it("should return the same results as allDistict", () => {
-      const fromOld = allDistict();
-      const fromNew = allDistricts();
-      expect(fromNew).toEqual(fromOld);
     });
   });
 
@@ -103,11 +91,9 @@ describe("District functions", () => {
       expect(isValidDistrict("  Chattogram  ")).toBe(true);
     });
 
-    it("should return false for divisions", () => {
-      // Divisions share names with some districts, but should work
+    it("should return false for non-districts", () => {
       expect(isValidDistrict("Dhaka")).toBe(true);
-      // However, division-only names should fail
-      expect(isValidDistrict("InvalidDivision")).toBe(false);
+      expect(isValidDistrict("InvalidDistrict")).toBe(false);
     });
   });
 
@@ -150,7 +136,7 @@ describe("District functions", () => {
     });
 
     it("should return correct division for all 64 districts", () => {
-      const districts = allDistict();
+      const districts = allDistricts();
       districts.forEach((district) => {
         const division = getDivisionOfDistrict(district);
         expect(division).toBeDefined();

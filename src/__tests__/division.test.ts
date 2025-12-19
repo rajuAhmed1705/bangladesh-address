@@ -1,5 +1,5 @@
 import { allDivision, divisionalDataOf, getDivision, isValidDivision } from "../division";
-import { DivisonName } from "../division/types/division-name";
+import { DivisionName } from "../division/types/division-name";
 
 describe("Division functions", () => {
   describe("allDivision", () => {
@@ -35,7 +35,7 @@ describe("Division functions", () => {
 
   describe("getDivision", () => {
     it("should return upazilas for Dhaka division", () => {
-      const result = getDivision(DivisonName.Dhaka);
+      const result = getDivision(DivisionName.Dhaka);
       expect(result.length).toBeGreaterThan(0);
       result.forEach((item) => {
         expect(item.division).toBe("Dhaka");
@@ -56,7 +56,7 @@ describe("Division functions", () => {
     });
 
     it("should return objects with upazila, district, and division properties", () => {
-      const result = getDivision(DivisonName.Chattogram);
+      const result = getDivision(DivisionName.Chattogram);
       expect(result.length).toBeGreaterThan(0);
       result.forEach((item) => {
         expect(item).toHaveProperty("upazila");
@@ -68,7 +68,7 @@ describe("Division functions", () => {
 
   describe("divisionalDataOf", () => {
     it("should return districts and upazilas for a division", () => {
-      const result = divisionalDataOf(DivisonName.Sylhet);
+      const result = divisionalDataOf(DivisionName.Sylhet);
       expect(result.length).toBeGreaterThan(0);
       result.forEach((item) => {
         expect(item).toHaveProperty("district");
@@ -77,7 +77,7 @@ describe("Division functions", () => {
     });
 
     it("should not include division in returned objects", () => {
-      const result = divisionalDataOf(DivisonName.Khulna);
+      const result = divisionalDataOf(DivisionName.Khulna);
       result.forEach((item) => {
         expect(item).not.toHaveProperty("division");
       });
