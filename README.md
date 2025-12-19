@@ -86,16 +86,22 @@ isThana("Gulshan")
 isThana("Savar")
 // Returns: false (Savar is an upazila, not a thana)
 
+isThana("Kotwali", "Dhaka")
+// Returns: true (disambiguate with district context)
+
 getThana("Gulshan")
 // Returns: { thana: "Gulshan", district: "Dhaka", division: "Dhaka" }
+
+getThana("Kotwali", "Chattogram")
+// Returns: { thana: "Kotwali", district: "Chattogram", division: "Chattogram" }
 ```
 
 ### Types
 
 ```typescript
-import { DivisionName, Upazila, Thana } from '@bangladeshi/bangladesh-address'
+import { DivisionName, DistrictName, Upazila, Thana } from '@bangladeshi/bangladesh-address'
 
-// Division enum
+// Division enum (correctly spelled alias for DivisonName)
 DivisionName.Dhaka
 DivisionName.Chattogram
 DivisionName.Mymensingh
@@ -104,6 +110,9 @@ DivisionName.Rajshahi
 DivisionName.Rangpur
 DivisionName.Sylhet
 DivisionName.Barisal
+
+// DistrictName type (all 64 districts)
+type DistrictName = "Dhaka" | "Chattogram" | "Khulna" | ... // 64 districts
 
 // Upazila interface
 interface Upazila {

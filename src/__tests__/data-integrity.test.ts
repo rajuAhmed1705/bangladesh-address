@@ -12,7 +12,8 @@ import {
   getThana,
   getUpazila,
 } from "../index";
-import { DivisonName } from "../division/types/division-name";
+import { DivisonName, DivisionName } from "../division/types/division-name";
+import { DistrictName } from "../types";
 
 describe("Data Integrity", () => {
   describe("Division counts", () => {
@@ -209,6 +210,29 @@ describe("Data Integrity", () => {
       const upazila = getUpazila("Mohammadpur");
       expect(thana?.district).toBe("Dhaka");
       expect(upazila?.district).toBe("Magura");
+    });
+  });
+
+  describe("v1.4.0 Type Safety", () => {
+    it("DivisionName should be an alias for DivisonName", () => {
+      expect(DivisionName).toBe(DivisonName);
+      expect(DivisionName.Dhaka).toBe("Dhaka");
+      expect(DivisionName.Chattogram).toBe("Chattogram");
+    });
+
+    it("DistrictName type should accept valid districts", () => {
+      const dhaka: DistrictName = "Dhaka";
+      const chattogram: DistrictName = "Chattogram";
+      expect(dhaka).toBe("Dhaka");
+      expect(chattogram).toBe("Chattogram");
+    });
+
+    it("district context should disambiguate duplicate thana names", () => {
+      // Kotwali exists in both Dhaka and Chattogram
+      const dhakaKotwali = getThana("Kotwali", "Dhaka");
+      const chattogramKotwali = getThana("Kotwali", "Chattogram");
+      expect(dhakaKotwali?.division).toBe("Dhaka");
+      expect(chattogramKotwali?.division).toBe("Chattogram");
     });
   });
 });
