@@ -5,8 +5,12 @@ import {
   districtsOf,
   upazilasOf,
   allThana,
+  allThanaNames,
   thanasOf,
   isThana,
+  isUpazila,
+  getThana,
+  getUpazila,
 } from "../index";
 import { DivisonName } from "../division/types/division-name";
 
@@ -143,6 +147,68 @@ describe("Data Integrity", () => {
         expect(thana).toHaveProperty("district");
         expect(thana).toHaveProperty("division");
       });
+    });
+
+    it("all thanas should have valid district references", () => {
+      const validDistricts = allDistict();
+      const thanas = allThana();
+      thanas.forEach((thana) => {
+        expect(validDistricts).toContain(thana.district);
+      });
+    });
+
+    it("all thanas should have valid division references", () => {
+      const validDivisions = allDivision();
+      const thanas = allThana();
+      thanas.forEach((thana) => {
+        expect(validDivisions).toContain(thana.division);
+      });
+    });
+  });
+
+  describe("New v1.3.0 functions", () => {
+    it("allThanaNames should return same count as allThana", () => {
+      expect(allThanaNames().length).toBe(allThana().length);
+    });
+
+    it("isUpazila should return true for valid upazilas", () => {
+      expect(isUpazila("Savar")).toBe(true);
+      expect(isUpazila("Keraniganj")).toBe(true);
+    });
+
+    it("isUpazila should return false for thanas", () => {
+      expect(isUpazila("Gulshan")).toBe(false);
+      expect(isUpazila("Dhanmondi")).toBe(false);
+    });
+
+    it("getThana should return correct thana object", () => {
+      const thana = getThana("Gulshan");
+      expect(thana?.district).toBe("Dhaka");
+      expect(thana?.division).toBe("Dhaka");
+    });
+
+    it("getUpazila should return correct upazila object", () => {
+      const upazila = getUpazila("Savar");
+      expect(upazila?.district).toBe("Dhaka");
+      expect(upazila?.division).toBe("Dhaka");
+    });
+
+    it("thanas and upazilas with same name should be in different districts", () => {
+      const thanas = allThana();
+      thanas.forEach((thana) => {
+        const matchingUpazila = getUpazila(thana.thana);
+        if (matchingUpazila) {
+          // Same name exists as upazila - must be in different district
+          expect(matchingUpazila.district).not.toBe(thana.district);
+        }
+      });
+    });
+
+    it("Mohammadpur thana (Dhaka) and Mohammadpur upazila (Magura) are different", () => {
+      const thana = getThana("Mohammadpur");
+      const upazila = getUpazila("Mohammadpur");
+      expect(thana?.district).toBe("Dhaka");
+      expect(upazila?.district).toBe("Magura");
     });
   });
 });

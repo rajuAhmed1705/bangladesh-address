@@ -2,8 +2,12 @@ import {
   upazilasOf,
   allUpazila,
   allThana,
+  allThanaNames,
   thanasOf,
   isThana,
+  isUpazila,
+  getThana,
+  getUpazila,
 } from "../upazila";
 
 describe("Upazila functions", () => {
@@ -44,6 +48,17 @@ describe("Upazila functions", () => {
       upazilas.forEach((item) => {
         expect(item.division).toBe("Chattogram");
       });
+    });
+
+    it("should return empty array for null/undefined input", () => {
+      expect(upazilasOf(null as unknown as string)).toHaveLength(0);
+      expect(upazilasOf(undefined as unknown as string)).toHaveLength(0);
+      expect(upazilasOf("")).toHaveLength(0);
+    });
+
+    it("should handle whitespace in input", () => {
+      const upazilas = upazilasOf("  Dhaka  ");
+      expect(upazilas.length).toBeGreaterThan(0);
     });
   });
 
@@ -97,6 +112,36 @@ describe("Upazila functions", () => {
     });
   });
 
+  describe("allThanaNames", () => {
+    it("should return all 26 thana names", () => {
+      const thanaNames = allThanaNames();
+      expect(thanaNames).toHaveLength(26);
+    });
+
+    it("should return an array of strings", () => {
+      const thanaNames = allThanaNames();
+      thanaNames.forEach((name) => {
+        expect(typeof name).toBe("string");
+      });
+    });
+
+    it("should contain known thana names", () => {
+      const thanaNames = allThanaNames();
+      expect(thanaNames).toContain("Gulshan");
+      expect(thanaNames).toContain("Dhanmondi");
+      expect(thanaNames).toContain("Kotwali");
+    });
+
+    it("should be consistent with allThana", () => {
+      const thanaObjects = allThana();
+      const thanaNames = allThanaNames();
+      expect(thanaNames.length).toBe(thanaObjects.length);
+      thanaObjects.forEach((thana) => {
+        expect(thanaNames).toContain(thana.thana);
+      });
+    });
+  });
+
   describe("thanasOf", () => {
     it("should return thanas for Dhaka district", () => {
       const thanas = thanasOf("Dhaka");
@@ -113,6 +158,17 @@ describe("Upazila functions", () => {
 
     it("should handle case-insensitive input", () => {
       const thanas = thanasOf("dhaka");
+      expect(thanas.length).toBe(15);
+    });
+
+    it("should return empty array for null/undefined input", () => {
+      expect(thanasOf(null as unknown as string)).toHaveLength(0);
+      expect(thanasOf(undefined as unknown as string)).toHaveLength(0);
+      expect(thanasOf("")).toHaveLength(0);
+    });
+
+    it("should handle whitespace in input", () => {
+      const thanas = thanasOf("  Dhaka  ");
       expect(thanas.length).toBe(15);
     });
   });
@@ -137,6 +193,115 @@ describe("Upazila functions", () => {
     it("should return false for non-existent locations", () => {
       expect(isThana("NonExistent")).toBe(false);
     });
+
+    it("should return false for null/undefined input", () => {
+      expect(isThana(null as unknown as string)).toBe(false);
+      expect(isThana(undefined as unknown as string)).toBe(false);
+      expect(isThana("")).toBe(false);
+    });
+
+    it("should handle whitespace in input", () => {
+      expect(isThana("  Gulshan  ")).toBe(true);
+    });
   });
 
+  describe("isUpazila", () => {
+    it("should return true for known upazilas", () => {
+      expect(isUpazila("Savar")).toBe(true);
+      expect(isUpazila("Keraniganj")).toBe(true);
+      expect(isUpazila("Dhamrai")).toBe(true);
+    });
+
+    it("should return false for thanas", () => {
+      expect(isUpazila("Gulshan")).toBe(false);
+      expect(isUpazila("Dhanmondi")).toBe(false);
+    });
+
+    it("should handle case-insensitive input", () => {
+      expect(isUpazila("savar")).toBe(true);
+      expect(isUpazila("KERANIGANJ")).toBe(true);
+    });
+
+    it("should return false for non-existent locations", () => {
+      expect(isUpazila("NonExistent")).toBe(false);
+    });
+
+    it("should return false for null/undefined input", () => {
+      expect(isUpazila(null as unknown as string)).toBe(false);
+      expect(isUpazila(undefined as unknown as string)).toBe(false);
+      expect(isUpazila("")).toBe(false);
+    });
+
+    it("should handle whitespace in input", () => {
+      expect(isUpazila("  Savar  ")).toBe(true);
+    });
+  });
+
+  describe("getThana", () => {
+    it("should return thana object for known thana", () => {
+      const thana = getThana("Gulshan");
+      expect(thana).toBeDefined();
+      expect(thana?.thana).toBe("Gulshan");
+      expect(thana?.district).toBe("Dhaka");
+      expect(thana?.division).toBe("Dhaka");
+    });
+
+    it("should return undefined for non-existent thana", () => {
+      expect(getThana("NonExistent")).toBeUndefined();
+    });
+
+    it("should return undefined for upazilas", () => {
+      expect(getThana("Savar")).toBeUndefined();
+    });
+
+    it("should handle case-insensitive input", () => {
+      const thana = getThana("gulshan");
+      expect(thana?.thana).toBe("Gulshan");
+    });
+
+    it("should return undefined for null/undefined input", () => {
+      expect(getThana(null as unknown as string)).toBeUndefined();
+      expect(getThana(undefined as unknown as string)).toBeUndefined();
+      expect(getThana("")).toBeUndefined();
+    });
+
+    it("should handle whitespace in input", () => {
+      const thana = getThana("  Gulshan  ");
+      expect(thana?.thana).toBe("Gulshan");
+    });
+  });
+
+  describe("getUpazila", () => {
+    it("should return upazila object for known upazila", () => {
+      const upazila = getUpazila("Savar");
+      expect(upazila).toBeDefined();
+      expect(upazila?.upazila).toBe("Savar");
+      expect(upazila?.district).toBe("Dhaka");
+      expect(upazila?.division).toBe("Dhaka");
+    });
+
+    it("should return undefined for non-existent upazila", () => {
+      expect(getUpazila("NonExistent")).toBeUndefined();
+    });
+
+    it("should return undefined for thanas", () => {
+      expect(getUpazila("Gulshan")).toBeUndefined();
+    });
+
+    it("should handle case-insensitive input", () => {
+      const upazila = getUpazila("savar");
+      expect(upazila?.upazila).toBe("Savar");
+    });
+
+    it("should return undefined for null/undefined input", () => {
+      expect(getUpazila(null as unknown as string)).toBeUndefined();
+      expect(getUpazila(undefined as unknown as string)).toBeUndefined();
+      expect(getUpazila("")).toBeUndefined();
+    });
+
+    it("should handle whitespace in input", () => {
+      const upazila = getUpazila("  Savar  ");
+      expect(upazila?.upazila).toBe("Savar");
+    });
+  });
 });

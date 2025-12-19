@@ -60,6 +60,12 @@ upazilasOf("Tangail")
 
 allUpazila()
 // Returns: Array of all 495 upazila names
+
+isUpazila("Savar")
+// Returns: true (Savar is an upazila)
+
+getUpazila("Savar")
+// Returns: { upazila: "Savar", district: "Dhaka", division: "Dhaka" }
 ```
 
 ### Thanas (Metropolitan Police Stations)
@@ -67,6 +73,9 @@ allUpazila()
 ```javascript
 allThana()
 // Returns: Array of all 26 thana objects
+
+allThanaNames()
+// Returns: Array of all 26 thana names (strings)
 
 thanasOf("Dhaka")
 // Returns: Array of thana objects for Dhaka (15 thanas)
@@ -76,6 +85,9 @@ isThana("Gulshan")
 
 isThana("Savar")
 // Returns: false (Savar is an upazila, not a thana)
+
+getThana("Gulshan")
+// Returns: { thana: "Gulshan", district: "Dhaka", division: "Dhaka" }
 ```
 
 ### Types
