@@ -1,6 +1,7 @@
 import upazilaData from "../json/bd-upazila.json";
 import thanaData from "../json/bd-thana.json";
 import { Upazila, Thana } from "../types";
+import { DivisonName } from "../division/types/division-name";
 
 // Pre-computed lookup maps for O(1) performance
 const thanaNameSet = new Set(
@@ -14,6 +15,11 @@ const thanaByName = new Map(
 );
 const upazilaByName = new Map(
   (upazilaData as Upazila[]).map((u) => [u.upazila.toLowerCase(), u])
+);
+
+// Pre-computed set for O(1) division validation
+const divisionNameSet = new Set(
+  Object.values(DivisonName).map((d) => d.toLowerCase())
 );
 
 /**
@@ -165,3 +171,129 @@ export const getUpazila = (name: string, district?: string): Upazila | undefined
 
   return upazilaByName.get(normalizedName);
 };
+
+/**
+ * Get the district for a given upazila (reverse lookup)
+ * @param upazila - The upazila name
+ * @param division - Optional division name to disambiguate if upazila name exists in multiple districts
+ * @returns The district name if found, undefined otherwise
+ */
+export const getDistrictOfUpazila = (upazila: string, division?: string): string | undefined => {
+  if (!upazila || typeof upazila !== "string") {
+    return undefined;
+  }
+  const normalizedName = upazila.trim().toLowerCase();
+
+  if (division) {
+    const normalizedDivision = division.trim().toLowerCase();
+    const found = (upazilaData as Upazila[]).find(
+      (item) =>
+        item.upazila.toLowerCase() === normalizedName &&
+        item.division.toLowerCase() === normalizedDivision
+    );
+    return found?.district;
+  }
+
+  const found = upazilaByName.get(normalizedName);
+  return found?.district;
+};
+
+/**
+ * Get all upazilas in a given division
+ * @param division - The division name
+ * @returns Array of upazila objects for the division
+ */
+export const upazilasOfDivision = (division: string): Upazila[] => {
+  if (!division || typeof division !== "string") {
+    return [];
+  }
+  const normalizedDivision = division.trim().toLowerCase();
+  if (!divisionNameSet.has(normalizedDivision)) {
+    return [];
+  }
+  return (upazilaData as Upazila[]).filter(
+    (item) => item.division.toLowerCase() === normalizedDivision
+  );
+};
+
+/**
+ * Search result item representing a location match
+ */
+export interface SearchResult {
+  name: string;
+  type: "division" | "district" | "upazila" | "thana";
+  district?: string;
+  division?: string;
+}
+
+/**
+ * Search across all locations (divisions, districts, upazilas, thanas)
+ * @param query - The search query (case-insensitive, partial match)
+ * @returns Array of matching locations sorted by type (division > district > upazila > thana)
+ */
+export const searchLocations = (query: string): SearchResult[] => {
+  if (!query || typeof query !== "string") {
+    return [];
+  }
+  const normalizedQuery = query.trim().toLowerCase();
+  if (normalizedQuery.length === 0) {
+    return [];
+  }
+
+  const results: SearchResult[] = [];
+
+  // Search divisions
+  Object.values(DivisonName).forEach((divisionName) => {
+    if (divisionName.toLowerCase().includes(normalizedQuery)) {
+      results.push({
+        name: divisionName,
+        type: "division",
+      });
+    }
+  });
+
+  // Search districts (use Set to avoid duplicates)
+  const matchedDistricts = new Set<string>();
+  (upazilaData as Upazila[]).forEach((item) => {
+    if (
+      item.district.toLowerCase().includes(normalizedQuery) &&
+      !matchedDistricts.has(item.district)
+    ) {
+      matchedDistricts.add(item.district);
+      results.push({
+        name: item.district,
+        type: "district",
+        division: item.division,
+      });
+    }
+  });
+
+  // Search upazilas
+  (upazilaData as Upazila[]).forEach((item) => {
+    if (item.upazila.toLowerCase().includes(normalizedQuery)) {
+      results.push({
+        name: item.upazila,
+        type: "upazila",
+        district: item.district,
+        division: item.division,
+      });
+    }
+  });
+
+  // Search thanas
+  (thanaData as Thana[]).forEach((item) => {
+    if (item.thana.toLowerCase().includes(normalizedQuery)) {
+      results.push({
+        name: item.thana,
+        type: "thana",
+        district: item.district,
+        division: item.division,
+      });
+    }
+  });
+
+  return results;
+};
+
+// Export raw data for advanced use cases
+export { upazilaData, thanaData };

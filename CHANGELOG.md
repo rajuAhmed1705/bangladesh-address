@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2025-12-19
+
+### Added
+- `isValidDivision(name)` - Check if a name is a valid division
+- `isValidDistrict(name)` - Check if a name is a valid district
+- `getDivisionOfDistrict(district)` - Reverse lookup: get division from district name
+- `getDistrictOfUpazila(upazila, division?)` - Reverse lookup: get district from upazila name
+- `upazilasOfDivision(division)` - Get all upazilas for a division directly
+- `searchLocations(query)` - Search across all locations (divisions, districts, upazilas, thanas)
+- `SearchResult` interface for search results
+- Raw data exports: `upazilaData` and `thanaData` for advanced use cases
+
+### Changed
+- All new functions use O(1) lookups via pre-computed Set and Map caches
+
 ## [1.4.0] - 2025-12-19
 
 ### Added
