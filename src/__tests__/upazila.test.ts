@@ -203,6 +203,14 @@ describe("Upazila functions", () => {
     it("should handle whitespace in input", () => {
       expect(isThana("  Gulshan  ")).toBe(true);
     });
+
+    it("should disambiguate with district context", () => {
+      // Kotwali exists in both Dhaka and Chattogram
+      expect(isThana("Kotwali")).toBe(true);
+      expect(isThana("Kotwali", "Dhaka")).toBe(true);
+      expect(isThana("Kotwali", "Chattogram")).toBe(true);
+      expect(isThana("Kotwali", "Sylhet")).toBe(false);
+    });
   });
 
   describe("isUpazila", () => {
@@ -234,6 +242,13 @@ describe("Upazila functions", () => {
 
     it("should handle whitespace in input", () => {
       expect(isUpazila("  Savar  ")).toBe(true);
+    });
+
+    it("should disambiguate with district context", () => {
+      // Mohammadpur exists as upazila in Magura
+      expect(isUpazila("Mohammadpur")).toBe(true);
+      expect(isUpazila("Mohammadpur", "Magura")).toBe(true);
+      expect(isUpazila("Mohammadpur", "Dhaka")).toBe(false);
     });
   });
 
@@ -269,6 +284,14 @@ describe("Upazila functions", () => {
       const thana = getThana("  Gulshan  ");
       expect(thana?.thana).toBe("Gulshan");
     });
+
+    it("should disambiguate with district context", () => {
+      // Kotwali exists in both Dhaka and Chattogram
+      const dhakaKotwali = getThana("Kotwali", "Dhaka");
+      const chattogramKotwali = getThana("Kotwali", "Chattogram");
+      expect(dhakaKotwali?.district).toBe("Dhaka");
+      expect(chattogramKotwali?.district).toBe("Chattogram");
+    });
   });
 
   describe("getUpazila", () => {
@@ -302,6 +325,13 @@ describe("Upazila functions", () => {
     it("should handle whitespace in input", () => {
       const upazila = getUpazila("  Savar  ");
       expect(upazila?.upazila).toBe("Savar");
+    });
+
+    it("should disambiguate with district context", () => {
+      // Mohammadpur exists as upazila in Magura
+      const maguraUpazila = getUpazila("Mohammadpur", "Magura");
+      expect(maguraUpazila?.district).toBe("Magura");
+      expect(getUpazila("Mohammadpur", "Dhaka")).toBeUndefined();
     });
   });
 });

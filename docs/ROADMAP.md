@@ -4,7 +4,7 @@ This document outlines the development roadmap for `@bangladeshi/bangladesh-addr
 
 ---
 
-## Current Version: v1.3.0
+## Current Version: v1.4.0
 
 ### What's Working
 - 8 divisions of Bangladesh
@@ -81,19 +81,22 @@ Focus: Improve API consistency and add utility functions.
 
 ---
 
-## v1.4.0 - Type Safety (Planned)
+## v1.4.0 - Type Safety (Completed)
 
 Focus: Enhanced TypeScript support.
 
 ### Type Improvements
-- [ ] Add `DistrictName` type/enum for compile-time district validation
-- [ ] Add district context to `isThana(name, district?)` for disambiguation
-- [ ] Add `DivisionName` alias (correct spelling of `DivisonName`)
-- [ ] Add JSDoc `@returns` tags to all functions
+- [x] Add `DistrictName` type for compile-time district validation (all 64 districts)
+- [x] Add district context to `isThana(name, district?)` for disambiguation
+- [x] Add district context to `isUpazila(name, district?)` for disambiguation
+- [x] Add district context to `getThana(name, district?)` for disambiguation
+- [x] Add district context to `getUpazila(name, district?)` for disambiguation
+- [x] Add `DivisionName` alias (correct spelling of `DivisonName`)
+- [x] Add JSDoc `@returns` tags to all functions
 
 ### Performance
-- [ ] Implement caching with pre-computed lookup maps
-- [ ] O(1) lookups instead of O(n) filtering for `isThana`, `isUpazila`
+- [x] Implement caching with pre-computed lookup maps (Set and Map)
+- [x] O(1) lookups for `isThana`, `isUpazila` without district context
 
 ---
 
@@ -178,4 +181,4 @@ We welcome contributions! Please see [CONTRIBUTING.md](../CONTRIBUTING.md) for g
 
 ## Changelog
 
-See [CHANGELOG.md](../CHANGELOG.md) for version history (coming soon).
+See [CHANGELOG.md](../CHANGELOG.md) for detailed version history.
