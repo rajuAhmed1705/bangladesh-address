@@ -1,7 +1,7 @@
 /**
- * @deprecated Use DivisionName instead (correct spelling)
+ * Division names of Bangladesh (8 divisions)
  */
-export enum DivisonName {
+export enum DivisionName {
   Dhaka = "Dhaka",
   Chattogram = "Chattogram",
   Mymensingh = "Mymensingh",
@@ -11,9 +11,3 @@ export enum DivisonName {
   Sylhet = "Sylhet",
   Barisal = "Barisal",
 }
-
-/**
- * Division names of Bangladesh (8 divisions)
- * This is the correctly spelled alias for DivisonName
- */
-export const DivisionName = DivisonName;

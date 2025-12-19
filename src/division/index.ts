@@ -1,11 +1,11 @@
 import data from "../json/bd-upazila.json";
 import { getDivision } from "./division";
-import { DivisonName } from "./types/division-name";
+import { DivisionName } from "./types/division-name";
 import { Upazila, DivisionalData } from "../types";
 
 // Pre-computed set for O(1) division validation
 const divisionNameSet = new Set(
-  Object.values(DivisonName).map((d) => d.toLowerCase())
+  Object.values(DivisionName).map((d) => d.toLowerCase())
 );
 
 /**
@@ -35,7 +35,7 @@ export const isValidDivision = (name: string): boolean => {
  * @param division - The division name
  * @returns Array of objects containing district and upazila names
  */
-export const divisionalDataOf = (division: DivisonName): DivisionalData[] => {
+export const divisionalDataOf = (division: DivisionName): DivisionalData[] => {
   const filteredDivision = getDivision(division);
   return filteredDivision.map((item) => ({
     district: item.district,

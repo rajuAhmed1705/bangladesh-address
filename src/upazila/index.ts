@@ -1,7 +1,7 @@
 import upazilaData from "../json/bd-upazila.json";
 import thanaData from "../json/bd-thana.json";
 import { Upazila, Thana } from "../types";
-import { DivisonName } from "../division/types/division-name";
+import { DivisionName } from "../division/types/division-name";
 
 // Pre-computed lookup maps for O(1) performance
 const thanaNameSet = new Set(
@@ -19,7 +19,7 @@ const upazilaByName = new Map(
 
 // Pre-computed set for O(1) division validation
 const divisionNameSet = new Set(
-  Object.values(DivisonName).map((d) => d.toLowerCase())
+  Object.values(DivisionName).map((d) => d.toLowerCase())
 );
 
 /**
@@ -35,6 +35,15 @@ export const upazilasOf = (district: string): Upazila[] => {
   return (upazilaData as Upazila[]).filter(
     (item) => item.district.toLowerCase() === normalizedDistrict
   );
+};
+
+/**
+ * Get all upazila names in a given district
+ * @param district - The district name
+ * @returns Array of upazila names (strings)
+ */
+export const upazilaNamesOf = (district: string): string[] => {
+  return upazilasOf(district).map((u) => u.upazila);
 };
 
 /**
@@ -74,6 +83,15 @@ export const thanasOf = (district: string): Thana[] => {
   return (thanaData as Thana[]).filter(
     (item) => item.district.toLowerCase() === normalizedDistrict
   );
+};
+
+/**
+ * Get thana names in a given district
+ * @param district - The district name
+ * @returns Array of thana names (strings)
+ */
+export const thanaNamesOf = (district: string): string[] => {
+  return thanasOf(district).map((t) => t.thana);
 };
 
 /**
@@ -217,6 +235,15 @@ export const upazilasOfDivision = (division: string): Upazila[] => {
 };
 
 /**
+ * Get all upazila names in a given division
+ * @param division - The division name
+ * @returns Array of upazila names (strings)
+ */
+export const upazilaNamesOfDivision = (division: string): string[] => {
+  return upazilasOfDivision(division).map((u) => u.upazila);
+};
+
+/**
  * Search result item representing a location match
  */
 export interface SearchResult {
@@ -243,7 +270,7 @@ export const searchLocations = (query: string): SearchResult[] => {
   const results: SearchResult[] = [];
 
   // Search divisions
-  Object.values(DivisonName).forEach((divisionName) => {
+  Object.values(DivisionName).forEach((divisionName) => {
     if (divisionName.toLowerCase().includes(normalizedQuery)) {
       results.push({
         name: divisionName,

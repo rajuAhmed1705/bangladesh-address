@@ -2,131 +2,157 @@
     {
         "thana": "Kotwali",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Mohammadpur",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Lalbagh",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Sutrapur",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Motijheel",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Demra",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Sabujbagh",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Mirpur",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Gulshan",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Uttara",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Pallabi",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Cantonment",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Dhanmondi",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Tejgaon",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Ramna",
         "district": "Dhaka",
-        "division": "Dhaka"
+        "division": "Dhaka",
+        "type": "thana"
     },
     {
         "thana": "Kotwali",
         "district": "Chattogram",
-        "division": "Chattogram"
+        "division": "Chattogram",
+        "type": "thana"
     },
     {
         "thana": "Panchlaish",
         "district": "Chattogram",
-        "division": "Chattogram"
+        "division": "Chattogram",
+        "type": "thana"
     },
     {
         "thana": "Chandgaon",
         "district": "Chattogram",
-        "division": "Chattogram"
+        "division": "Chattogram",
+        "type": "thana"
     },
     {
         "thana": "Bandar",
         "district": "Chattogram",
-        "division": "Chattogram"
+        "division": "Chattogram",
+        "type": "thana"
     },
     {
         "thana": "Pahartali",
         "district": "Chattogram",
-        "division": "Chattogram"
+        "division": "Chattogram",
+        "type": "thana"
     },
     {
         "thana": "Double Mooring",
         "district": "Chattogram",
-        "division": "Chattogram"
+        "division": "Chattogram",
+        "type": "thana"
     },
     {
         "thana": "Boalia",
         "district": "Rajshahi",
-        "division": "Rajshahi"
+        "division": "Rajshahi",
+        "type": "thana"
     },
     {
         "thana": "Rajpara",
         "district": "Rajshahi",
-        "division": "Rajshahi"
+        "division": "Rajshahi",
+        "type": "thana"
     },
     {
         "thana": "Khulna Sadar",
         "district": "Khulna",
-        "division": "Khulna"
+        "division": "Khulna",
+        "type": "thana"
     },
     {
         "thana": "Sonadanga",
         "district": "Khulna",
-        "division": "Khulna"
+        "division": "Khulna",
+        "type": "thana"
     },
     {
         "thana": "Daulatpur",
         "district": "Khulna",
-        "division": "Khulna"
+        "division": "Khulna",
+        "type": "thana"
     }
 ]

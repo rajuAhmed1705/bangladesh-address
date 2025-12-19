@@ -89,6 +89,7 @@ export interface Thana {
   thana: string;
   district: string;
   division: string;
+  type: "thana";
 }
 
 /**

@@ -47,9 +47,6 @@ districtsOf(DivisionName.Dhaka)
 
 allDistricts()
 // Returns: Array of all 64 district names
-
-// Deprecated: Use allDistricts() instead
-allDistict()
 ```
 
 ### Upazilas
@@ -57,6 +54,9 @@ allDistict()
 ```javascript
 upazilasOf("Tangail")
 // Returns: Array of upazila objects for Tangail district
+
+upazilaNamesOf("Tangail")
+// Returns: Array of upazila names (strings) for Tangail district
 
 allUpazila()
 // Returns: Array of all 495 upazila names
@@ -79,6 +79,9 @@ allThanaNames()
 
 thanasOf("Dhaka")
 // Returns: Array of thana objects for Dhaka (15 thanas)
+
+thanaNamesOf("Dhaka")
+// Returns: Array of thana names (strings) for Dhaka
 
 isThana("Gulshan")
 // Returns: true (Gulshan is a metropolitan thana)
@@ -133,6 +136,9 @@ getDistrictOfUpazila("Mohammadpur", "Khulna")
 ```javascript
 upazilasOfDivision("Sylhet")
 // Returns: Array of all upazila objects in Sylhet division
+
+upazilaNamesOfDivision("Sylhet")
+// Returns: Array of all upazila names (strings) in Sylhet division
 ```
 
 ### Search Locations
@@ -162,7 +168,7 @@ import { upazilaData, thanaData } from '@bangladeshi/bangladesh-address'
 ```typescript
 import { DivisionName, DistrictName, Upazila, Thana, SearchResult } from '@bangladeshi/bangladesh-address'
 
-// Division enum (correctly spelled alias for DivisonName)
+// Division enum
 DivisionName.Dhaka
 DivisionName.Chattogram
 DivisionName.Mymensingh
@@ -187,6 +193,7 @@ interface Thana {
   thana: string;
   district: string;
   division: string;
+  type: "thana";
 }
 ```
 
