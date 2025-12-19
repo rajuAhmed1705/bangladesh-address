@@ -1,0 +1,132 @@
+[
+    {
+        "thana": "Kotwali",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Mohammadpur",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Lalbagh",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Sutrapur",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Motijheel",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Demra",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Sabujbagh",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Mirpur",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Gulshan",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Uttara",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Pallabi",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Cantonment",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Dhanmondi",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Tejgaon",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Ramna",
+        "district": "Dhaka",
+        "division": "Dhaka"
+    },
+    {
+        "thana": "Kotwali",
+        "district": "Chattogram",
+        "division": "Chattogram"
+    },
+    {
+        "thana": "Panchlaish",
+        "district": "Chattogram",
+        "division": "Chattogram"
+    },
+    {
+        "thana": "Chandgaon",
+        "district": "Chattogram",
+        "division": "Chattogram"
+    },
+    {
+        "thana": "Bandar",
+        "district": "Chattogram",
+        "division": "Chattogram"
+    },
+    {
+        "thana": "Pahartali",
+        "district": "Chattogram",
+        "division": "Chattogram"
+    },
+    {
+        "thana": "Double Mooring",
+        "district": "Chattogram",
+        "division": "Chattogram"
+    },
+    {
+        "thana": "Boalia",
+        "district": "Rajshahi",
+        "division": "Rajshahi"
+    },
+    {
+        "thana": "Rajpara",
+        "district": "Rajshahi",
+        "division": "Rajshahi"
+    },
+    {
+        "thana": "Khulna Sadar",
+        "district": "Khulna",
+        "division": "Khulna"
+    },
+    {
+        "thana": "Sonadanga",
+        "district": "Khulna",
+        "division": "Khulna"
+    },
+    {
+        "thana": "Daulatpur",
+        "district": "Khulna",
+        "division": "Khulna"
+    }
+]
