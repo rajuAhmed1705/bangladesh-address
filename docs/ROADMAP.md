@@ -140,16 +140,118 @@ See [MIGRATION.md](MIGRATION.md) for upgrading from v1.x to v2.0.0.
 
 ---
 
+## v2.1.0 - Union Data (Planned)
+
+Focus: Add the 4th administrative level - unions.
+
+### Data Addition
+- [ ] Research and compile union data (~4,500 unions)
+- [ ] Create `bd-union.json` with union, upazila, district, division fields
+- [ ] Add `Union` interface to types
+
+### New Functions
+- [ ] `allUnion()` - Get all union names
+- [ ] `allUnionData()` - Get all union objects
+- [ ] `unionsOf(upazila)` - Get unions for an upazila
+- [ ] `unionNamesOf(upazila)` - Get union names for an upazila
+- [ ] `isUnion(name)` - Check if location is a union
+- [ ] `getUnion(name, upazila?)` - Get union object by name
+- [ ] `getUpazilaOfUnion(union)` - Reverse lookup: get upazila from union
+
+### Data Integrity
+- [ ] Validate all unions reference valid upazilas
+- [ ] Add union count tests per upazila
+
+---
+
+## v2.2.0 - Bengali Language Support (Planned)
+
+Focus: Add Bengali translations for all locations.
+
+### Data Updates
+- [ ] Add `nameBn` field to division data
+- [ ] Add `nameBn` field to district data
+- [ ] Add `upazilaBn` field to upazila data
+- [ ] Add `thanaBn` field to thana data
+- [ ] Add `unionBn` field to union data (if v2.1.0 completed)
+
+### New Functions
+- [ ] `allDivisionBn()` - Get all division names in Bengali
+- [ ] `allDistrictsBn()` - Get all district names in Bengali
+- [ ] `searchLocationsBn(query)` - Search using Bengali text
+
+### Interfaces
+- [ ] Update all interfaces to include Bengali name fields
+- [ ] Add `LocalizedName` type for bilingual support
+
+---
+
+## v2.3.0 - Postal Codes (Planned)
+
+Focus: Add postal code data for Bangladesh.
+
+### Data Addition
+- [ ] Research postal code structure (4-digit codes)
+- [ ] Create `bd-postal.json` with postal code mappings
+- [ ] Map postal codes to upazilas/thanas
+
+### New Functions
+- [ ] `allPostalCodes()` - Get all postal codes
+- [ ] `postalCodesOf(district)` - Get postal codes for a district
+- [ ] `getLocationByPostalCode(code)` - Get location details from postal code
+- [ ] `isValidPostalCode(code)` - Validate postal code format and existence
+
+---
+
+## v2.4.0 - Geographic Coordinates (Planned)
+
+Focus: Add latitude/longitude for all locations.
+
+### Data Updates
+- [ ] Add `lat`, `lng` fields to division data (central point)
+- [ ] Add `lat`, `lng` fields to district data
+- [ ] Add `lat`, `lng` fields to upazila data
+- [ ] Add `lat`, `lng` fields to thana data
+
+### New Functions
+- [ ] `getCoordinates(location)` - Get lat/lng for any location
+- [ ] `findNearbyLocations(lat, lng, radius)` - Find locations within radius
+- [ ] `getDistanceBetween(location1, location2)` - Calculate distance
+
+### Interfaces
+- [ ] Add `Coordinates` interface `{ lat: number, lng: number }`
+- [ ] Update location interfaces to include optional coordinates
+
+---
+
+## v3.0.0 - ESM & Modern JavaScript (Planned)
+
+Focus: Modern module system and build improvements.
+
+### Build System
+- [ ] Dual ESM/CommonJS output
+- [ ] Tree-shaking support
+- [ ] Smaller bundle size with code splitting
+
+### Package Updates
+- [ ] Add `"type": "module"` to package.json
+- [ ] Add `exports` field for proper module resolution
+- [ ] Maintain backward compatibility with CommonJS
+
+### Developer Experience
+- [ ] Improve TypeScript strict mode compliance
+- [ ] Add source maps
+- [ ] Optimize build for modern bundlers (Vite, esbuild)
+
+---
+
 ## Future Considerations (Not Scheduled)
 
-These items are under consideration for future versions:
+These items are under consideration but not yet planned:
 
-- **Metropolitan city data**: Add city corporation structures with thana mappings
-- **Union data**: Add 4th administrative level (~4,500 unions)
-- **Bengali names**: Add Bengali translations for all locations
-- **Postal codes**: Add postal code data
-- **Coordinates**: Add lat/long for districts/upazilas
-- **ESM support**: Dual ESM/CommonJS output
+- **Metropolitan city data**: Add city corporation structures with ward mappings
+- **Autocomplete helpers**: Fuzzy matching and suggestion algorithms
+- **Offline-first**: Service worker support for offline access
 
 ---
 
