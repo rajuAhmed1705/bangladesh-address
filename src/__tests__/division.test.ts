@@ -1,4 +1,4 @@
-import { allDivision, divisionalDataOf, getDivision } from "../division";
+import { allDivision, divisionalDataOf, getDivision, isValidDivision } from "../division";
 import { DivisonName } from "../division/types/division-name";
 
 describe("Division functions", () => {
@@ -81,6 +81,42 @@ describe("Division functions", () => {
       result.forEach((item) => {
         expect(item).not.toHaveProperty("division");
       });
+    });
+  });
+
+  describe("isValidDivision", () => {
+    it("should return true for valid divisions", () => {
+      expect(isValidDivision("Dhaka")).toBe(true);
+      expect(isValidDivision("Chattogram")).toBe(true);
+      expect(isValidDivision("Sylhet")).toBe(true);
+      expect(isValidDivision("Khulna")).toBe(true);
+      expect(isValidDivision("Rajshahi")).toBe(true);
+      expect(isValidDivision("Rangpur")).toBe(true);
+      expect(isValidDivision("Barisal")).toBe(true);
+      expect(isValidDivision("Mymensingh")).toBe(true);
+    });
+
+    it("should return false for invalid divisions", () => {
+      expect(isValidDivision("InvalidDivision")).toBe(false);
+      expect(isValidDivision("Tangail")).toBe(false);
+      expect(isValidDivision("Savar")).toBe(false);
+    });
+
+    it("should handle case-insensitive input", () => {
+      expect(isValidDivision("dhaka")).toBe(true);
+      expect(isValidDivision("CHATTOGRAM")).toBe(true);
+      expect(isValidDivision("SyLhEt")).toBe(true);
+    });
+
+    it("should return false for null/undefined input", () => {
+      expect(isValidDivision(null as unknown as string)).toBe(false);
+      expect(isValidDivision(undefined as unknown as string)).toBe(false);
+      expect(isValidDivision("")).toBe(false);
+    });
+
+    it("should handle whitespace in input", () => {
+      expect(isValidDivision("  Dhaka  ")).toBe(true);
+      expect(isValidDivision("  Chattogram  ")).toBe(true);
     });
   });
 });

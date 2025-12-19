@@ -8,6 +8,11 @@ import {
   isUpazila,
   getThana,
   getUpazila,
+  getDistrictOfUpazila,
+  upazilasOfDivision,
+  searchLocations,
+  upazilaData,
+  thanaData,
 } from "../upazila";
 
 describe("Upazila functions", () => {
@@ -332,6 +337,176 @@ describe("Upazila functions", () => {
       const maguraUpazila = getUpazila("Mohammadpur", "Magura");
       expect(maguraUpazila?.district).toBe("Magura");
       expect(getUpazila("Mohammadpur", "Dhaka")).toBeUndefined();
+    });
+  });
+
+  describe("getDistrictOfUpazila", () => {
+    it("should return district for known upazila", () => {
+      expect(getDistrictOfUpazila("Savar")).toBe("Dhaka");
+      expect(getDistrictOfUpazila("Keraniganj")).toBe("Dhaka");
+    });
+
+    it("should return undefined for non-existent upazila", () => {
+      expect(getDistrictOfUpazila("NonExistent")).toBeUndefined();
+    });
+
+    it("should return undefined for thanas", () => {
+      expect(getDistrictOfUpazila("Gulshan")).toBeUndefined();
+    });
+
+    it("should handle case-insensitive input", () => {
+      expect(getDistrictOfUpazila("savar")).toBe("Dhaka");
+      expect(getDistrictOfUpazila("KERANIGANJ")).toBe("Dhaka");
+    });
+
+    it("should return undefined for null/undefined input", () => {
+      expect(getDistrictOfUpazila(null as unknown as string)).toBeUndefined();
+      expect(getDistrictOfUpazila(undefined as unknown as string)).toBeUndefined();
+      expect(getDistrictOfUpazila("")).toBeUndefined();
+    });
+
+    it("should handle whitespace in input", () => {
+      expect(getDistrictOfUpazila("  Savar  ")).toBe("Dhaka");
+    });
+
+    it("should disambiguate with division context", () => {
+      // Mohammadpur exists as upazila in Magura (Khulna division)
+      expect(getDistrictOfUpazila("Mohammadpur")).toBe("Magura");
+      expect(getDistrictOfUpazila("Mohammadpur", "Khulna")).toBe("Magura");
+    });
+  });
+
+  describe("upazilasOfDivision", () => {
+    it("should return upazilas for Dhaka division", () => {
+      const upazilas = upazilasOfDivision("Dhaka");
+      expect(upazilas.length).toBeGreaterThan(0);
+      upazilas.forEach((item) => {
+        expect(item.division).toBe("Dhaka");
+      });
+    });
+
+    it("should return all 8 divisions worth of upazilas", () => {
+      const divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barisal", "Sylhet", "Rangpur", "Mymensingh"];
+      divisions.forEach((division) => {
+        const upazilas = upazilasOfDivision(division);
+        expect(upazilas.length).toBeGreaterThan(0);
+      });
+    });
+
+    it("should return empty array for invalid division", () => {
+      expect(upazilasOfDivision("InvalidDivision")).toHaveLength(0);
+    });
+
+    it("should handle case-insensitive input", () => {
+      const upazilas = upazilasOfDivision("dhaka");
+      expect(upazilas.length).toBeGreaterThan(0);
+    });
+
+    it("should return empty array for null/undefined input", () => {
+      expect(upazilasOfDivision(null as unknown as string)).toHaveLength(0);
+      expect(upazilasOfDivision(undefined as unknown as string)).toHaveLength(0);
+      expect(upazilasOfDivision("")).toHaveLength(0);
+    });
+
+    it("should handle whitespace in input", () => {
+      const upazilas = upazilasOfDivision("  Dhaka  ");
+      expect(upazilas.length).toBeGreaterThan(0);
+    });
+
+    it("total upazilas from all divisions should equal 495", () => {
+      const divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barisal", "Sylhet", "Rangpur", "Mymensingh"];
+      let totalCount = 0;
+      divisions.forEach((division) => {
+        totalCount += upazilasOfDivision(division).length;
+      });
+      expect(totalCount).toBe(495);
+    });
+  });
+
+  describe("searchLocations", () => {
+    it("should find divisions", () => {
+      const results = searchLocations("Dhaka");
+      const divisionResults = results.filter((r) => r.type === "division");
+      expect(divisionResults.length).toBeGreaterThan(0);
+      expect(divisionResults[0].name).toBe("Dhaka");
+    });
+
+    it("should find districts", () => {
+      const results = searchLocations("Tangail");
+      const districtResults = results.filter((r) => r.type === "district");
+      expect(districtResults.length).toBeGreaterThan(0);
+      expect(districtResults[0].name).toBe("Tangail");
+    });
+
+    it("should find upazilas", () => {
+      const results = searchLocations("Savar");
+      const upazilaResults = results.filter((r) => r.type === "upazila");
+      expect(upazilaResults.length).toBeGreaterThan(0);
+      expect(upazilaResults[0].name).toBe("Savar");
+    });
+
+    it("should find thanas", () => {
+      const results = searchLocations("Gulshan");
+      const thanaResults = results.filter((r) => r.type === "thana");
+      expect(thanaResults.length).toBeGreaterThan(0);
+      expect(thanaResults[0].name).toBe("Gulshan");
+    });
+
+    it("should return multiple matches for partial queries", () => {
+      const results = searchLocations("pur");
+      expect(results.length).toBeGreaterThan(5);
+    });
+
+    it("should handle case-insensitive search", () => {
+      const results = searchLocations("DHAKA");
+      expect(results.length).toBeGreaterThan(0);
+    });
+
+    it("should return empty array for no matches", () => {
+      const results = searchLocations("xyz123nonexistent");
+      expect(results).toHaveLength(0);
+    });
+
+    it("should return empty array for null/undefined input", () => {
+      expect(searchLocations(null as unknown as string)).toHaveLength(0);
+      expect(searchLocations(undefined as unknown as string)).toHaveLength(0);
+      expect(searchLocations("")).toHaveLength(0);
+      expect(searchLocations("   ")).toHaveLength(0);
+    });
+
+    it("should include district and division in results", () => {
+      const results = searchLocations("Savar");
+      const upazilaResult = results.find((r) => r.type === "upazila" && r.name === "Savar");
+      expect(upazilaResult?.district).toBe("Dhaka");
+      expect(upazilaResult?.division).toBe("Dhaka");
+    });
+  });
+
+  describe("Raw data exports", () => {
+    it("should export upazilaData with 495 entries", () => {
+      expect(Array.isArray(upazilaData)).toBe(true);
+      expect(upazilaData.length).toBe(495);
+    });
+
+    it("should export thanaData with 26 entries", () => {
+      expect(Array.isArray(thanaData)).toBe(true);
+      expect(thanaData.length).toBe(26);
+    });
+
+    it("upazilaData entries should have correct structure", () => {
+      upazilaData.forEach((item) => {
+        expect(item).toHaveProperty("upazila");
+        expect(item).toHaveProperty("district");
+        expect(item).toHaveProperty("division");
+      });
+    });
+
+    it("thanaData entries should have correct structure", () => {
+      thanaData.forEach((item) => {
+        expect(item).toHaveProperty("thana");
+        expect(item).toHaveProperty("district");
+        expect(item).toHaveProperty("division");
+      });
     });
   });
 });

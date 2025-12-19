@@ -4,14 +4,14 @@ This document outlines the development roadmap for `@bangladeshi/bangladesh-addr
 
 ---
 
-## Current Version: v1.4.0
+## Current Version: v1.5.0
 
 ### What's Working
 - 8 divisions of Bangladesh
 - 64 districts
 - 495 upazilas (updated July 2021)
 - 26 metropolitan thanas (Dhaka, Chattogram, Rajshahi, Khulna)
-- Functions: `allDivision()`, `divisionalDataOf()`, `districtsOf()`, `allDistict()`, `allDistricts()`, `upazilasOf()`, `allUpazila()`, `isUpazila()`, `getUpazila()`, `allThana()`, `allThanaNames()`, `thanasOf()`, `isThana()`, `getThana()`
+- Functions: `allDivision()`, `divisionalDataOf()`, `districtsOf()`, `allDistict()`, `allDistricts()`, `upazilasOf()`, `allUpazila()`, `isUpazila()`, `getUpazila()`, `allThana()`, `allThanaNames()`, `thanasOf()`, `isThana()`, `getThana()`, `isValidDivision()`, `isValidDistrict()`, `getDivisionOfDistrict()`, `getDistrictOfUpazila()`, `upazilasOfDivision()`, `searchLocations()`
 
 ---
 
@@ -100,20 +100,20 @@ Focus: Enhanced TypeScript support.
 
 ---
 
-## v1.5.0 - Enhancements (Planned)
+## v1.5.0 - Enhancements (Completed)
 
 Focus: New utility functions and reverse lookups.
 
 ### New Functions
-- [ ] `isValidDivision(name)` - Check if division name is valid
-- [ ] `isValidDistrict(name)` - Check if district name is valid
-- [ ] `getDivisionOfDistrict(district)` - Reverse lookup: get division from district
-- [ ] `getDistrictOfUpazila(upazila)` - Reverse lookup: get district from upazila
-- [ ] `searchLocations(query)` - Search across all locations
-- [ ] `upazilasOfDivision(division)` - Get all upazilas for a division directly
+- [x] `isValidDivision(name)` - Check if division name is valid
+- [x] `isValidDistrict(name)` - Check if district name is valid
+- [x] `getDivisionOfDistrict(district)` - Reverse lookup: get division from district
+- [x] `getDistrictOfUpazila(upazila)` - Reverse lookup: get district from upazila
+- [x] `searchLocations(query)` - Search across all locations
+- [x] `upazilasOfDivision(division)` - Get all upazilas for a division directly
 
 ### Data Exports
-- [ ] Export raw JSON data for advanced use cases (`upazilaData`, `thanaData`)
+- [x] Export raw JSON data for advanced use cases (`upazilaData`, `thanaData`)
 
 ---
 

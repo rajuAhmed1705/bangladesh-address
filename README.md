@@ -96,10 +96,71 @@ getThana("Kotwali", "Chattogram")
 // Returns: { thana: "Kotwali", district: "Chattogram", division: "Chattogram" }
 ```
 
+### Validation Functions
+
+```javascript
+isValidDivision("Dhaka")
+// Returns: true
+
+isValidDivision("InvalidName")
+// Returns: false
+
+isValidDistrict("Tangail")
+// Returns: true
+
+isValidDistrict("Savar")
+// Returns: false (Savar is an upazila, not a district)
+```
+
+### Reverse Lookups
+
+```javascript
+getDivisionOfDistrict("Tangail")
+// Returns: "Dhaka"
+
+getDivisionOfDistrict("Cox's Bazar")
+// Returns: "Chattogram"
+
+getDistrictOfUpazila("Savar")
+// Returns: "Dhaka"
+
+getDistrictOfUpazila("Mohammadpur", "Khulna")
+// Returns: "Magura" (disambiguate with division context)
+```
+
+### Get Upazilas by Division
+
+```javascript
+upazilasOfDivision("Sylhet")
+// Returns: Array of all upazila objects in Sylhet division
+```
+
+### Search Locations
+
+```javascript
+searchLocations("pur")
+// Returns: Array of matching locations across divisions, districts, upazilas, and thanas
+// [
+//   { name: "Rangpur", type: "division" },
+//   { name: "Rangpur", type: "district", division: "Rangpur" },
+//   { name: "Mirpur", type: "thana", district: "Dhaka", division: "Dhaka" },
+//   ... more matches
+// ]
+```
+
+### Raw Data Access
+
+```javascript
+import { upazilaData, thanaData } from '@bangladeshi/bangladesh-address'
+
+// upazilaData: Array of all 495 upazila objects
+// thanaData: Array of all 26 thana objects
+```
+
 ### Types
 
 ```typescript
-import { DivisionName, DistrictName, Upazila, Thana } from '@bangladeshi/bangladesh-address'
+import { DivisionName, DistrictName, Upazila, Thana, SearchResult } from '@bangladeshi/bangladesh-address'
 
 // Division enum (correctly spelled alias for DivisonName)
 DivisionName.Dhaka
