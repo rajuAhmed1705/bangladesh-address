@@ -1,6 +1,6 @@
 {
   "name": "@bangladeshi/bangladesh-address",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rajuAhmed1705/bangladesh-address.git"
@@ -26,11 +26,12 @@
     "bangladesh-address",
     "district",
     "division",
-    "upazila"
+    "upazila",
+    "thana"
   ],
   "author": "Raju Ahmed",
   "license": "MIT",
-  "description": "It's a simple npm package that exports methods representing divisions, districts and upazilas of Bangladesh.",
+  "description": "A simple npm package for Bangladesh's administrative divisions, districts, upazilas, and metropolitan thanas.",
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@typescript-eslint/eslint-plugin": "^6.21.0",

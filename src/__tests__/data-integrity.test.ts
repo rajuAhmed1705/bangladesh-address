@@ -1,4 +1,13 @@
-import { allDivision, allDistict, allUpazila, districtsOf, upazilasOf } from "../index";
+import {
+  allDivision,
+  allDistict,
+  allUpazila,
+  districtsOf,
+  upazilasOf,
+  allThana,
+  thanasOf,
+  isThana,
+} from "../index";
 import { DivisonName } from "../division/types/division-name";
 
 describe("Data Integrity", () => {
@@ -51,8 +60,8 @@ describe("Data Integrity", () => {
   });
 
   describe("Upazila counts", () => {
-    it("should have exactly 492 upazilas", () => {
-      expect(allUpazila()).toHaveLength(492);
+    it("should have exactly 495 upazilas", () => {
+      expect(allUpazila()).toHaveLength(495);
     });
 
     it("every district should have at least one upazila", () => {
@@ -61,6 +70,44 @@ describe("Data Integrity", () => {
         const upazilas = upazilasOf(district);
         expect(upazilas.length).toBeGreaterThan(0);
       });
+    });
+  });
+
+  describe("Thana counts", () => {
+    it("should have 26 metropolitan thanas", () => {
+      const thanas = allThana();
+      expect(thanas.length).toBe(26);
+    });
+
+    it("Dhaka should have 15 thanas", () => {
+      const dhakaThanas = thanasOf("Dhaka");
+      expect(dhakaThanas.length).toBe(15);
+    });
+
+    it("Chattogram should have 6 thanas", () => {
+      const chattogramThanas = thanasOf("Chattogram");
+      expect(chattogramThanas.length).toBe(6);
+    });
+
+    it("Rajshahi should have 2 thanas", () => {
+      const rajshahiThanas = thanasOf("Rajshahi");
+      expect(rajshahiThanas.length).toBe(2);
+    });
+
+    it("Khulna should have 3 thanas", () => {
+      const khulnaThanas = thanasOf("Khulna");
+      expect(khulnaThanas.length).toBe(3);
+    });
+
+    it("isThana should return true for metropolitan thanas", () => {
+      expect(isThana("Gulshan")).toBe(true);
+      expect(isThana("Dhanmondi")).toBe(true);
+      expect(isThana("Kotwali")).toBe(true);
+    });
+
+    it("isThana should return false for regular upazilas", () => {
+      expect(isThana("Savar")).toBe(false);
+      expect(isThana("Keraniganj")).toBe(false);
     });
   });
 
@@ -86,6 +133,15 @@ describe("Data Integrity", () => {
         upazilas.forEach((upazila) => {
           expect(validDistricts).toContain(upazila.district);
         });
+      });
+    });
+
+    it("thanas should have valid thana objects", () => {
+      const thanas = allThana();
+      thanas.forEach((thana) => {
+        expect(thana).toHaveProperty("thana");
+        expect(thana).toHaveProperty("district");
+        expect(thana).toHaveProperty("division");
       });
     });
   });

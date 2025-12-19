@@ -1,60 +1,122 @@
-# Bangladesh Address (division, district, upazila)
+# Bangladesh Address (division, district, upazila, thana)
 
-It's a simple npm package that exports methods representing divisions, districts and upazilas of Bangladesh.
+A simple npm package that exports methods representing divisions, districts, upazilas and thanas (metropolitan police stations) of Bangladesh.
 
-## Usage:
+## Data Coverage
 
-### Install:
+- **8 Divisions** - All administrative divisions
+- **64 Districts** - All districts
+- **495 Upazilas** - All upazilas (updated July 2021 with Eidgaon, Dasar, Madhyanagar)
+- **26 Metropolitan Thanas** - Police stations in Dhaka, Chattogram, Rajshahi, Khulna
 
-    npm i @bangladeshi/bangladesh-address
+## Installation
 
-Import the package in your file to use it.
+```bash
+npm i @bangladeshi/bangladesh-address
+```
 
-    const address = require('@bangladeshi/bangladesh-address')
+## Usage
 
-### Methods:
+### CommonJS
+```javascript
+const address = require('@bangladeshi/bangladesh-address')
+```
 
-Division
+### ES Modules / TypeScript
+```typescript
+import { allDivision, districtsOf, upazilasOf, DivisionName } from '@bangladeshi/bangladesh-address'
+```
 
-    allDivision()
+## API Reference
 
-> get array of all divisions
+### Division
 
-    divisionalDataOf(DivisionName.Dhaka)
+```javascript
+allDivision()
+// Returns: ['Dhaka', 'Chattogram', 'Mymensingh', ...]
 
-> get every districts and upazilas of Dhaka division
+divisionalDataOf(DivisionName.Dhaka)
+// Returns: All districts and upazilas of Dhaka division
+```
 
-Districts
+### Districts
 
-    districtOf(DivisionName.Dhaka)
+```javascript
+districtsOf(DivisionName.Dhaka)
+// Returns: Districts of Dhaka division
 
-> get districts of Dhaka division
+allDistricts()
+// Returns: Array of all 64 district names
 
-    allDistrict()
+// Deprecated: Use allDistricts() instead
+allDistict()
+```
 
-> get an array of all district names of Bangladesh
+### Upazilas
 
-upazila
+```javascript
+upazilasOf("Tangail")
+// Returns: Array of upazila objects for Tangail district
 
-    upazilasOf("tangail")
+allUpazila()
+// Returns: Array of all 495 upazila names
+```
 
-> get all upazilas of Tangail
+### Thanas (Metropolitan Police Stations)
 
-    allUpazila()
+```javascript
+allThana()
+// Returns: Array of all 26 thana objects
 
-> get an array of all Upazilas
+thanasOf("Dhaka")
+// Returns: Array of thana objects for Dhaka (15 thanas)
 
-Types
+isThana("Gulshan")
+// Returns: true (Gulshan is a metropolitan thana)
 
-    DivisionName.Dhaka
-    DivisionName.Chattogram
-    DivisionName.Mymensingh
-    DivisionName.Khulna
-    DivisionName.Rajshahi
-    DivisionName.Rangpur
-    DivisionName.Sylhet
-    DivisionName.Barisal
+isThana("Savar")
+// Returns: false (Savar is an upazila, not a thana)
+```
 
-### Contribution
+### Types
 
-If you want to contribute please follow the guildline. [Contribution](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/CONTRIBUTING.md)
+```typescript
+import { DivisionName, Upazila, Thana } from '@bangladeshi/bangladesh-address'
+
+// Division enum
+DivisionName.Dhaka
+DivisionName.Chattogram
+DivisionName.Mymensingh
+DivisionName.Khulna
+DivisionName.Rajshahi
+DivisionName.Rangpur
+DivisionName.Sylhet
+DivisionName.Barisal
+
+// Upazila interface
+interface Upazila {
+  upazila: string;
+  district: string;
+  division: string;
+}
+
+// Thana interface
+interface Thana {
+  thana: string;
+  district: string;
+  division: string;
+}
+```
+
+## Metropolitan Thana Distribution
+
+| City | Thana Count |
+|------|-------------|
+| Dhaka | 15 |
+| Chattogram | 6 |
+| Khulna | 3 |
+| Rajshahi | 2 |
+
+## Contribution
+
+If you want to contribute please follow the guideline. [Contribution](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/CONTRIBUTING.md)

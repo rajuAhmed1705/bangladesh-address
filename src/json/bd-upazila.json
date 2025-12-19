@@ -490,11 +490,6 @@
         "division": "Chattogram"
     },
     {
-        "upazila": "Chakaria",
-        "district": "Cox's Bazar",
-        "division": "Chattogram"
-    },
-    {
         "upazila": "Cox's Bazar Sadar",
         "district": "Cox's Bazar",
         "division": "Chattogram"
@@ -970,6 +965,11 @@
         "division": "Dhaka"
     },
     {
+        "upazila": "Dasar",
+        "district": "Madaripur",
+        "division": "Dhaka"
+    },
+    {
         "upazila": "Manikganj Sadar",
         "district": "Manikganj",
         "division": "Dhaka"
@@ -1095,6 +1095,11 @@
         "division": "Mymensingh"
     },
     {
+        "upazila": "Tarakanda",
+        "district": "Mymensingh",
+        "division": "Mymensingh"
+    },
+    {
         "upazila": "Araihazar",
         "district": "Narayanganj",
         "division": "Dhaka"
@@ -1145,7 +1150,7 @@
         "division": "Dhaka"
     },
     {
-        "upazila": "Raipura, Narsingdi",
+        "upazila": "Raipura",
         "district": "Narsingdi",
         "division": "Dhaka"
     },
@@ -1155,52 +1160,52 @@
         "division": "Dhaka"
     },
     {
-        "upazila": "Kendua Upazilla",
+        "upazila": "Kendua",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Atpara Upazilla",
+        "upazila": "Atpara",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Barhatta Upazilla",
+        "upazila": "Barhatta",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Durgapur Upazilla",
+        "upazila": "Durgapur",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Kalmakanda Upazilla",
+        "upazila": "Kalmakanda",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Madan Upazilla",
+        "upazila": "Madan",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Mohanganj Upazilla",
+        "upazila": "Mohanganj",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Netrakona-S Upazilla",
+        "upazila": "Netrokona Sadar",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Purbadhala Upazilla",
+        "upazila": "Purbadhala",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
-        "upazila": "Khaliajuri Upazilla",
+        "upazila": "Khaliajuri",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
@@ -1230,7 +1235,7 @@
         "division": "Dhaka"
     },
     {
-        "upazila": "Shariatpur Sadar -Palong",
+        "upazila": "Shariatpur Sadar",
         "district": "Shariatpur",
         "division": "Dhaka"
     },
@@ -1395,7 +1400,7 @@
         "division": "Khulna"
     },
     {
-        "upazila": "Chuadanga-S",
+        "upazila": "Chuadanga Sadar",
         "district": "Chuadanga",
         "division": "Khulna"
     },
@@ -1575,22 +1580,22 @@
         "division": "Khulna"
     },
     {
-        "upazila": "angni",
+        "upazila": "Gangni",
         "district": "Meherpur",
         "division": "Khulna"
     },
     {
-        "upazila": "Mujib Nagar",
+        "upazila": "Mujibnagar",
         "district": "Meherpur",
         "division": "Khulna"
     },
     {
-        "upazila": "Meherpur-S",
+        "upazila": "Meherpur Sadar",
         "district": "Meherpur",
         "division": "Khulna"
     },
     {
-        "upazila": "Narail-S",
+        "upazila": "Narail Sadar",
         "district": "Narail",
         "division": "Khulna"
     },
@@ -1700,7 +1705,7 @@
         "division": "Rajshahi"
     },
     {
-        "upazila": "Joypurhat S",
+        "upazila": "Joypurhat Sadar",
         "district": "Joypurhat",
         "division": "Rajshahi"
     },
@@ -1800,38 +1805,38 @@
         "division": "Rajshahi"
     },
     {
-        "upazila": "Natore Sadar",
+        "upazila": "Gurudaspur",
         "district": "Natore",
         "division": "Rajshahi"
     },
     {
-        "upazila": "Baraigram",
+        "upazila": "Singra",
         "district": "Natore",
         "division": "Rajshahi"
     },
     {
         "upazila": "Bholahat",
-        "district": "Nawabganj",
+        "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Gomastapur",
-        "district": "Nawabganj",
+        "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Nachole",
-        "district": "Nawabganj",
+        "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
-        "upazila": "Nawabganj Sadar",
-        "district": "Nawabganj",
+        "upazila": "Chapainawabganj Sadar",
+        "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Shibganj",
-        "district": "Nawabganj",
+        "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
@@ -1926,47 +1931,47 @@
     },
     {
         "upazila": "Sirajganj Sadar",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Belkuchi",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Chauhali",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Kamarkhanda",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Kazipur",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Raiganj",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Shahjadpur",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Tarash",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Ullahpara",
-        "district": "Sirajgonj",
+        "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
@@ -2040,7 +2045,7 @@
         "division": "Rangpur"
     },
     {
-        "upazila": "Gaibandha sadar",
+        "upazila": "Gaibandha Sadar",
         "district": "Gaibandha",
         "division": "Rangpur"
     },
@@ -2115,7 +2120,7 @@
         "division": "Rangpur"
     },
     {
-        "upazila": "Lalmanirhat Sadar",
+        "upazila": "Lalmonirhat Sadar",
         "district": "Lalmonirhat",
         "division": "Rangpur"
     },
@@ -2306,37 +2311,37 @@
     },
     {
         "upazila": "Moulvibazar Sadar",
-        "district": "Maulvibazar",
+        "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Barlekha",
-        "district": "Maulvibazar",
+        "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Juri",
-        "district": "Maulvibazar",
+        "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Kamalganj",
-        "district": "Maulvibazar",
+        "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Kulaura",
-        "district": "Maulvibazar",
+        "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Rajnagar",
-        "district": "Maulvibazar",
+        "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Sreemangal",
-        "district": "Maulvibazar",
+        "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
@@ -2455,8 +2460,18 @@
         "division": "Sylhet"
     },
     {
-        "upazila": "Nobigonj",
+        "upazila": "Osmaninagar",
         "district": "Sylhet",
+        "division": "Sylhet"
+    },
+    {
+        "upazila": "Eidgaon",
+        "district": "Cox's Bazar",
+        "division": "Chattogram"
+    },
+    {
+        "upazila": "Madhyanagar",
+        "district": "Sunamganj",
         "division": "Sylhet"
     }
 ]
