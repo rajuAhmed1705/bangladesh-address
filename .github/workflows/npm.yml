@@ -22,7 +22,7 @@ jobs:
       - run: npm run test:coverage
       - run: npm run build
 
-  publish:
+  publish-npm:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
@@ -37,3 +37,26 @@ jobs:
       - uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_TOKEN }}
+
+  publish-github:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+          scope: '@rajuahmed1705'
+      - run: npm ci
+      - run: npm run build
+      - name: Update package name for GitHub Packages
+        run: |
+          sed -i 's/"@bangladeshi\/bangladesh-address"/"@rajuahmed1705\/bangladesh-address"/' package.json
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

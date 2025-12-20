@@ -5,6 +5,9 @@
     "type": "git",
     "url": "git+https://github.com/rajuAhmed1705/bangladesh-address.git"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "files": [
