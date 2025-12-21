@@ -140,7 +140,41 @@ See [MIGRATION.md](MIGRATION.md) for upgrading from v1.x to v2.0.0.
 
 ---
 
-## v2.1.0 - Union Data (Planned)
+## v2.1.0 - Database Dumps (Planned)
+
+Focus: Provide database-ready SQL and NoSQL dumps for cross-language support.
+
+### SQL Dumps
+- [ ] MySQL dump (`db/mysql/bangladesh-address.sql`)
+- [ ] PostgreSQL dump (`db/postgresql/bangladesh-address.sql`)
+- [ ] SQLite dump (`db/sqlite/bangladesh-address.sql`)
+
+### NoSQL Dumps
+- [ ] MongoDB dump (`db/mongodb/`) - BSON/JSON collections
+- [ ] Firebase/Firestore format (`db/firestore/bangladesh-address.json`)
+
+### Database Schema
+- [ ] `divisions` table (id, name, name_bn)
+- [ ] `districts` table (id, name, name_bn, division_id)
+- [ ] `upazilas` table (id, name, name_bn, district_id, division_id)
+- [ ] `thanas` table (id, name, name_bn, district_id, division_id, type)
+- [ ] Proper foreign key relationships
+- [ ] Indexes for common queries
+
+### Documentation
+- [ ] Database schema diagram (ERD)
+- [ ] Import instructions for each database
+- [ ] Example queries for common use cases
+
+### Benefits
+- Use data in PHP, Python, Java, Go, Ruby, etc.
+- Direct database integration without npm
+- Optimized for relational queries
+- Seed data for new projects
+
+---
+
+## v2.2.0 - Union Data (Planned)
 
 Focus: Add the 4th administrative level - unions.
 
@@ -164,7 +198,7 @@ Focus: Add the 4th administrative level - unions.
 
 ---
 
-## v2.2.0 - Bengali Language Support (Planned)
+## v2.3.0 - Bengali Language Support (Planned)
 
 Focus: Add Bengali translations for all locations.
 
@@ -186,7 +220,7 @@ Focus: Add Bengali translations for all locations.
 
 ---
 
-## v2.3.0 - Postal Codes (Planned)
+## v2.4.0 - Postal Codes (Planned)
 
 Focus: Add postal code data for Bangladesh.
 
@@ -203,7 +237,7 @@ Focus: Add postal code data for Bangladesh.
 
 ---
 
-## v2.4.0 - Geographic Coordinates (Planned)
+## v2.5.0 - Geographic Coordinates (Planned)
 
 Focus: Add latitude/longitude for all locations.
 

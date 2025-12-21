@@ -1,0 +1,210 @@
+[
+  {
+    "_id": 1,
+    "district_id": 14,
+    "name": "Kotwali",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 2,
+    "district_id": 14,
+    "name": "Mohammadpur",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 3,
+    "district_id": 14,
+    "name": "Lalbagh",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 4,
+    "district_id": 14,
+    "name": "Sutrapur",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 5,
+    "district_id": 14,
+    "name": "Motijheel",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 6,
+    "district_id": 14,
+    "name": "Demra",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 7,
+    "district_id": 14,
+    "name": "Sabujbagh",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 8,
+    "district_id": 14,
+    "name": "Mirpur",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 9,
+    "district_id": 14,
+    "name": "Gulshan",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 10,
+    "district_id": 14,
+    "name": "Uttara",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 11,
+    "district_id": 14,
+    "name": "Pallabi",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 12,
+    "district_id": 14,
+    "name": "Cantonment",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 13,
+    "district_id": 14,
+    "name": "Dhanmondi",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 14,
+    "district_id": 14,
+    "name": "Tejgaon",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 15,
+    "district_id": 14,
+    "name": "Ramna",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 16,
+    "district_id": 10,
+    "name": "Kotwali",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 17,
+    "district_id": 10,
+    "name": "Panchlaish",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 18,
+    "district_id": 10,
+    "name": "Chandgaon",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 19,
+    "district_id": 10,
+    "name": "Bandar",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 20,
+    "district_id": 10,
+    "name": "Pahartali",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 21,
+    "district_id": 10,
+    "name": "Double Mooring",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 22,
+    "district_id": 54,
+    "name": "Boalia",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 23,
+    "district_id": 54,
+    "name": "Rajpara",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 24,
+    "district_id": 28,
+    "name": "Khulna Sadar",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 25,
+    "district_id": 28,
+    "name": "Sonadanga",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  },
+  {
+    "_id": 26,
+    "district_id": 28,
+    "name": "Daulatpur",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.948Z",
+    "updatedAt": "2025-12-21T19:10:11.948Z"
+  }
+]

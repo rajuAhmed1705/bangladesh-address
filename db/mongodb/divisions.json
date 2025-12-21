@@ -1,0 +1,58 @@
+[
+  {
+    "_id": 1,
+    "name": "Barisal",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.947Z",
+    "updatedAt": "2025-12-21T19:10:11.947Z"
+  },
+  {
+    "_id": 2,
+    "name": "Chattogram",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.947Z",
+    "updatedAt": "2025-12-21T19:10:11.947Z"
+  },
+  {
+    "_id": 3,
+    "name": "Dhaka",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.947Z",
+    "updatedAt": "2025-12-21T19:10:11.947Z"
+  },
+  {
+    "_id": 4,
+    "name": "Khulna",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.947Z",
+    "updatedAt": "2025-12-21T19:10:11.947Z"
+  },
+  {
+    "_id": 5,
+    "name": "Mymensingh",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.947Z",
+    "updatedAt": "2025-12-21T19:10:11.947Z"
+  },
+  {
+    "_id": 6,
+    "name": "Rajshahi",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.947Z",
+    "updatedAt": "2025-12-21T19:10:11.947Z"
+  },
+  {
+    "_id": 7,
+    "name": "Rangpur",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.947Z",
+    "updatedAt": "2025-12-21T19:10:11.947Z"
+  },
+  {
+    "_id": 8,
+    "name": "Sylhet",
+    "name_bn": null,
+    "createdAt": "2025-12-21T19:10:11.947Z",
+    "updatedAt": "2025-12-21T19:10:11.947Z"
+  }
+]
