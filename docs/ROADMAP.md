@@ -4,7 +4,7 @@ This document outlines the development roadmap for `@bangladeshi/bangladesh-addr
 
 ---
 
-## Current Version: v2.0.0
+## Current Version: v2.1.0
 
 ### What's Working
 - 8 divisions of Bangladesh
@@ -140,31 +140,30 @@ See [MIGRATION.md](MIGRATION.md) for upgrading from v1.x to v2.0.0.
 
 ---
 
-## v2.1.0 - Database Dumps (Planned)
+## v2.1.0 - Database Dumps (Completed)
 
 Focus: Provide database-ready SQL and NoSQL dumps for cross-language support.
 
 ### SQL Dumps
-- [ ] MySQL dump (`db/mysql/bangladesh-address.sql`)
-- [ ] PostgreSQL dump (`db/postgresql/bangladesh-address.sql`)
-- [ ] SQLite dump (`db/sqlite/bangladesh-address.sql`)
+- [x] MySQL dump (`db/mysql/bangladesh-address.sql`)
+- [x] PostgreSQL dump (`db/postgresql/bangladesh-address.sql`)
+- [x] SQLite dump (`db/sqlite/bangladesh-address.sql`)
 
 ### NoSQL Dumps
-- [ ] MongoDB dump (`db/mongodb/`) - BSON/JSON collections
-- [ ] Firebase/Firestore format (`db/firestore/bangladesh-address.json`)
+- [x] MongoDB dump (`db/mongodb/`) - JSON collections
 
 ### Database Schema
-- [ ] `divisions` table (id, name, name_bn)
-- [ ] `districts` table (id, name, name_bn, division_id)
-- [ ] `upazilas` table (id, name, name_bn, district_id, division_id)
-- [ ] `thanas` table (id, name, name_bn, district_id, division_id, type)
-- [ ] Proper foreign key relationships
-- [ ] Indexes for common queries
+- [x] `divisions` table (id, name, name_bn)
+- [x] `districts` table (id, name, name_bn, division_id)
+- [x] `upazilas` table (id, name, name_bn, district_id)
+- [x] `thanas` table (id, name, name_bn, district_id)
+- [x] Proper foreign key relationships
+- [x] Indexes for common queries
 
 ### Documentation
-- [ ] Database schema diagram (ERD)
-- [ ] Import instructions for each database
-- [ ] Example queries for common use cases
+- [x] Import instructions for each database
+- [x] Example queries for common use cases
+- [x] Language examples (PHP, Python, Java, Go)
 
 ### Benefits
 - Use data in PHP, Python, Java, Go, Ruby, etc.
