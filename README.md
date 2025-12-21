@@ -206,6 +206,37 @@ interface Thana {
 | Khulna | 3 |
 | Rajshahi | 2 |
 
+## Database Dumps (For Non-JavaScript Projects)
+
+If you're using PHP, Python, Java, Go, Ruby, or any other language, you can use our pre-built database dumps instead of the npm package.
+
+### Available Formats
+
+| Database | File |
+|----------|------|
+| MySQL | [`db/mysql/bangladesh-address.sql`](db/mysql/bangladesh-address.sql) |
+| PostgreSQL | [`db/postgresql/bangladesh-address.sql`](db/postgresql/bangladesh-address.sql) |
+| SQLite | [`db/sqlite/bangladesh-address.sql`](db/sqlite/bangladesh-address.sql) |
+| MongoDB | [`db/mongodb/`](db/mongodb/) |
+
+### Quick Import
+
+```bash
+# MySQL
+mysql -u username -p database_name < db/mysql/bangladesh-address.sql
+
+# PostgreSQL
+psql -U username -d database_name -f db/postgresql/bangladesh-address.sql
+
+# SQLite
+sqlite3 bangladesh.db < db/sqlite/bangladesh-address.sql
+
+# MongoDB
+mongoimport --db bangladesh --collection divisions --file db/mongodb/divisions.json --jsonArray
+```
+
+See [db/README.md](db/README.md) for full documentation, schema details, and example queries.
+
 ## Contribution
 
 If you want to contribute please follow the guideline. [Contribution](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/CONTRIBUTING.md)
