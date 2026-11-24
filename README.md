@@ -5,7 +5,50 @@
 [![CI/CD](https://github.com/rajuAhmed1705/bangladesh-address/actions/workflows/npm.yml/badge.svg)](https://github.com/rajuAhmed1705/bangladesh-address/actions/workflows/npm.yml)
 [![license](https://img.shields.io/npm/l/@bangladeshi/bangladesh-address)](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/LICENSE)
 
-A simple npm package that exports methods representing divisions, districts, upazilas and thanas (metropolitan police stations) of Bangladesh.
+Divisions, districts, upazilas and metropolitan thanas of Bangladesh as a typed npm package with zero dependencies. Use it to build address forms and cascading dropdowns, validate location names, or look up which district and division a place belongs to. The same data is also available as SQL and MongoDB dumps and as plain JSON for projects that do not use JavaScript.
+
+## Quick Start
+
+```bash
+npm install @bangladeshi/bangladesh-address
+```
+
+A cascading division → district → upazila selection, which is what most address forms need:
+
+```javascript
+import {
+  allDivision,
+  districtsOf,
+  upazilaNamesOf,
+  thanaNamesOf,
+} from '@bangladeshi/bangladesh-address'
+
+// 1. All divisions, for the first dropdown
+allDivision()
+// ['Barisal', 'Chattogram', 'Dhaka', 'Mymensingh', 'Khulna', 'Rajshahi', 'Rangpur', 'Sylhet']
+
+// 2. Districts of the selected division
+districtsOf('Dhaka')
+// ['Dhaka', 'Faridpur', 'Gazipur', 'Gopalganj', 'Kishoreganj', ...] (13 districts)
+
+// 3. Upazilas of the selected district
+upazilaNamesOf('Gazipur')
+// ['Gazipur Sadar-Joydebpur', 'Kaliakior', 'Kapasia', 'Sripur', 'Kaliganj', 'Tongi']
+
+// 4. Metropolitan thanas, for the districts that have them (empty array otherwise)
+thanaNamesOf('Dhaka')
+// ['Kotwali', 'Mohammadpur', 'Lalbagh', 'Sutrapur', ...] (15 thanas)
+```
+
+Good to know:
+
+- Works with `require`, `import` and TypeScript. Type definitions are included.
+- Every function is synchronous and the data is bundled, so there are no network calls.
+- Names are matched case-insensitively and whitespace is trimmed.
+- Unknown names return an empty array, `false` or `undefined`. With string inputs, nothing throws.
+- Current official spellings such as `Barishal`, `Cumilla`, `Jashore` and `Bogura` are accepted. See [Spelling Variants](#spelling-variants).
+
+A plain-text summary of the whole API for AI coding assistants is in [llms.txt](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/llms.txt).
 
 ## Data Coverage
 
@@ -40,14 +83,15 @@ import { allDivision, districtsOf, upazilasOf, DivisionName } from '@bangladeshi
 allDivision()
 // Returns: ['Dhaka', 'Chattogram', 'Mymensingh', ...]
 
-divisionalDataOf(DivisionName.Dhaka)
+divisionalDataOf("Dhaka")
 // Returns: All districts and upazilas of Dhaka division
+// Division names can be passed as a string or as DivisionName.Dhaka
 ```
 
 ### Districts
 
 ```javascript
-districtsOf(DivisionName.Dhaka)
+districtsOf("Dhaka")
 // Returns: Districts of Dhaka division
 
 allDistricts()
@@ -119,6 +163,42 @@ isValidDistrict("Tangail")
 isValidDistrict("Savar")
 // Returns: false (Savar is an upazila, not a district)
 ```
+
+### Spelling Variants
+
+The dataset uses one spelling for each name, and returned values always use that spelling. Functions that take a district or division name also accept common alternatives, including the official names adopted in 2018:
+
+| You can pass | Dataset spelling |
+|--------------|------------------|
+| Barishal | Barisal (district and division) |
+| Chittagong | Chattogram (district and division) |
+| Bogura | Bogra |
+| Cumilla | Comilla |
+| Jashore | Jessore |
+| Chapai Nawabganj | Chapainawabganj |
+| Coxs Bazar, Cox Bazar | Cox's Bazar |
+| Jhalakathi, Jhalokathi | Jhalokati |
+| Khagrachhari | Khagrachari |
+| Laxmipur | Lakshmipur |
+| Maulvibazar, Moulvi Bazar | Moulvibazar |
+| Netrakona | Netrokona |
+| Jaipurhat | Joypurhat |
+
+```javascript
+upazilaNamesOf("Cumilla")
+// Returns: the upazilas of Comilla district
+
+getDivisionOfDistrict("Jashore")
+// Returns: "Khulna"
+
+isValidDistrict("Bogura")
+// Returns: true
+
+searchLocations("Cumilla")
+// Returns: [{ name: "Comilla", type: "district", division: "Chattogram" }, ...]
+```
+
+The full lists are exported as `districtAliases` and `divisionAliases`. Aliases apply to district and division names only; upazila and thana names must use the dataset spelling. In `searchLocations`, an alias is resolved once it is typed in full: `"Cumilla"` finds Comilla, but the partial `"Cumil"` does not.
 
 ### Reverse Lookups
 
@@ -241,6 +321,17 @@ mongoimport --db bangladesh --collection divisions --file db/mongodb/divisions.j
 ```
 
 See [db/README.md](db/README.md) for full documentation, schema details, and example queries.
+
+### Raw JSON over HTTP
+
+The data can also be fetched directly, without installing anything:
+
+| Data | URL |
+|------|-----|
+| Upazilas (with district and division) | `https://cdn.jsdelivr.net/npm/@bangladeshi/bangladesh-address/build/json/bd-upazila.json` |
+| Metropolitan thanas | `https://cdn.jsdelivr.net/npm/@bangladeshi/bangladesh-address/build/json/bd-thana.json` |
+
+Add a version after the package name (for example `bangladesh-address@2.2.0`) to pin the data to a release.
 
 ## Contribution
 

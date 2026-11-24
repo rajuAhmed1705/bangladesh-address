@@ -1,0 +1,86 @@
+# @bangladeshi/bangladesh-address
+
+> Divisions, districts, upazilas and metropolitan thanas of Bangladesh as a typed npm package with zero dependencies. Use it for address forms, cascading dropdowns, validating location names and reverse lookups. The same data ships as MySQL, PostgreSQL, SQLite and MongoDB dumps and as plain JSON.
+
+- Install: `npm install @bangladeshi/bangladesh-address`
+- The package name is scoped. Import from `@bangladeshi/bangladesh-address`.
+- Works with `require`, `import` and TypeScript. Type definitions are bundled.
+- All functions are synchronous. The data is bundled; nothing is fetched at runtime.
+- Coverage: 8 divisions, 64 districts, 495 upazilas, 26 metropolitan thanas (Dhaka, Chattogram, Khulna, Rajshahi). No unions, postcodes or Bengali names yet.
+- Hierarchy: division > district > upazila. Thanas are metropolitan police areas inside a district, listed separately from upazilas.
+
+## Rules that prevent wrong code
+
+- Input names are case-insensitive and trimmed. Unknown names return `[]`, `false` or `undefined`. With string arguments, nothing throws.
+- Returned names always use the dataset spelling: `Barisal`, `Bogra`, `Comilla`, `Jessore`, `Chattogram`, `Cox's Bazar`.
+- District and division inputs also accept `Barishal`, `Bogura`, `Cumilla`, `Jashore`, `Chittagong` and other variants listed in the exported `districtAliases` and `divisionAliases`. Upazila and thana names have no aliases.
+- Compare against returned values, not against your own spelling: `upazilasOf("Cumilla")[0].district` is `"Comilla"`.
+- Upazila names are not unique across districts (for example `Kaliganj` is in four districts and `Nawabganj` in two). Pass the district as the second argument to `getUpazila`, `isUpazila`, `getThana` and `isThana` when it is known.
+- Most districts have no metropolitan thanas; `thanasOf(district)` returns `[]` for them.
+
+## Cascading dropdown
+
+```javascript
+import { allDivision, districtsOf, upazilaNamesOf, thanaNamesOf } from '@bangladeshi/bangladesh-address'
+
+allDivision()              // ['Barisal', 'Chattogram', 'Dhaka', 'Mymensingh', 'Khulna', 'Rajshahi', 'Rangpur', 'Sylhet']
+districtsOf('Dhaka')       // ['Dhaka', 'Faridpur', 'Gazipur', ...] 13 districts
+upazilaNamesOf('Gazipur')  // ['Gazipur Sadar-Joydebpur', 'Kaliakior', 'Kapasia', 'Sripur', 'Kaliganj', 'Tongi']
+thanaNamesOf('Dhaka')      // ['Kotwali', 'Mohammadpur', 'Lalbagh', ...] 15 thanas
+```
+
+## API
+
+Types: `Upazila = { upazila: string; district: string; division: string }`, `Thana = { thana: string; district: string; division: string; type: "thana" }`, `DivisionalData = { district: string; upazila: string }`, `SearchResult = { name: string; type: "division" | "district" | "upazila" | "thana"; district?: string; division?: string }`. `DivisionName` is an enum of the 8 divisions and `DistrictName` is a union type of the 64 districts.
+
+Divisions:
+
+- `allDivision(): string[]` - the 8 division names
+- `isValidDivision(name: string): boolean`
+- `divisionalDataOf(division: DivisionName | string): DivisionalData[]` - every district and upazila pair in a division
+- `getDivision(division: DivisionName | string): Upazila[]` - every upazila record in a division
+
+Districts:
+
+- `allDistricts(): string[]` - the 64 district names
+- `districtsOf(division: DivisionName | string): string[]` - district names in a division
+- `isValidDistrict(name: string): boolean`
+- `getDivisionOfDistrict(district: string): string | undefined`
+
+Upazilas:
+
+- `allUpazila(): string[]` - 495 entries, one per upazila; some names repeat because they exist in more than one district
+- `upazilasOf(district: string): Upazila[]`
+- `upazilaNamesOf(district: string): string[]`
+- `upazilasOfDivision(division: string): Upazila[]`
+- `upazilaNamesOfDivision(division: string): string[]`
+- `isUpazila(name: string, district?: string): boolean`
+- `getUpazila(name: string, district?: string): Upazila | undefined`
+- `getDistrictOfUpazila(upazila: string, division?: string): string | undefined`
+
+Thanas:
+
+- `allThana(): Thana[]` - the 26 thana records
+- `allThanaNames(): string[]`
+- `thanasOf(district: string): Thana[]`
+- `thanaNamesOf(district: string): string[]`
+- `isThana(name: string, district?: string): boolean`
+- `getThana(name: string, district?: string): Thana | undefined`
+
+Search and raw data:
+
+- `searchLocations(query: string): SearchResult[]` - case-insensitive substring search across all four levels
+- `upazilaData: Upazila[]` and `thanaData: Thana[]` - the raw records
+- `districtAliases` and `divisionAliases: Record<string, string>` - accepted alternative spellings mapped to the dataset spelling
+
+## Without npm
+
+- Raw JSON: `https://cdn.jsdelivr.net/npm/@bangladeshi/bangladesh-address/build/json/bd-upazila.json` and `.../build/json/bd-thana.json`
+- SQL and MongoDB dumps with a normalized schema (divisions, districts, upazilas, thanas tables): [db/README.md](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/db/README.md)
+
+## Links
+
+- [README with full examples](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/README.md)
+- [npm package](https://www.npmjs.com/package/@bangladeshi/bangladesh-address)
+- [Changelog](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/CHANGELOG.md)
+- [Contributing](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/CONTRIBUTING.md)

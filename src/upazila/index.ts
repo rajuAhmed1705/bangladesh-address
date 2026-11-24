@@ -2,6 +2,11 @@ import upazilaData from "../json/bd-upazila.json";
 import thanaData from "../json/bd-thana.json";
 import { Upazila, Thana } from "../types";
 import { DivisionName } from "../division/types/division-name";
+import {
+  expandSearchQuery,
+  normalizeDistrictName,
+  normalizeDivisionName,
+} from "../aliases";
 
 // Pre-computed lookup maps for O(1) performance
 const thanaNameSet = new Set(
@@ -24,14 +29,14 @@ const divisionNameSet = new Set(
 
 /**
  * Get all upazilas in a given district
- * @param district - The district name
+ * @param district - The district name. Case-insensitive; alternative spellings such as "Cumilla" are accepted (see districtAliases)
  * @returns Array of upazila objects containing upazila, district, and division
  */
 export const upazilasOf = (district: string): Upazila[] => {
   if (!district || typeof district !== "string") {
     return [];
   }
-  const normalizedDistrict = district.trim().toLowerCase();
+  const normalizedDistrict = normalizeDistrictName(district);
   return (upazilaData as Upazila[]).filter(
     (item) => item.district.toLowerCase() === normalizedDistrict
   );
@@ -72,14 +77,14 @@ export const allThanaNames = (): string[] => {
 
 /**
  * Get thanas in a given district
- * @param district - The district name
+ * @param district - The district name. Case-insensitive; alternative spellings such as "Cumilla" are accepted (see districtAliases)
  * @returns Array of thana objects for the district
  */
 export const thanasOf = (district: string): Thana[] => {
   if (!district || typeof district !== "string") {
     return [];
   }
-  const normalizedDistrict = district.trim().toLowerCase();
+  const normalizedDistrict = normalizeDistrictName(district);
   return (thanaData as Thana[]).filter(
     (item) => item.district.toLowerCase() === normalizedDistrict
   );
@@ -107,7 +112,7 @@ export const isThana = (name: string, district?: string): boolean => {
   const normalizedName = name.trim().toLowerCase();
 
   if (district) {
-    const normalizedDistrict = district.trim().toLowerCase();
+    const normalizedDistrict = normalizeDistrictName(district);
     return (thanaData as Thana[]).some(
       (item) =>
         item.thana.toLowerCase() === normalizedName &&
@@ -131,7 +136,7 @@ export const isUpazila = (name: string, district?: string): boolean => {
   const normalizedName = name.trim().toLowerCase();
 
   if (district) {
-    const normalizedDistrict = district.trim().toLowerCase();
+    const normalizedDistrict = normalizeDistrictName(district);
     return (upazilaData as Upazila[]).some(
       (item) =>
         item.upazila.toLowerCase() === normalizedName &&
@@ -155,7 +160,7 @@ export const getThana = (name: string, district?: string): Thana | undefined => 
   const normalizedName = name.trim().toLowerCase();
 
   if (district) {
-    const normalizedDistrict = district.trim().toLowerCase();
+    const normalizedDistrict = normalizeDistrictName(district);
     return (thanaData as Thana[]).find(
       (item) =>
         item.thana.toLowerCase() === normalizedName &&
@@ -179,7 +184,7 @@ export const getUpazila = (name: string, district?: string): Upazila | undefined
   const normalizedName = name.trim().toLowerCase();
 
   if (district) {
-    const normalizedDistrict = district.trim().toLowerCase();
+    const normalizedDistrict = normalizeDistrictName(district);
     return (upazilaData as Upazila[]).find(
       (item) =>
         item.upazila.toLowerCase() === normalizedName &&
@@ -203,7 +208,7 @@ export const getDistrictOfUpazila = (upazila: string, division?: string): string
   const normalizedName = upazila.trim().toLowerCase();
 
   if (division) {
-    const normalizedDivision = division.trim().toLowerCase();
+    const normalizedDivision = normalizeDivisionName(division);
     const found = (upazilaData as Upazila[]).find(
       (item) =>
         item.upazila.toLowerCase() === normalizedName &&
@@ -225,7 +230,7 @@ export const upazilasOfDivision = (division: string): Upazila[] => {
   if (!division || typeof division !== "string") {
     return [];
   }
-  const normalizedDivision = division.trim().toLowerCase();
+  const normalizedDivision = normalizeDivisionName(division);
   if (!divisionNameSet.has(normalizedDivision)) {
     return [];
   }
@@ -262,16 +267,21 @@ export const searchLocations = (query: string): SearchResult[] => {
   if (!query || typeof query !== "string") {
     return [];
   }
-  const normalizedQuery = query.trim().toLowerCase();
-  if (normalizedQuery.length === 0) {
+  // The query as typed, plus the same query with spelling aliases resolved
+  const queries = expandSearchQuery(query);
+  if (queries.length === 0) {
     return [];
   }
+  const matches = (value: string): boolean => {
+    const normalizedValue = value.toLowerCase();
+    return queries.some((q) => normalizedValue.includes(q));
+  };
 
   const results: SearchResult[] = [];
 
   // Search divisions
   Object.values(DivisionName).forEach((divisionName) => {
-    if (divisionName.toLowerCase().includes(normalizedQuery)) {
+    if (matches(divisionName)) {
       results.push({
         name: divisionName,
         type: "division",
@@ -283,7 +293,7 @@ export const searchLocations = (query: string): SearchResult[] => {
   const matchedDistricts = new Set<string>();
   (upazilaData as Upazila[]).forEach((item) => {
     if (
-      item.district.toLowerCase().includes(normalizedQuery) &&
+      matches(item.district) &&
       !matchedDistricts.has(item.district)
     ) {
       matchedDistricts.add(item.district);
@@ -297,7 +307,7 @@ export const searchLocations = (query: string): SearchResult[] => {
 
   // Search upazilas
   (upazilaData as Upazila[]).forEach((item) => {
-    if (item.upazila.toLowerCase().includes(normalizedQuery)) {
+    if (matches(item.upazila)) {
       results.push({
         name: item.upazila,
         type: "upazila",
@@ -309,7 +319,7 @@ export const searchLocations = (query: string): SearchResult[] => {
 
   // Search thanas
   (thanaData as Thana[]).forEach((item) => {
-    if (item.thana.toLowerCase().includes(normalizedQuery)) {
+    if (matches(item.thana)) {
       results.push({
         name: item.thana,
         type: "thana",

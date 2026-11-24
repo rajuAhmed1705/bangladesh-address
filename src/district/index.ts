@@ -2,6 +2,7 @@ import data from "../json/bd-upazila.json";
 import { getDivision } from "../division/division";
 import { DivisionName } from "../division/types/division-name";
 import { Upazila } from "../types";
+import { normalizeDistrictName } from "../aliases";
 
 // Pre-computed set for O(1) district validation
 const districtNameSet = new Set(
@@ -16,10 +17,10 @@ const districtToDivisionMap = new Map<string, string>();
 
 /**
  * Get all districts in a given division
- * @param division - The division name
+ * @param division - The division name, as a string or DivisionName. Case-insensitive; "Barishal" and "Chittagong" are accepted (see divisionAliases)
  * @returns Array of district names in the division
  */
-export const districtsOf = (division: DivisionName): string[] => {
+export const districtsOf = (division: DivisionName | string): string[] => {
   const filteredDivision = getDivision(division);
   const districts = new Set<string>();
   filteredDivision.forEach((item) => districts.add(item.district));
@@ -45,7 +46,7 @@ export const isValidDistrict = (name: string): boolean => {
   if (!name || typeof name !== "string") {
     return false;
   }
-  return districtNameSet.has(name.trim().toLowerCase());
+  return districtNameSet.has(normalizeDistrictName(name));
 };
 
 /**
@@ -57,5 +58,5 @@ export const getDivisionOfDistrict = (district: string): string | undefined => {
   if (!district || typeof district !== "string") {
     return undefined;
   }
-  return districtToDivisionMap.get(district.trim().toLowerCase());
+  return districtToDivisionMap.get(normalizeDistrictName(district));
 };

@@ -1,0 +1,35 @@
+{
+  "name": "bangladesh-address",
+  "version": "1.0.0",
+  "description": "Alias of @bangladeshi/bangladesh-address: divisions, districts, upazilas and metropolitan thanas of Bangladesh, typed, with helpers for cascading address dropdowns.",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "@bangladeshi/bangladesh-address": "^2.1.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rajuAhmed1705/bangladesh-address.git",
+    "directory": "packages/bangladesh-address"
+  },
+  "homepage": "https://github.com/rajuAhmed1705/bangladesh-address#readme",
+  "bugs": {
+    "url": "https://github.com/rajuAhmed1705/bangladesh-address/issues"
+  },
+  "keywords": [
+    "bangladesh",
+    "bangladesh-address",
+    "bd-address",
+    "address",
+    "division",
+    "district",
+    "upazila",
+    "thana"
+  ],
+  "author": "Raju Ahmed",
+  "license": "MIT"
+}
