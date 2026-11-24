@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-11-24
+
+### Added
+- **Spelling aliases for districts and divisions.** Functions that take a district or division name now accept common alternative spellings, including the official names adopted in 2018: `Barishal`, `Bogura`, `Cumilla`, `Jashore`, plus `Chittagong`, `Coxs Bazar`, `Jhalakathi`, `Khagrachhari` and others. Previously these returned empty results.
+- `districtAliases` and `divisionAliases` exports listing every accepted alias and the dataset spelling it maps to.
+- `searchLocations()` finds locations by an aliased name, for example `searchLocations("Cumilla")`.
+- `llms.txt`: a plain-text summary of the API for AI coding assistants.
+- README: a Quick Start with a cascading dropdown example, a Spelling Variants section, and CDN URLs for the raw JSON data.
+
+### Changed
+- `districtsOf()` and `divisionalDataOf()` accept a plain string as well as `DivisionName`, so `districtsOf("Dhaka")` type-checks in TypeScript.
+- Name matching also collapses repeated spaces and treats curly apostrophes as straight ones (`Cox’s Bazar` matches `Cox's Bazar`).
+- Returned names are unchanged and always use the dataset spelling.
+- `package.json`: added `homepage`, `bugs` and more keywords.
+
 ## [2.1.1] - 2026-11-24
 
 ### Fixed

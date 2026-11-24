@@ -4,7 +4,7 @@ This document outlines the development roadmap for `@bangladeshi/bangladesh-addr
 
 ---
 
-## Current Version: v2.1.0
+## Current Version: v2.2.0
 
 ### What's Working
 - 8 divisions of Bangladesh
@@ -173,7 +173,24 @@ Focus: Provide database-ready SQL and NoSQL dumps for cross-language support.
 
 ---
 
-## v2.2.0 - Union Data (Planned)
+## v2.2.0 - Spelling Aliases & Discoverability (Completed)
+
+Focus: Make the package work on the first try, for people and for AI coding assistants.
+
+### Spelling Aliases
+- [x] Accept alternative district and division spellings (`Barishal`, `Bogura`, `Cumilla`, `Jashore`, `Chittagong` and others)
+- [x] Export `districtAliases` and `divisionAliases`
+- [x] Resolve aliases in `searchLocations()`
+- [x] Accept plain strings in `districtsOf()` and `divisionalDataOf()`
+
+### Documentation
+- [x] Quick Start with a cascading dropdown example
+- [x] `llms.txt` API summary for AI coding assistants
+- [x] CDN URLs for the raw JSON data
+
+---
+
+## v2.3.0 - Union Data (Planned)
 
 Focus: Add the 4th administrative level - unions.
 
@@ -197,7 +214,7 @@ Focus: Add the 4th administrative level - unions.
 
 ---
 
-## v2.3.0 - Bengali Language Support (Planned)
+## v2.4.0 - Bengali Language Support (Planned)
 
 Focus: Add Bengali translations for all locations.
 
@@ -219,7 +236,7 @@ Focus: Add Bengali translations for all locations.
 
 ---
 
-## v2.4.0 - Postal Codes (Planned)
+## v2.5.0 - Postal Codes (Planned)
 
 Focus: Add postal code data for Bangladesh.
 
@@ -236,7 +253,7 @@ Focus: Add postal code data for Bangladesh.
 
 ---
 
-## v2.5.0 - Geographic Coordinates (Planned)
+## v2.6.0 - Geographic Coordinates (Planned)
 
 Focus: Add latitude/longitude for all locations.
 

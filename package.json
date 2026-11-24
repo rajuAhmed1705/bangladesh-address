@@ -1,9 +1,13 @@
 {
   "name": "@bangladeshi/bangladesh-address",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rajuAhmed1705/bangladesh-address.git"
+  },
+  "homepage": "https://github.com/rajuAhmed1705/bangladesh-address#readme",
+  "bugs": {
+    "url": "https://github.com/rajuAhmed1705/bangladesh-address/issues"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -25,17 +29,27 @@
     "generate:db": "ts-node scripts/generate-db-dumps.ts"
   },
   "keywords": [
-    "Bangladesh",
-    "bd-address",
+    "bangladesh",
     "bangladesh-address",
-    "district",
+    "bd-address",
+    "bd",
+    "address",
     "division",
+    "district",
     "upazila",
-    "thana"
+    "thana",
+    "bangladesh-districts",
+    "bangladesh-upazila",
+    "dhaka",
+    "address-dropdown",
+    "location",
+    "geo",
+    "geodata",
+    "typescript"
   ],
   "author": "Raju Ahmed",
   "license": "MIT",
-  "description": "A simple npm package for Bangladesh's administrative divisions, districts, upazilas, and metropolitan thanas.",
+  "description": "Divisions, districts, upazilas and metropolitan thanas of Bangladesh. Typed, zero dependencies, with helpers for cascading address dropdowns, validation and reverse lookups.",
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
