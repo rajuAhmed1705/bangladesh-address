@@ -28,17 +28,22 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    # Publishes through npm trusted publishing (OIDC), so no NPM_TOKEN is used.
+    # The trusted publisher on npmjs.com is tied to this file name (npm.yml):
+    # renaming this workflow breaks publishing until the connection is recreated.
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24 # trusted publishing needs npm >= 11.5.1
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: npm run build
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      # Skips publishing when this version is already on npm.
+      - uses: JS-DevTools/npm-publish@v4
 
   publish-github:
     needs: test
@@ -59,6 +64,13 @@ jobs:
       - name: Update package name for GitHub Packages
         run: |
           sed -i 's/"@bangladeshi\/bangladesh-address"/"@rajuahmed1705\/bangladesh-address"/' package.json
-      - run: npm publish
+      - name: Publish (skipped when this version is already on GitHub Packages)
+        run: |
+          version=$(node -p "require('./package.json').version")
+          if [ -n "$(npm view "@rajuahmed1705/bangladesh-address@$version" version 2>/dev/null)" ]; then
+            echo "@rajuahmed1705/bangladesh-address@$version is already published, skipping."
+          else
+            npm publish
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
