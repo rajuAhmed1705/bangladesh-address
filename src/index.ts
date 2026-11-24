@@ -3,4 +3,5 @@ export * from "./division/index";
 export * from "./upazila/index";
 export * from "./division/types/division-name";
 export * from "./types";
+export { districtAliases, divisionAliases } from "./aliases";
 export type { SearchResult } from "./upazila/index";
