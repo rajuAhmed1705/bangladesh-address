@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.1] - 2026-11-24
+
+### Fixed
+- Package could not be imported or required in 2.1.0: compiled files were emitted to `build/src/` while `main` and `types` point to `build/` ([#13](https://github.com/rajuAhmed1705/bangladesh-address/issues/13)). `tsconfig.json` now pins `rootDir` to `src` and only compiles `src/`.
+- The internal `generate-db-dumps` script is no longer included in the published package.
+
+### Changed
+- CI now verifies that `main` and `types` resolve to built files before publishing.
+
 ## [2.1.0] - 2025-12-21
 
 ### Added
