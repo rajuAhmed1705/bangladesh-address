@@ -1,5 +1,10 @@
 # Bangladesh Address (division, district, upazila, thana)
 
+[![npm version](https://img.shields.io/npm/v/@bangladeshi/bangladesh-address)](https://www.npmjs.com/package/@bangladeshi/bangladesh-address)
+[![npm downloads](https://img.shields.io/npm/dm/@bangladeshi/bangladesh-address)](https://www.npmjs.com/package/@bangladeshi/bangladesh-address)
+[![CI/CD](https://github.com/rajuAhmed1705/bangladesh-address/actions/workflows/npm.yml/badge.svg)](https://github.com/rajuAhmed1705/bangladesh-address/actions/workflows/npm.yml)
+[![license](https://img.shields.io/npm/l/@bangladeshi/bangladesh-address)](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/LICENSE)
+
 A simple npm package that exports methods representing divisions, districts, upazilas and thanas (metropolitan police stations) of Bangladesh.
 
 ## Data Coverage
