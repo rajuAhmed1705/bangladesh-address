@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [18, 20]
+        node-version: [18, 20, 24] # 24 is what the npm publish job builds on
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -43,7 +43,8 @@ jobs:
       - run: npm ci
       - run: npm run build
       # Skips publishing when this version is already on npm.
-      - uses: JS-DevTools/npm-publish@v4
+      # Pinned to a commit because this step can publish the package.
+      - uses: JS-DevTools/npm-publish@0fd2f4369c5d6bcfcde6091a7c527d810b9b5c3f # v4.1.5
 
   publish-github:
     needs: test
