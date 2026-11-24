@@ -15,7 +15,7 @@
         // "sourceMap": true,                     /* Generates corresponding '.map' file. */
         // "outFile": "./",                       /* Concatenate and emit output to single file. */
         "outDir": "./build" /* Redirect output structure to the directory. */,
-        // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+        "rootDir": "./src" /* Pin the output layout so build/index.js matches "main" in package.json, regardless of other .ts files in the repo. */,
         // "composite": true,                     /* Enable project compilation */
         // "tsBuildInfoFile": "./",               /* Specify file to store incremental compilation information */
         // "removeComments": true,                /* Do not emit comments to output. */
@@ -68,5 +68,6 @@
         "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
 
         "resolveJsonModule": true
-    }
+    },
+    "include": ["src/**/*"]
 }

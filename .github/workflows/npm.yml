@@ -21,6 +21,8 @@ jobs:
       - run: npm run lint
       - run: npm run test:coverage
       - run: npm run build
+      - name: Verify "main" and "types" resolve to built files
+        run: node -e "require('.'); require('fs').accessSync(require('./package.json').types)"
 
   publish-npm:
     needs: test
