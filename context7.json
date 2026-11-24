@@ -1,5 +1,7 @@
 {
   "$schema": "https://context7.com/schema/context7.json",
+  "url": "https://context7.com/rajuahmed1705/bangladesh-address",
+  "public_key": "pk_cO3Bisiy1kQX4IeuHqair",
   "projectTitle": "Bangladesh Address",
   "description": "Divisions, districts, upazilas and metropolitan thanas of Bangladesh as a typed npm package (@bangladeshi/bangladesh-address), with SQL, MongoDB and JSON data dumps.",
   "excludeFiles": [
