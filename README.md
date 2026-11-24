@@ -45,7 +45,7 @@ Good to know:
 - Works with `require`, `import` and TypeScript. Type definitions are included.
 - Every function is synchronous and the data is bundled, so there are no network calls.
 - Names are matched case-insensitively and whitespace is trimmed.
-- Unknown names return an empty array, `false` or `undefined`. Nothing throws.
+- Unknown names return an empty array, `false` or `undefined`. With string inputs, nothing throws.
 - Current official spellings such as `Barishal`, `Cumilla`, `Jashore` and `Bogura` are accepted. See [Spelling Variants](#spelling-variants).
 
 A plain-text summary of the whole API for AI coding assistants is in [llms.txt](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/llms.txt).
@@ -198,7 +198,7 @@ searchLocations("Cumilla")
 // Returns: [{ name: "Comilla", type: "district", division: "Chattogram" }, ...]
 ```
 
-The full lists are exported as `districtAliases` and `divisionAliases`. Aliases apply to district and division names only; upazila and thana names must use the dataset spelling.
+The full lists are exported as `districtAliases` and `divisionAliases`. Aliases apply to district and division names only; upazila and thana names must use the dataset spelling. In `searchLocations`, an alias is resolved once it is typed in full: `"Cumilla"` finds Comilla, but the partial `"Cumil"` does not.
 
 ### Reverse Lookups
 

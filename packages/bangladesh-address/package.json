@@ -1,6 +1,6 @@
 {
   "name": "bangladesh-address",
-  "version": "2.2.0",
+  "version": "1.0.0",
   "description": "Alias of @bangladeshi/bangladesh-address: divisions, districts, upazilas and metropolitan thanas of Bangladesh, typed, with helpers for cascading address dropdowns.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -9,7 +9,7 @@
     "index.d.ts"
   ],
   "dependencies": {
-    "@bangladeshi/bangladesh-address": "^2.2.0"
+    "@bangladeshi/bangladesh-address": "^2.1.1"
   },
   "repository": {
     "type": "git",

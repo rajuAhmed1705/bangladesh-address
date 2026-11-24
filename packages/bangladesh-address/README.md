@@ -4,6 +4,8 @@ This is an alias of [`@bangladeshi/bangladesh-address`](https://www.npmjs.com/pa
 
 It re-exports the scoped package unchanged, so both names give you the same API and the same data.
 
+This alias has its own version number. It depends on `@bangladeshi/bangladesh-address@^2.1.1`, so a fresh install always gets the latest 2.x release of the data and API.
+
 ```bash
 npm install bangladesh-address
 ```

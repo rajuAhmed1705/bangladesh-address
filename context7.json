@@ -10,7 +10,7 @@
   ],
   "rules": [
     "Install and import the scoped package name: @bangladeshi/bangladesh-address.",
-    "All functions are synchronous and never throw. Unknown names return an empty array, false or undefined.",
+    "All functions are synchronous. Unknown names return an empty array, false or undefined; pass strings, since non-string arguments can throw.",
     "Returned names use the dataset spelling (Barisal, Bogra, Comilla, Jessore, Chattogram). Compare against returned values, not your own spelling.",
     "District and division inputs accept alternative spellings such as Barishal, Bogura, Cumilla, Jashore and Chittagong. Upazila and thana names have no aliases.",
     "Upazila names are not unique across districts. Pass the district as the second argument to getUpazila, isUpazila, getThana and isThana when it is known.",

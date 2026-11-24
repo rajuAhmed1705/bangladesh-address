@@ -7,6 +7,7 @@ import {
   divisionalDataOf,
   DivisionName,
   getDistrictOfUpazila,
+  getDivision,
   getDivisionOfDistrict,
   getThana,
   getUpazila,
@@ -117,6 +118,11 @@ describe("Spelling aliases", () => {
       expect(upazilasOf("Cox’s Bazar")).toEqual(expected);
     });
 
+    it("should ignore repeated spaces inside a district name", () => {
+      expect(upazilasOf("Cox's   Bazar")).toEqual(upazilasOf("Cox's Bazar"));
+      expect(upazilasOf("Chapai   Nawabganj")).toEqual(upazilasOf("Chapainawabganj"));
+    });
+
     it("should accept an alias as the district filter of upazila lookups", () => {
       expect(isUpazila("Bogra Sadar", "Bogura")).toBe(true);
       expect(getUpazila("Bogra Sadar", "Bogura")).toEqual(
@@ -164,6 +170,11 @@ describe("Spelling aliases", () => {
       expect(upazilaNamesOfDivision("Chittagong")).toEqual(
         upazilaNamesOfDivision("Chattogram")
       );
+    });
+
+    it("should return the upazilas of a division alias from getDivision", () => {
+      expect(getDivision("Barishal").length).toBeGreaterThan(0);
+      expect(getDivision("Barishal")).toEqual(getDivision(DivisionName.Barisal));
     });
 
     it("should accept an alias as the division filter of a reverse lookup", () => {

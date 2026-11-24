@@ -11,11 +11,11 @@
 
 ## Rules that prevent wrong code
 
-- Input names are case-insensitive and trimmed. Unknown names return `[]`, `false` or `undefined`. Nothing throws.
+- Input names are case-insensitive and trimmed. Unknown names return `[]`, `false` or `undefined`. With string arguments, nothing throws.
 - Returned names always use the dataset spelling: `Barisal`, `Bogra`, `Comilla`, `Jessore`, `Chattogram`, `Cox's Bazar`.
 - District and division inputs also accept `Barishal`, `Bogura`, `Cumilla`, `Jashore`, `Chittagong` and other variants listed in the exported `districtAliases` and `divisionAliases`. Upazila and thana names have no aliases.
 - Compare against returned values, not against your own spelling: `upazilasOf("Cumilla")[0].district` is `"Comilla"`.
-- Upazila names are not unique across districts (for example `Kaliganj`, `Mohammadpur`). Pass the district as the second argument to `getUpazila`, `isUpazila`, `getThana` and `isThana` when it is known.
+- Upazila names are not unique across districts (for example `Kaliganj` is in four districts and `Nawabganj` in two). Pass the district as the second argument to `getUpazila`, `isUpazila`, `getThana` and `isThana` when it is known.
 - Most districts have no metropolitan thanas; `thanasOf(district)` returns `[]` for them.
 
 ## Cascading dropdown
@@ -49,7 +49,7 @@ Districts:
 
 Upazilas:
 
-- `allUpazila(): string[]` - the 495 upazila names
+- `allUpazila(): string[]` - 495 entries, one per upazila; some names repeat because they exist in more than one district
 - `upazilasOf(district: string): Upazila[]`
 - `upazilaNamesOf(district: string): string[]`
 - `upazilasOfDivision(division: string): Upazila[]`

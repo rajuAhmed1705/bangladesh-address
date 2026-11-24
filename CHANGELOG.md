@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - `districtsOf()` and `divisionalDataOf()` accept a plain string as well as `DivisionName`, so `districtsOf("Dhaka")` type-checks in TypeScript.
-- Name matching also collapses repeated spaces and treats curly apostrophes as straight ones (`Cox’s Bazar` matches `Cox's Bazar`).
+- District and division names, and `searchLocations()` queries, are also matched with repeated spaces collapsed and curly apostrophes treated as straight ones (`Cox’s Bazar` matches `Cox's Bazar`). Upazila and thana names are matched as before.
 - Returned names are unchanged and always use the dataset spelling.
 - `package.json`: added `homepage`, `bugs` and more keywords.
 
