@@ -17,6 +17,7 @@ import { DivisionName } from "../division/types/division-name";
 import { DistrictName } from "../types";
 import divisionData from "../json/bd-division.json";
 import districtData from "../json/bd-district.json";
+import thanaData from "../json/bd-thana.json";
 
 describe("Data Integrity", () => {
   describe("Division counts", () => {
@@ -152,6 +153,14 @@ describe("Data Integrity", () => {
         expect(thana).toHaveProperty("division");
         expect(thana).toHaveProperty("type");
         expect(thana.type).toBe("thana");
+      });
+    });
+
+    it("all thanas should have a non-empty thanaBn", () => {
+      expect(thanaData).toHaveLength(26);
+      thanaData.forEach((thana) => {
+        expect(typeof thana.thanaBn).toBe("string");
+        expect(thana.thanaBn.trim().length).toBeGreaterThan(0);
       });
     });
 

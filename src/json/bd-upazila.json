@@ -1646,331 +1646,397 @@
     },
     {
         "upazila": "Adamdighi",
+        "upazilaBn": "আদমদীঘি",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Bogra Sadar",
+        "upazilaBn": "বগুড়া সদর",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Sherpur",
+        "upazilaBn": "শেরপুর",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Dhunat",
+        "upazilaBn": "ধুনট",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Dhupchanchia",
+        "upazilaBn": "দুপচাঁচিয়া",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Gabtali",
+        "upazilaBn": "গাবতলী",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Kahaloo",
+        "upazilaBn": "কাহালু",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Nandigram",
+        "upazilaBn": "নন্দীগ্রাম",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Sahajanpur",
+        "upazilaBn": "শাজাহানপুর",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Sariakandi",
+        "upazilaBn": "সারিয়াকান্দি",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Shibganj",
+        "upazilaBn": "শিবগঞ্জ",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Sonatala",
+        "upazilaBn": "সোনাতলা",
         "district": "Bogra",
         "division": "Rajshahi"
     },
     {
         "upazila": "Joypurhat Sadar",
+        "upazilaBn": "জয়পুরহাট সদর",
         "district": "Joypurhat",
         "division": "Rajshahi"
     },
     {
         "upazila": "Akkelpur",
+        "upazilaBn": "আক্কেলপুর",
         "district": "Joypurhat",
         "division": "Rajshahi"
     },
     {
         "upazila": "Kalai",
+        "upazilaBn": "কালাই",
         "district": "Joypurhat",
         "division": "Rajshahi"
     },
     {
         "upazila": "Khetlal",
+        "upazilaBn": "ক্ষেতলাল",
         "district": "Joypurhat",
         "division": "Rajshahi"
     },
     {
         "upazila": "Panchbibi",
+        "upazilaBn": "পাঁচবিবি",
         "district": "Joypurhat",
         "division": "Rajshahi"
     },
     {
         "upazila": "Naogaon Sadar",
+        "upazilaBn": "নওগাঁ সদর",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Mohadevpur",
+        "upazilaBn": "মহাদেবপুর",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Manda",
+        "upazilaBn": "মান্দা",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Niamatpur",
+        "upazilaBn": "নিয়ামতপুর",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Atrai",
+        "upazilaBn": "আত্রাই",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Raninagar",
+        "upazilaBn": "রাণীনগর",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Patnitala",
+        "upazilaBn": "পত্নীতলা",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Dhamoirhat",
+        "upazilaBn": "ধামইরহাট",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Sapahar",
+        "upazilaBn": "সাপাহার",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Porsha",
+        "upazilaBn": "পোরশা",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Badalgachhi",
+        "upazilaBn": "বদলগাছী",
         "district": "Naogaon",
         "division": "Rajshahi"
     },
     {
         "upazila": "Natore Sadar",
+        "upazilaBn": "নাটোর সদর",
         "district": "Natore",
         "division": "Rajshahi"
     },
     {
         "upazila": "Baraigram",
+        "upazilaBn": "বড়াইগ্রাম",
         "district": "Natore",
         "division": "Rajshahi"
     },
     {
         "upazila": "Bagatipara",
+        "upazilaBn": "বাগাতিপাড়া",
         "district": "Natore",
         "division": "Rajshahi"
     },
     {
         "upazila": "Lalpur",
+        "upazilaBn": "লালপুর",
         "district": "Natore",
         "division": "Rajshahi"
     },
     {
         "upazila": "Gurudaspur",
+        "upazilaBn": "গুরুদাসপুর",
         "district": "Natore",
         "division": "Rajshahi"
     },
     {
         "upazila": "Singra",
+        "upazilaBn": "সিংড়া",
         "district": "Natore",
         "division": "Rajshahi"
     },
     {
         "upazila": "Bholahat",
+        "upazilaBn": "ভোলাহাট",
         "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Gomastapur",
+        "upazilaBn": "গোমস্তাপুর",
         "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Nachole",
+        "upazilaBn": "নাচোল",
         "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Chapainawabganj Sadar",
+        "upazilaBn": "চাঁপাইনবাবগঞ্জ সদর",
         "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Shibganj",
+        "upazilaBn": "শিবগঞ্জ",
         "district": "Chapainawabganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Atgharia",
+        "upazilaBn": "আটঘরিয়া",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Bera",
+        "upazilaBn": "বেড়া",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Bhangura",
+        "upazilaBn": "ভাঙ্গুড়া",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Chatmohar",
+        "upazilaBn": "চাটমোহর",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Faridpur",
+        "upazilaBn": "ফরিদপুর",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Ishwardi",
+        "upazilaBn": "ঈশ্বরদী",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Pabna Sadar",
+        "upazilaBn": "পাবনা সদর",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Santhia",
+        "upazilaBn": "সাঁথিয়া",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Sujanagar",
+        "upazilaBn": "সুজানগর",
         "district": "Pabna",
         "division": "Rajshahi"
     },
     {
         "upazila": "Bagha",
+        "upazilaBn": "বাঘা",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Bagmara",
+        "upazilaBn": "বাগমারা",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Charghat",
+        "upazilaBn": "চারঘাট",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Durgapur",
+        "upazilaBn": "দুর্গাপুর",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Godagari",
+        "upazilaBn": "গোদাগাড়ী",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Mohanpur",
+        "upazilaBn": "মোহনপুর",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Paba",
+        "upazilaBn": "পবা",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Puthia",
+        "upazilaBn": "পুঠিয়া",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Tanore",
+        "upazilaBn": "তানোর",
         "district": "Rajshahi",
         "division": "Rajshahi"
     },
     {
         "upazila": "Sirajganj Sadar",
+        "upazilaBn": "সিরাজগঞ্জ সদর",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Belkuchi",
+        "upazilaBn": "বেলকুচি",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Chauhali",
+        "upazilaBn": "চৌহালী",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Kamarkhanda",
+        "upazilaBn": "কামারখন্দ",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Kazipur",
+        "upazilaBn": "কাজিপুর",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Raiganj",
+        "upazilaBn": "রায়গঞ্জ",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Shahjadpur",
+        "upazilaBn": "শাহজাদপুর",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Tarash",
+        "upazilaBn": "তাড়াশ",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
     {
         "upazila": "Ullahpara",
+        "upazilaBn": "উল্লাপাড়া",
         "district": "Sirajganj",
         "division": "Rajshahi"
     },
