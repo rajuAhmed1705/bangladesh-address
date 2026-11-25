@@ -11,9 +11,12 @@ import {
   isUpazila,
   getThana,
   getUpazila,
+  getDivisionOfDistrict,
 } from "../index";
 import { DivisionName } from "../division/types/division-name";
 import { DistrictName } from "../types";
+import divisionData from "../json/bd-division.json";
+import districtData from "../json/bd-district.json";
 import thanaData from "../json/bd-thana.json";
 
 describe("Data Integrity", () => {
@@ -243,6 +246,35 @@ describe("Data Integrity", () => {
       const chattogramKotwali = getThana("Kotwali", "Chattogram");
       expect(dhakaKotwali?.division).toBe("Dhaka");
       expect(chattogramKotwali?.division).toBe("Chattogram");
+    });
+  });
+
+  describe("Bengali data files", () => {
+    it("bd-division.json should match allDivision() with non-empty nameBn", () => {
+      const expectedDivisions = allDivision();
+      expect(divisionData).toHaveLength(8);
+      expect(divisionData.map((d) => d.name).sort()).toEqual(
+        [...expectedDivisions].sort()
+      );
+
+      divisionData.forEach((division) => {
+        expect(typeof division.nameBn).toBe("string");
+        expect(division.nameBn.trim().length).toBeGreaterThan(0);
+      });
+    });
+
+    it("bd-district.json should match allDistricts() with valid divisions and non-empty nameBn", () => {
+      const expectedDistricts = allDistricts();
+      expect(districtData).toHaveLength(64);
+      expect(districtData.map((d) => d.name).sort()).toEqual(
+        [...expectedDistricts].sort()
+      );
+
+      districtData.forEach((district) => {
+        expect(district.division).toBe(getDivisionOfDistrict(district.name));
+        expect(typeof district.nameBn).toBe("string");
+        expect(district.nameBn.trim().length).toBeGreaterThan(0);
+      });
     });
   });
 });
