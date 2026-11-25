@@ -56,6 +56,7 @@ A plain-text summary of the whole API for AI coding assistants is in [llms.txt](
 - **64 Districts** - All districts
 - **495 Upazilas** - All upazilas (updated July 2021 with Eidgaon, Dasar, Madhyanagar)
 - **26 Metropolitan Thanas** - Police stations in Dhaka, Chattogram, Rajshahi, Khulna
+- **12 City Corporations** - Urban administrative units from BBS/COD-AB
 
 ## Installation
 
@@ -332,6 +333,10 @@ The data can also be fetched directly, without installing anything:
 | Metropolitan thanas | `https://cdn.jsdelivr.net/npm/@bangladeshi/bangladesh-address/build/json/bd-thana.json` |
 
 Add a version after the package name (for example `bangladesh-address@2.2.0`) to pin the data to a release.
+
+## Data sources
+
+City corporation names, district/division references and BBS codes come from [Bangladesh - Subnational Administrative Boundaries (COD-AB)](https://data.humdata.org/dataset/cod-ab-bgd) on the Humanitarian Data Exchange. The data is published by UN OCHA from Bangladesh Bureau of Statistics (BBS) sources and licensed under [CC BY-IGO](https://creativecommons.org/licenses/by/3.0/igo/legalcode).
 
 ## Contribution
 

@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Barishal City Corporation",
+        "district": "Barisal",
+        "division": "Barisal",
+        "bbsCode": "BD10065000"
+    },
+    {
+        "name": "Chattogram City Corporation",
+        "district": "Chattogram",
+        "division": "Chattogram",
+        "bbsCode": "BD20151600"
+    },
+    {
+        "name": "Cumilla City Corporation",
+        "district": "Comilla",
+        "division": "Chattogram",
+        "bbsCode": "BD20195000"
+    },
+    {
+        "name": "Dhaka North City Corporation",
+        "district": "Dhaka",
+        "division": "Dhaka",
+        "bbsCode": "BD30262500"
+    },
+    {
+        "name": "Dhaka South City Corporation",
+        "district": "Dhaka",
+        "division": "Dhaka",
+        "bbsCode": "BD30262000"
+    },
+    {
+        "name": "Gazipur City Corporation",
+        "district": "Gazipur",
+        "division": "Dhaka",
+        "bbsCode": "BD30333300"
+    },
+    {
+        "name": "Khulna City Corporation",
+        "district": "Khulna",
+        "division": "Khulna",
+        "bbsCode": "BD40473300"
+    },
+    {
+        "name": "Mymensingh City Corporation",
+        "district": "Mymensingh",
+        "division": "Mymensingh",
+        "bbsCode": "BD45614000"
+    },
+    {
+        "name": "Narayanganj City Corporation",
+        "district": "Narayanganj",
+        "division": "Dhaka",
+        "bbsCode": "BD30674400"
+    },
+    {
+        "name": "Rajshahi City Corporation",
+        "district": "Rajshahi",
+        "division": "Rajshahi",
+        "bbsCode": "BD50816600"
+    },
+    {
+        "name": "Rangpur City Corporation",
+        "district": "Rangpur",
+        "division": "Rangpur",
+        "bbsCode": "BD55857500"
+    },
+    {
+        "name": "Sylhet City Corporation",
+        "district": "Sylhet",
+        "division": "Sylhet",
+        "bbsCode": "BD60915000"
+    }
+]

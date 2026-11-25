@@ -18,6 +18,7 @@ import { DistrictName } from "../types";
 import divisionData from "../json/bd-division.json";
 import districtData from "../json/bd-district.json";
 import thanaData from "../json/bd-thana.json";
+import cityCorporationData from "../json/bd-city-corporation.json";
 
 describe("Data Integrity", () => {
   describe("Division counts", () => {
@@ -117,6 +118,27 @@ describe("Data Integrity", () => {
     it("isThana should return false for regular upazilas", () => {
       expect(isThana("Savar")).toBe(false);
       expect(isThana("Keraniganj")).toBe(false);
+    });
+  });
+
+  describe("City corporation data", () => {
+    it("should have exactly 12 city corporations", () => {
+      expect(cityCorporationData).toHaveLength(12);
+    });
+
+    it("should have unique BBS codes", () => {
+      const codes = cityCorporationData.map((city) => city.bbsCode);
+      expect(new Set(codes).size).toBe(codes.length);
+    });
+
+    it("should have valid district and division references", () => {
+      const validDistricts = allDistricts();
+      const validDivisions = allDivision();
+
+      cityCorporationData.forEach((city) => {
+        expect(validDistricts).toContain(city.district);
+        expect(validDivisions).toContain(city.division);
+      });
     });
   });
 
