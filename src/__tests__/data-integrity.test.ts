@@ -14,6 +14,8 @@ import {
 } from "../index";
 import { DivisionName } from "../division/types/division-name";
 import { DistrictName } from "../types";
+import divisionsData from "../json/bd-division.json";
+import districtsData from "../json/bd-district.json";
 
 describe("Data Integrity", () => {
   describe("Division counts", () => {
@@ -234,6 +236,33 @@ describe("Data Integrity", () => {
       const chattogramKotwali = getThana("Kotwali", "Chattogram");
       expect(dhakaKotwali?.division).toBe("Dhaka");
       expect(chattogramKotwali?.division).toBe("Chattogram");
+    });
+  });
+
+  describe("Bengali names data files", () => {
+    it("bd-division.json should contain all 8 divisions with non-empty nameBn", () => {
+      expect(divisionsData).toHaveLength(8);
+      const fileDivisions = divisionsData.map((d) => d.name).sort();
+      expect(fileDivisions).toEqual(allDivision().sort());
+
+      divisionsData.forEach((division) => {
+        expect(typeof division.nameBn).toBe("string");
+        expect(division.nameBn.trim().length).toBeGreaterThan(0);
+      });
+    });
+
+    it("bd-district.json should contain all 64 districts with valid divisions and non-empty nameBn", () => {
+      expect(districtsData).toHaveLength(64);
+      const fileDistricts = districtsData.map((d) => d.name).sort();
+      expect(fileDistricts).toEqual(allDistricts().sort());
+
+      const validDivisions = new Set(allDivision());
+      districtsData.forEach((district) => {
+        expect(validDivisions.has(district.division)).toBe(true);
+        expect(districtsOf(district.division)).toContain(district.name);
+        expect(typeof district.nameBn).toBe("string");
+        expect(district.nameBn.trim().length).toBeGreaterThan(0);
+      });
     });
   });
 });
