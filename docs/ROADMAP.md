@@ -265,11 +265,8 @@ Focus: Add postal code data for Bangladesh. Issue: [#34](https://github.com/raju
 Focus: Add official BBS geocodes and latitude/longitude for divisions, districts and upazilas. Issue: [#35](https://github.com/rajuAhmed1705/bangladesh-address/issues/35).
 
 ### Data Updates
-- [ ] Add BBS geocodes to division, district and upazila data
-- [ ] Add `lat`, `lng` fields to division data (central point)
-- [ ] Add `lat`, `lng` fields to district data
-- [ ] Add `lat`, `lng` fields to upazila data
-- [ ] Add `lat`, `lng` fields to thana data (not covered by #35, needs its own source)
+- [ ] Create `bd-geo.json` with `bbsCode`, `lat` and `lng` for the 8 divisions, 64 districts and 495 upazilas
+- [ ] Add `lat`, `lng` for thanas (not covered by #35, needs its own source)
 
 ### New Functions
 - [ ] `getCoordinates(location)` - Get lat/lng for any location
@@ -288,7 +285,7 @@ Smaller items that are not tied to a version:
 
 - [ ] Add the 12 city corporations ([#36](https://github.com/rajuAhmed1705/bangladesh-address/issues/36))
 - [ ] Add thanas for more metropolitan areas and check the existing cities are complete ([#28](https://github.com/rajuAhmed1705/bangladesh-address/issues/28))
-- [ ] Add a cascading division, district, upazila dropdown example ([#29](https://github.com/rajuAhmed1705/bangladesh-address/issues/29))
+- [ ] Add a runnable React dropdown example in `examples/react-dropdown/` ([#29](https://github.com/rajuAhmed1705/bangladesh-address/issues/29))
 
 ---
 
