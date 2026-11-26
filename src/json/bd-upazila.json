@@ -1759,6 +1759,12 @@
         "division": "Rajshahi"
     },
     {
+        "upazila": "Mokamtola",
+        "upazilaBn": "মোকামতলা",
+        "district": "Bogra",
+        "division": "Rajshahi"
+    },
+    {
         "upazila": "Joypurhat Sadar",
         "upazilaBn": "জয়পুরহাট সদর",
         "district": "Joypurhat",
@@ -1887,6 +1893,12 @@
     {
         "upazila": "Singra",
         "upazilaBn": "সিংড়া",
+        "district": "Natore",
+        "division": "Rajshahi"
+    },
+    {
+        "upazila": "Naldanga",
+        "upazilaBn": "নলডাঙ্গা",
         "district": "Natore",
         "division": "Rajshahi"
     },
