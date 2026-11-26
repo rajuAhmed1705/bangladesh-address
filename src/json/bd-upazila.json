@@ -1,211 +1,253 @@
 [
     {
         "upazila": "Amtali",
+        "upazilaBn": "আমতলী",
         "district": "Barguna",
         "division": "Barisal"
     },
     {
         "upazila": "Bamna",
+        "upazilaBn": "বামনা",
         "district": "Barguna",
         "division": "Barisal"
     },
     {
         "upazila": "Barguna Sadar",
+        "upazilaBn": "বরগুনা সদর",
         "district": "Barguna",
         "division": "Barisal"
     },
     {
         "upazila": "Betagi",
+        "upazilaBn": "বেতাগী",
         "district": "Barguna",
         "division": "Barisal"
     },
     {
         "upazila": "Patharghata",
+        "upazilaBn": "পাথরঘাটা",
         "district": "Barguna",
         "division": "Barisal"
     },
     {
         "upazila": "Taltali",
+        "upazilaBn": "তালতলী",
         "district": "Barguna",
         "division": "Barisal"
     },
     {
         "upazila": "Muladi",
+        "upazilaBn": "মুলাদী",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Babuganj",
+        "upazilaBn": "বাবুগঞ্জ",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Agailjhara",
+        "upazilaBn": "আগৈলঝাড়া",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Barisal Sadar",
+        "upazilaBn": "বরিশাল সদর",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Bakerganj",
+        "upazilaBn": "বাকেরগঞ্জ",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Banaripara",
+        "upazilaBn": "বানারীপাড়া",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Gaurnadi",
+        "upazilaBn": "গৌরনদী",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Hizla",
+        "upazilaBn": "হিজলা",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Mehendiganj",
+        "upazilaBn": "মেহেন্দিগঞ্জ",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Wazirpur",
+        "upazilaBn": "উজিরপুর",
         "district": "Barisal",
         "division": "Barisal"
     },
     {
         "upazila": "Bhola Sadar",
+        "upazilaBn": "ভোলা সদর",
         "district": "Bhola",
         "division": "Barisal"
     },
     {
         "upazila": "Burhanuddin",
+        "upazilaBn": "বোরহানউদ্দিন",
         "district": "Bhola",
         "division": "Barisal"
     },
     {
         "upazila": "Char Fasson",
+        "upazilaBn": "চরফ্যাশন",
         "district": "Bhola",
         "division": "Barisal"
     },
     {
         "upazila": "Daulatkhan",
+        "upazilaBn": "দৌলতখান",
         "district": "Bhola",
         "division": "Barisal"
     },
     {
         "upazila": "Lalmohan",
+        "upazilaBn": "লালমোহন",
         "district": "Bhola",
         "division": "Barisal"
     },
     {
         "upazila": "Manpura",
+        "upazilaBn": "মনপুরা",
         "district": "Bhola",
         "division": "Barisal"
     },
     {
         "upazila": "Tazumuddin",
+        "upazilaBn": "তজুমুদ্দিন",
         "district": "Bhola",
         "division": "Barisal"
     },
     {
         "upazila": "Jhalokati Sadar",
+        "upazilaBn": "ঝালকাঠি সদর",
         "district": "Jhalokati",
         "division": "Barisal"
     },
     {
         "upazila": "Kathalia",
+        "upazilaBn": "কাঁঠালিয়া",
         "district": "Jhalokati",
         "division": "Barisal"
     },
     {
         "upazila": "Nalchity",
+        "upazilaBn": "নলছিটি",
         "district": "Jhalokati",
         "division": "Barisal"
     },
     {
         "upazila": "Rajapur",
+        "upazilaBn": "রাজাপুর",
         "district": "Jhalokati",
         "division": "Barisal"
     },
     {
         "upazila": "Bauphal",
+        "upazilaBn": "বাউফল",
         "district": "Patuakhali",
         "division": "Barisal"
     },
     {
         "upazila": "Dashmina",
+        "upazilaBn": "দশমিনা",
         "district": "Patuakhali",
         "division": "Barisal"
     },
     {
         "upazila": "Galachipa",
+        "upazilaBn": "গলাচিপা",
         "district": "Patuakhali",
         "division": "Barisal"
     },
     {
         "upazila": "Kalapara",
+        "upazilaBn": "কলাপাড়া",
         "district": "Patuakhali",
         "division": "Barisal"
     },
     {
         "upazila": "Mirzaganj",
+        "upazilaBn": "মির্জাগঞ্জ",
         "district": "Patuakhali",
         "division": "Barisal"
     },
     {
         "upazila": "Patuakhali Sadar",
+        "upazilaBn": "পটুয়াখালী সদর",
         "district": "Patuakhali",
         "division": "Barisal"
     },
     {
         "upazila": "Dumki",
+        "upazilaBn": "দুমকি",
         "district": "Patuakhali",
         "division": "Barisal"
     },
     {
         "upazila": "Rangabali",
+        "upazilaBn": "রাঙ্গাবালী",
         "district": "Patuakhali",
         "division": "Barisal"
     },
     {
         "upazila": "Bhandaria",
+        "upazilaBn": "ভান্ডারিয়া",
         "district": "Pirojpur",
         "division": "Barisal"
     },
     {
         "upazila": "Kaukhali",
+        "upazilaBn": "কাউখালী",
         "district": "Pirojpur",
         "division": "Barisal"
     },
     {
         "upazila": "Mathbaria",
+        "upazilaBn": "মঠবাড়িয়া",
         "district": "Pirojpur",
         "division": "Barisal"
     },
     {
         "upazila": "Nazirpur",
+        "upazilaBn": "নাজিরপুর",
         "district": "Pirojpur",
         "division": "Barisal"
     },
     {
         "upazila": "Nesarabad",
+        "upazilaBn": "নেছারাবাদ",
         "district": "Pirojpur",
         "division": "Barisal"
     },
     {
         "upazila": "Pirojpur Sadar",
+        "upazilaBn": "পিরোজপুর সদর",
         "district": "Pirojpur",
         "division": "Barisal"
     },
     {
         "upazila": "Zianagar",
+        "upazilaBn": "জিয়ানগর",
         "district": "Pirojpur",
         "division": "Barisal"
     },
