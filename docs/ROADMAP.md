@@ -306,7 +306,7 @@ These are not tied to a version number yet. Map data will be a separate package,
 
 ### Foundation
 - Official codes and centre points: see v2.4.0 above ([#35](https://github.com/rajuAhmed1705/bangladesh-address/issues/35))
-- [ ] History of administrative changes, each with its gazette ([#58](https://github.com/rajuAhmed1705/bangladesh-address/issues/58))
+- [ ] History of administrative changes, each with its official source ([#58](https://github.com/rajuAhmed1705/bangladesh-address/issues/58))
 
 ### Maps and location
 - [ ] Map data for divisions, districts and upazilas, small enough for the web ([#54](https://github.com/rajuAhmed1705/bangladesh-address/issues/54))
