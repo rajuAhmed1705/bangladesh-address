@@ -1,0 +1,15 @@
+[
+  {
+    "date": "2026-05-18",
+    "type": "created",
+    "level": "upazila",
+    "name": "Mokamtola",
+    "district": "Bogra",
+    "from": ["Shibganj"],
+    "document": {
+      "title": "Bangladesh Gazette, Extraordinary, 12 August 2026",
+      "url": "https://www.dpp.gov.bd/upload_file/gazettes/62632_37900.pdf"
+    },
+    "addedIn": "2.3.0"
+  }
+]
