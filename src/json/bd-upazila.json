@@ -447,6 +447,12 @@
         "division": "Chattogram"
     },
     {
+        "upazila": "Karnaphuli",
+        "upazilaBn": "কর্ণফুলী",
+        "district": "Chattogram",
+        "division": "Chattogram"
+    },
+    {
         "upazila": "Barura",
         "district": "Comilla",
         "division": "Chattogram"
@@ -523,6 +529,12 @@
     },
     {
         "upazila": "Titas",
+        "district": "Comilla",
+        "division": "Chattogram"
+    },
+    {
+        "upazila": "Lalmai",
+        "upazilaBn": "লালমাই",
         "district": "Comilla",
         "division": "Chattogram"
     },
@@ -633,6 +645,12 @@
     },
     {
         "upazila": "Ramgarh",
+        "district": "Khagrachari",
+        "division": "Chattogram"
+    },
+    {
+        "upazila": "Guimara",
+        "upazilaBn": "গুইমারা",
         "district": "Khagrachari",
         "division": "Chattogram"
     },
