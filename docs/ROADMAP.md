@@ -14,8 +14,8 @@ This document outlines the development roadmap for `@bangladeshi/bangladesh-addr
 - Functions: `allDivision()`, `divisionalDataOf()`, `districtsOf()`, `allDistricts()`, `upazilasOf()`, `upazilaNamesOf()`, `allUpazila()`, `isUpazila()`, `getUpazila()`, `allThana()`, `allThanaNames()`, `thanasOf()`, `thanaNamesOf()`, `isThana()`, `getThana()`, `isValidDivision()`, `isValidDistrict()`, `getDivisionOfDistrict()`, `getDistrictOfUpazila()`, `upazilasOfDivision()`, `upazilaNamesOfDivision()`, `searchLocations()`
 
 ### On `master`, not released yet
-- 500 upazilas: added Naldanga, Mokamtola, Karnaphuli, Lalmai and Guimara
-- 12 city corporations with their official codes
+- 500 upazila records: added Naldanga, Mokamtola, Karnaphuli, Lalmai and Guimara
+- 12 city corporations with their official codes (data file only, no functions yet)
 - Bengali names for divisions, districts, thanas and the upazilas of Barisal, Rajshahi and Sylhet
 - New functions: `allDivisionBn()`, `allDistrictsBn()`, `districtsOfBn()`
 
@@ -223,7 +223,7 @@ The finished parts are merged on `master` but not released on npm yet.
 - [ ] Fill `name_bn` in the database dumps
 - [ ] Document the Bengali fields and functions in the README
 
-Searching with Bengali text is now part of `suggest()` ([#55](https://github.com/rajuAhmed1705/bangladesh-address/issues/55)), see "Maps & Smart Address Tools" below.
+Searching with Bengali text will be part of the planned `suggest()` ([#55](https://github.com/rajuAhmed1705/bangladesh-address/issues/55)), see "Maps & Smart Address Tools" below.
 
 ### Data corrections, also on `master`
 - [x] Add the 12 city corporations ([#36](https://github.com/rajuAhmed1705/bangladesh-address/issues/36))
@@ -236,7 +236,7 @@ Searching with Bengali text is now part of `suggest()` ([#55](https://github.com
 
 ## v2.4.0 - Official Codes & Coordinates (Planned)
 
-Focus: Add the official code and the centre point (latitude/longitude) for divisions, districts and upazilas. Issue: [#35](https://github.com/rajuAhmed1705/bangladesh-address/issues/35).
+Focus: Add the official code (the BBS geocode, as published on HDX) and the centre point (latitude/longitude) for divisions, districts and upazilas. Issue: [#35](https://github.com/rajuAhmed1705/bangladesh-address/issues/35).
 
 This moved up because the map, location and API work below all join to the names through these codes.
 
@@ -259,7 +259,7 @@ This moved up because the map, location and API work below all join to the names
 
 Focus: Add the 4th administrative level - unions. Issue: [#30](https://github.com/rajuAhmed1705/bangladesh-address/issues/30).
 
-This is about union names. Union boundaries (map shapes) are not planned, because the source does not publish a confirmed set.
+This is about union names. Union boundaries (map shapes) are not planned: the source says that level is not officially confirmed, and the only open set is from 2020.
 
 ### Data Addition
 - [ ] Compile union data (~4,500 unions) from the source named in the issue
@@ -305,7 +305,7 @@ Focus: Maps, location lookup and smarter address entry, all from static files wi
 These are not tied to a version number yet. Map data will be a separate package, so the main package stays small.
 
 ### Foundation
-- [ ] Official codes and centre points (v2.4.0 above, [#35](https://github.com/rajuAhmed1705/bangladesh-address/issues/35))
+- Official codes and centre points: see v2.4.0 above ([#35](https://github.com/rajuAhmed1705/bangladesh-address/issues/35))
 - [ ] History of administrative changes, each with its gazette ([#58](https://github.com/rajuAhmed1705/bangladesh-address/issues/58))
 
 ### Maps and location
@@ -324,7 +324,7 @@ These are not tied to a version number yet. Map data will be a separate package,
 - [ ] Research: bank routing number format ([#61](https://github.com/rajuAhmed1705/bangladesh-address/issues/61))
 
 ### Sources and licences
-- Boundaries (from BBS, published by UN OCHA) and population (from UNFPA and the US Census Bureau) come from the Humanitarian Data Exchange under CC BY-IGO, and are credited separately from the MIT-licensed code.
+- Boundaries will come from the HDX dataset COD-AB (from BBS, published by UN OCHA) and population from the HDX dataset COD-PS (from UNFPA and the US Census Bureau). Both are CC BY-IGO and will be credited separately from the MIT-licensed code.
 - Only primary sources are used. New administrative units are added only after their gazette is published.
 
 ---
@@ -369,7 +369,7 @@ These items are under consideration but not yet planned:
 - **Other languages**: Packages for Laravel, Flutter and Python generated from the same data
 - **Offline-first**: Service worker support for offline access
 
-Not planned: union boundaries, street-level address search, courier area lists and bank branch lists. The reasons are in [#53](https://github.com/rajuAhmed1705/bangladesh-address/issues/53).
+Not planned: union boundaries, street-level address search, courier area lists, bank branch lists, and data from GADM or OpenStreetMap inside the package. The reasons are in [#53](https://github.com/rajuAhmed1705/bangladesh-address/issues/53).
 
 ---
 
