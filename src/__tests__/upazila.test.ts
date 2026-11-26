@@ -71,9 +71,9 @@ describe("Upazila functions", () => {
   });
 
   describe("allUpazila", () => {
-    it("should return all 495 upazilas of Bangladesh", () => {
+    it("should return all 494 upazilas of Bangladesh", () => {
       const upazilas = allUpazila();
-      expect(upazilas).toHaveLength(495);
+      expect(upazilas).toHaveLength(494);
     });
 
     it("should return an array of strings", () => {
@@ -416,13 +416,13 @@ describe("Upazila functions", () => {
       expect(upazilas.length).toBeGreaterThan(0);
     });
 
-    it("total upazilas from all divisions should equal 495", () => {
+    it("total upazilas from all divisions should equal 494", () => {
       const divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barisal", "Sylhet", "Rangpur", "Mymensingh"];
       let totalCount = 0;
       divisions.forEach((division) => {
         totalCount += upazilasOfDivision(division).length;
       });
-      expect(totalCount).toBe(495);
+      expect(totalCount).toBe(494);
     });
   });
 
@@ -486,9 +486,9 @@ describe("Upazila functions", () => {
   });
 
   describe("Raw data exports", () => {
-    it("should export upazilaData with 495 entries", () => {
+    it("should export upazilaData with 494 entries", () => {
       expect(Array.isArray(upazilaData)).toBe(true);
-      expect(upazilaData.length).toBe(495);
+      expect(upazilaData.length).toBe(494);
     });
 
     it("should export thanaData with 26 entries", () => {
@@ -573,13 +573,13 @@ describe("Upazila functions", () => {
         expect(upazilaNamesOfDivision("InvalidDivision")).toHaveLength(0);
       });
 
-      it("total upazila names from all divisions should equal 495", () => {
+      it("total upazila names from all divisions should equal 494", () => {
         const divisions = ["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barisal", "Sylhet", "Rangpur", "Mymensingh"];
         let totalCount = 0;
         divisions.forEach((division) => {
           totalCount += upazilaNamesOfDivision(division).length;
         });
-        expect(totalCount).toBe(495);
+        expect(totalCount).toBe(494);
       });
     });
   });

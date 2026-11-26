@@ -54,7 +54,7 @@ A plain-text summary of the whole API for AI coding assistants is in [llms.txt](
 
 - **8 Divisions** - All administrative divisions
 - **64 Districts** - All districts
-- **495 Upazilas** - All upazilas (updated July 2021 with Eidgaon, Dasar, Madhyanagar)
+- **494 Upazilas** - All upazilas (updated July 2021 with Eidgaon, Dasar, Madhyanagar)
 - **26 Metropolitan Thanas** - Police stations in Dhaka, Chattogram, Rajshahi, Khulna
 - **12 City Corporations** - Urban administrative units from BBS/COD-AB
 
@@ -109,7 +109,7 @@ upazilaNamesOf("Tangail")
 // Returns: Array of upazila names (strings) for Tangail district
 
 allUpazila()
-// Returns: Array of all 495 upazila names
+// Returns: Array of all 494 upazila names
 
 isUpazila("Savar")
 // Returns: true (Savar is an upazila)
@@ -245,7 +245,7 @@ searchLocations("pur")
 ```javascript
 import { upazilaData, thanaData } from '@bangladeshi/bangladesh-address'
 
-// upazilaData: Array of all 495 upazila objects
+// upazilaData: Array of all 494 upazila objects
 // thanaData: Array of all 26 thana objects
 ```
 
