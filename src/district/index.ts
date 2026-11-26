@@ -3,7 +3,7 @@ import districtData from "../json/bd-district.json";
 import { getDivision } from "../division/division";
 import { DivisionName } from "../division/types/division-name";
 import { Upazila, District } from "../types";
-import { normalizeDistrictName, normalizeDivisionName } from "../aliases";
+import { normalizeDistrictName } from "../aliases";
 
 // Pre-computed set for O(1) district validation
 const districtNameSet = new Set(
@@ -38,27 +38,26 @@ export const allDistricts = (): string[] => {
   return Array.from(districts);
 };
 
+// Pre-computed map for O(1) district Bengali name lookup
+const districtBnByName = new Map(
+  (districtData as District[]).map((item) => [item.name, item.nameBn])
+);
+
 /**
- * Get all district names in Bengali
+ * Get all district names in Bengali (in the same order as allDistricts)
  * @returns Array of all 64 district names in Bengali
  */
 export const allDistrictsBn = (): string[] => {
-  return (districtData as District[]).map((item) => item.nameBn);
+  return allDistricts().map((name) => districtBnByName.get(name) as string);
 };
 
 /**
- * Get all district names in Bengali for a given division
+ * Get all district names in Bengali for a given division (in the same order as districtsOf)
  * @param division - The division name, as a string or DivisionName. Case-insensitive; aliases like "Barishal" and "Chittagong" are accepted
  * @returns Array of Bengali district names in the division
  */
 export const districtsOfBn = (division: DivisionName | string): string[] => {
-  if (!division || typeof division !== "string") {
-    return [];
-  }
-  const normalizedDivision = normalizeDivisionName(division);
-  return (districtData as District[])
-    .filter((item) => item.division.toLowerCase() === normalizedDivision)
-    .map((item) => item.nameBn);
+  return districtsOf(division).map((name) => districtBnByName.get(name) as string);
 };
 
 /**

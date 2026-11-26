@@ -146,12 +146,13 @@ describe("District functions", () => {
   });
 
   describe("allDistrictsBn", () => {
-    it("should return all 64 districts in Bengali", () => {
+    it("should return all 64 districts in Bengali in the same order as allDistricts", () => {
+      const districts = allDistricts();
       const districtsBn = allDistrictsBn();
       expect(districtsBn).toHaveLength(64);
-      expect(districtsBn).toContain("ঢাকা");
-      expect(districtsBn).toContain("কুমিল্লা");
-      expect(districtsBn).toContain("কক্সবাজার");
+      expect(districtsBn[districts.indexOf("Dhaka")]).toBe("ঢাকা");
+      expect(districtsBn[districts.indexOf("Comilla")]).toBe("কুমিল্লা");
+      expect(districtsBn[districts.indexOf("Cox's Bazar")]).toBe("কক্সবাজার");
       districtsBn.forEach((name) => {
         expect(typeof name).toBe("string");
         expect(name.trim().length).toBeGreaterThan(0);

@@ -121,13 +121,16 @@ describe("Division functions", () => {
   });
 
   describe("allDivisionBn", () => {
-    it("should return all 8 divisions in Bengali", () => {
+    it("should return all 8 divisions in Bengali in the same order as allDivision", () => {
+      const divisions = allDivision();
       const divisionsBn = allDivisionBn();
       expect(divisionsBn).toHaveLength(8);
       expect(divisionsBn).toContain("ঢাকা");
       expect(divisionsBn).toContain("চট্টগ্রাম");
       expect(divisionsBn).toContain("সিলেট");
       expect(divisionsBn).toContain("বরিশাল");
+      expect(divisionsBn[divisions.indexOf("Khulna")]).toBe("খুলনা");
+      expect(divisionsBn[divisions.indexOf("Mymensingh")]).toBe("ময়মনসিংহ");
       divisionsBn.forEach((name) => {
         expect(typeof name).toBe("string");
         expect(name.trim().length).toBeGreaterThan(0);

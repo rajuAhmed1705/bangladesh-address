@@ -20,12 +20,17 @@ export const allDivision = (): string[] => {
   return Array.from(divisions);
 };
 
+// Pre-computed map for O(1) division Bengali name lookup
+const divisionBnByName = new Map(
+  (divisionData as Division[]).map((item) => [item.name, item.nameBn])
+);
+
 /**
- * Get all division names in Bengali
+ * Get all division names in Bengali (in the same order as allDivision)
  * @returns Array of all 8 division names in Bengali
  */
 export const allDivisionBn = (): string[] => {
-  return (divisionData as Division[]).map((item) => item.nameBn);
+  return allDivision().map((name) => divisionBnByName.get(name) as string);
 };
 
 /**
