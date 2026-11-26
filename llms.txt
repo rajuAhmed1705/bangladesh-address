@@ -6,7 +6,7 @@
 - The package name is scoped. Import from `@bangladeshi/bangladesh-address`.
 - Works with `require`, `import` and TypeScript. Type definitions are bundled.
 - All functions are synchronous. The data is bundled; nothing is fetched at runtime.
-- Coverage: 8 divisions, 64 districts, 495 upazilas, 26 metropolitan thanas (Dhaka, Chattogram, Khulna, Rajshahi). No unions, postcodes or Bengali names yet.
+- Coverage: 8 divisions, 64 districts, 494 upazilas, 26 metropolitan thanas (Dhaka, Chattogram, Khulna, Rajshahi). No unions, postcodes or Bengali names yet.
 - Hierarchy: division > district > upazila. Thanas are metropolitan police areas inside a district, listed separately from upazilas.
 
 ## Rules that prevent wrong code
@@ -49,7 +49,7 @@ Districts:
 
 Upazilas:
 
-- `allUpazila(): string[]` - 495 entries, one per upazila; some names repeat because they exist in more than one district
+- `allUpazila(): string[]` - 494 entries, one per upazila; some names repeat because they exist in more than one district
 - `upazilasOf(district: string): Upazila[]`
 - `upazilaNamesOf(district: string): string[]`
 - `upazilasOfDivision(division: string): Upazila[]`
