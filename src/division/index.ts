@@ -1,7 +1,8 @@
 import data from "../json/bd-upazila.json";
+import divisionData from "../json/bd-division.json";
 import { getDivision } from "./division";
 import { DivisionName } from "./types/division-name";
-import { Upazila, DivisionalData } from "../types";
+import { Upazila, Division, DivisionalData } from "../types";
 import { normalizeDivisionName } from "../aliases";
 
 // Pre-computed set for O(1) division validation
@@ -17,6 +18,14 @@ export const allDivision = (): string[] => {
   const divisions = new Set<string>();
   (data as Upazila[]).forEach((item) => divisions.add(item.division));
   return Array.from(divisions);
+};
+
+/**
+ * Get all division names in Bengali
+ * @returns Array of all 8 division names in Bengali
+ */
+export const allDivisionBn = (): string[] => {
+  return (divisionData as Division[]).map((item) => item.nameBn);
 };
 
 /**

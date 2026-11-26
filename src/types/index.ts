@@ -73,10 +73,36 @@ export type DistrictName =
   | "Thakurgaon";
 
 /**
+ * Bilingual name pair (English and Bengali)
+ */
+export interface LocalizedName {
+  en: string;
+  bn: string;
+}
+
+/**
+ * Represents a division with its English and Bengali names
+ */
+export interface Division {
+  name: string;
+  nameBn: string;
+}
+
+/**
+ * Represents a district with its parent division and Bengali name
+ */
+export interface District {
+  name: string;
+  division: string;
+  nameBn: string;
+}
+
+/**
  * Represents a single upazila/thana entry with its district and division
  */
 export interface Upazila {
   upazila: string;
+  upazilaBn?: string;
   district: string;
   division: string;
   type?: AdminUnitType;
@@ -87,6 +113,7 @@ export interface Upazila {
  */
 export interface Thana {
   thana: string;
+  thanaBn?: string;
   district: string;
   division: string;
   type: "thana";

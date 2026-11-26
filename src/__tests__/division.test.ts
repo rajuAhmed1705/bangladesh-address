@@ -1,4 +1,4 @@
-import { allDivision, divisionalDataOf, getDivision, isValidDivision } from "../division";
+import { allDivision, allDivisionBn, divisionalDataOf, getDivision, isValidDivision } from "../division";
 import { DivisionName } from "../division/types/division-name";
 
 describe("Division functions", () => {
@@ -117,6 +117,21 @@ describe("Division functions", () => {
     it("should handle whitespace in input", () => {
       expect(isValidDivision("  Dhaka  ")).toBe(true);
       expect(isValidDivision("  Chattogram  ")).toBe(true);
+    });
+  });
+
+  describe("allDivisionBn", () => {
+    it("should return all 8 divisions in Bengali", () => {
+      const divisionsBn = allDivisionBn();
+      expect(divisionsBn).toHaveLength(8);
+      expect(divisionsBn).toContain("ঢাকা");
+      expect(divisionsBn).toContain("চট্টগ্রাম");
+      expect(divisionsBn).toContain("সিলেট");
+      expect(divisionsBn).toContain("বরিশাল");
+      divisionsBn.forEach((name) => {
+        expect(typeof name).toBe("string");
+        expect(name.trim().length).toBeGreaterThan(0);
+      });
     });
   });
 });
