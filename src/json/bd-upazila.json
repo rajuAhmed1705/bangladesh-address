@@ -2332,201 +2332,241 @@
     },
     {
         "upazila": "Ajmiriganj",
+        "upazilaBn": "আজমিরীগঞ্জ",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Baniachang",
+        "upazilaBn": "বানিয়াচং",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Bahubal",
+        "upazilaBn": "বাহুবল",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Chunarughat",
+        "upazilaBn": "চুনারুঘাট",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Habiganj Sadar",
+        "upazilaBn": "হবিগঞ্জ সদর",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Lakhai",
+        "upazilaBn": "লাখাই",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Madhabpur",
+        "upazilaBn": "মাধবপুর",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Nabiganj",
+        "upazilaBn": "নবীগঞ্জ",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Shaistagonj",
+        "upazilaBn": "শায়েস্তাগঞ্জ",
         "district": "Habiganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Moulvibazar Sadar",
+        "upazilaBn": "মৌলভীবাজার সদর",
         "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Barlekha",
+        "upazilaBn": "বড়লেখা",
         "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Juri",
+        "upazilaBn": "জুড়ী",
         "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Kamalganj",
+        "upazilaBn": "কমলগঞ্জ",
         "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Kulaura",
+        "upazilaBn": "কুলাউড়া",
         "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Rajnagar",
+        "upazilaBn": "রাজনগর",
         "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Sreemangal",
+        "upazilaBn": "শ্রীমঙ্গল",
         "district": "Moulvibazar",
         "division": "Sylhet"
     },
     {
         "upazila": "Bishwamvarpur",
+        "upazilaBn": "বিশ্বম্ভরপুর",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Chhatak",
+        "upazilaBn": "ছাতক",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Derai",
+        "upazilaBn": "দিরাই",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Dharampasha",
+        "upazilaBn": "ধর্মপাশা",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Dowarabazar",
+        "upazilaBn": "দোয়ারাবাজার",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Jagannathpur",
+        "upazilaBn": "জগন্নাথপুর",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Jamalganj",
+        "upazilaBn": "জামালগঞ্জ",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Sulla",
+        "upazilaBn": "শাল্লা",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Sunamganj Sadar",
+        "upazilaBn": "সুনামগঞ্জ সদর",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Shanthiganj",
+        "upazilaBn": "শান্তিগঞ্জ",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Tahirpur",
+        "upazilaBn": "তাহিরপুর",
         "district": "Sunamganj",
         "division": "Sylhet"
     },
     {
         "upazila": "Sylhet Sadar",
+        "upazilaBn": "সিলেট সদর",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Beanibazar",
+        "upazilaBn": "বিয়ানীবাজার",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Bishwanath",
+        "upazilaBn": "বিশ্বনাথ",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Dakshin Surma",
+        "upazilaBn": "দক্ষিণ সুরমা",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Balaganj",
+        "upazilaBn": "বালাগঞ্জ",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Companiganj",
+        "upazilaBn": "কোম্পানীগঞ্জ",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Fenchuganj",
+        "upazilaBn": "ফেঞ্চুগঞ্জ",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Golapganj",
+        "upazilaBn": "গোলাপগঞ্জ",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Gowainghat",
+        "upazilaBn": "গোয়াইনঘাট",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Jaintiapur",
+        "upazilaBn": "জৈন্তাপুর",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Kanaighat",
+        "upazilaBn": "কানাইঘাট",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Zakiganj",
+        "upazilaBn": "জকিগঞ্জ",
         "district": "Sylhet",
         "division": "Sylhet"
     },
     {
         "upazila": "Osmaninagar",
+        "upazilaBn": "ওসমানীনগর",
         "district": "Sylhet",
         "division": "Sylhet"
     },
@@ -2537,6 +2577,7 @@
     },
     {
         "upazila": "Madhyanagar",
+        "upazilaBn": "মধ্যনগর",
         "district": "Sunamganj",
         "division": "Sylhet"
     }
