@@ -70,8 +70,8 @@ describe("Data Integrity", () => {
   });
 
   describe("Upazila counts", () => {
-    it("should have exactly 495 upazilas", () => {
-      expect(allUpazila()).toHaveLength(495);
+    it("should have exactly 497 upazilas", () => {
+      expect(allUpazila()).toHaveLength(497);
     });
 
     it("every district should have at least one upazila", () => {
