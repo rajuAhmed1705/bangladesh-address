@@ -21,7 +21,9 @@ interface IndexedEntry {
   result: Omit<SuggestResult, "score">;
   nameLower: string;
   wordsLower: string[];
+  foldedName: string;
   nameBnNorm?: string;
+  bnWords?: string[];
   divisionLower: string;
   districtLower?: string;
 }
@@ -34,6 +36,7 @@ const TYPE_RANK: Record<SuggestUnitType, number> = {
 };
 
 const DEFAULT_LIMIT = 10;
+const MAX_QUERY_LENGTH = 64;
 
 const cleanText = (value: string): string =>
   value
@@ -41,6 +44,16 @@ const cleanText = (value: string): string =>
     .normalize("NFC")
     .replace(/['’`]/g, "'")
     .replace(/\s+/g, " ");
+
+const foldSounds = (value: string): string =>
+  value
+    .replace(/['\s-]/g, "")
+    .replace(/bh|v/g, "b")
+    .replace(/sh/g, "s")
+    .replace(/ph/g, "f")
+    .replace(/z/g, "j")
+    .replace(/oo|ou/g, "u")
+    .replace(/g[ou]n[jg]/g, "ganj");
 
 // Lookup maps for Bengali names of divisions and districts
 const divisionBnByLower = new Map<string, string>(
@@ -65,6 +78,7 @@ const buildIndex = (): IndexedEntry[] => {
 
   for (const div of divisionData as Division[]) {
     const nameLower = div.name.toLowerCase();
+    const nameBnNorm = cleanText(div.nameBn);
     entries.push({
       result: {
         type: "division",
@@ -76,7 +90,9 @@ const buildIndex = (): IndexedEntry[] => {
       },
       nameLower,
       wordsLower: nameLower.split(/[\s-]+/),
-      nameBnNorm: cleanText(div.nameBn),
+      foldedName: foldSounds(nameLower),
+      nameBnNorm,
+      bnWords: nameBnNorm.split(/[\s-]+/),
       divisionLower: nameLower,
     });
   }
@@ -85,6 +101,7 @@ const buildIndex = (): IndexedEntry[] => {
     const nameLower = dist.name.toLowerCase();
     const divLower = dist.division.toLowerCase();
     const divBn = divisionBnByLower.get(divLower);
+    const nameBnNorm = cleanText(dist.nameBn);
     entries.push({
       result: {
         type: "district",
@@ -96,7 +113,9 @@ const buildIndex = (): IndexedEntry[] => {
       },
       nameLower,
       wordsLower: nameLower.split(/[\s-]+/),
-      nameBnNorm: cleanText(dist.nameBn),
+      foldedName: foldSounds(nameLower),
+      nameBnNorm,
+      bnWords: nameBnNorm.split(/[\s-]+/),
       divisionLower: divLower,
       districtLower: nameLower,
     });
@@ -109,6 +128,7 @@ const buildIndex = (): IndexedEntry[] => {
     const divBn = divisionBnByLower.get(divLower);
     const distBn = districtBnByLower.get(distLower);
     const hasBn = Boolean(upazila.upazilaBn && distBn && divBn);
+    const nameBnNorm = upazila.upazilaBn ? cleanText(upazila.upazilaBn) : undefined;
 
     entries.push({
       result: {
@@ -125,7 +145,9 @@ const buildIndex = (): IndexedEntry[] => {
       },
       nameLower,
       wordsLower: nameLower.split(/[\s-]+/),
-      nameBnNorm: upazila.upazilaBn ? cleanText(upazila.upazilaBn) : undefined,
+      foldedName: foldSounds(nameLower),
+      nameBnNorm,
+      bnWords: nameBnNorm ? nameBnNorm.split(/[\s-]+/) : undefined,
       divisionLower: divLower,
       districtLower: distLower,
     });
@@ -138,6 +160,7 @@ const buildIndex = (): IndexedEntry[] => {
     const divBn = divisionBnByLower.get(divLower);
     const distBn = districtBnByLower.get(distLower);
     const hasBn = Boolean(thana.thanaBn && distBn && divBn);
+    const nameBnNorm = thana.thanaBn ? cleanText(thana.thanaBn) : undefined;
 
     entries.push({
       result: {
@@ -154,7 +177,9 @@ const buildIndex = (): IndexedEntry[] => {
       },
       nameLower,
       wordsLower: nameLower.split(/[\s-]+/),
-      nameBnNorm: thana.thanaBn ? cleanText(thana.thanaBn) : undefined,
+      foldedName: foldSounds(nameLower),
+      nameBnNorm,
+      bnWords: nameBnNorm ? nameBnNorm.split(/[\s-]+/) : undefined,
       divisionLower: divLower,
       districtLower: distLower,
     });
@@ -215,7 +240,9 @@ const isSubsequence = (needle: string, haystack: string): boolean => {
 const scoreTermAgainstCandidate = (
   query: string,
   candidate: string,
-  candidateWords: string[]
+  candidateWords: string[],
+  foldedQuery?: string,
+  foldedCandidate?: string
 ): number => {
   if (!query || !candidate) {
     return 0;
@@ -235,11 +262,15 @@ const scoreTermAgainstCandidate = (
     }
   }
 
+  if (foldedQuery && foldedCandidate && foldedQuery === foldedCandidate) {
+    return 0.89;
+  }
+
   if (candidate.includes(query)) {
     return 0.72 + 0.08 * (query.length / candidate.length);
   }
 
-  // Fuzzy matching for typos / missing vowels (e.g. "mirpr" -> "Mirpur", "kaligonj" -> "Kaliganj")
+  // Fuzzy matching for typos / missing vowels (e.g. "mirpr" -> "Mirpur", "dhnmondi" -> "Dhanmondi")
   if (query.length >= 3) {
     const maxLen = Math.max(query.length, candidate.length);
     const dist = damerauLevenshtein(query, candidate);
@@ -275,19 +306,21 @@ const scoreTermAgainstCandidate = (
   return 0;
 };
 
-const resolveWithinDivision = (division: string): string => {
+const resolveWithinDivision = (division: string): string | undefined => {
   const cleaned = cleanText(division);
+  if (!cleaned) return undefined;
   return divisionEnByBn.get(cleaned) ?? normalizeDivisionName(cleaned);
 };
 
-const resolveWithinDistrict = (district: string): string => {
+const resolveWithinDistrict = (district: string): string | undefined => {
   const cleaned = cleanText(district);
+  if (!cleaned) return undefined;
   return districtEnByBn.get(cleaned) ?? normalizeDistrictName(cleaned);
 };
 
 /**
  * Search across divisions, districts, upazilas, and thanas in English or Bengali,
- * supporting partial, alias, and fuzzy typo-tolerant queries.
+ * supporting partial, alias, phonetic, and typo-tolerant queries.
  *
  * @param query - Search text in English or Bengali (e.g. "mirpr", "মিরপুর", "jessore")
  * @param options - Optional filters (`within`, `types`, `limit`)
@@ -295,32 +328,46 @@ const resolveWithinDistrict = (district: string): string => {
  */
 export const suggest = (
   query: string,
-  options: SuggestOptions = {}
+  options?: SuggestOptions
 ): SuggestResult[] => {
-  if (!query || typeof query !== "string") {
+  if (!query || typeof query !== "string" || query.length > MAX_QUERY_LENGTH * 4) {
     return [];
   }
 
   const rawTrimmed = cleanText(query);
-  if (rawTrimmed.length === 0) {
+  if (rawTrimmed.length === 0 || rawTrimmed.length > MAX_QUERY_LENGTH) {
     return [];
   }
 
-  const limit = options.limit ?? DEFAULT_LIMIT;
+  const safeOptions: SuggestOptions =
+    options && typeof options === "object" ? options : {};
+
+  const limit =
+    typeof safeOptions.limit === "number" ? safeOptions.limit : DEFAULT_LIMIT;
   if (limit <= 0) {
     return [];
   }
 
   const queries = expandSearchQuery(rawTrimmed);
+  const foldedQueries = queries.map((q) => foldSounds(q));
   const bnQuery = rawTrimmed;
 
-  const withinDivision = options.within?.division
-    ? resolveWithinDivision(options.within.division)
+  const rawWithin =
+    safeOptions.within && typeof safeOptions.within === "object"
+      ? safeOptions.within
+      : undefined;
+
+  const withinDivision =
+    rawWithin && typeof rawWithin.division === "string"
+      ? resolveWithinDivision(rawWithin.division)
+      : undefined;
+  const withinDistrict =
+    rawWithin && typeof rawWithin.district === "string"
+      ? resolveWithinDistrict(rawWithin.district)
+      : undefined;
+  const allowedTypes = Array.isArray(safeOptions.types)
+    ? new Set(safeOptions.types)
     : undefined;
-  const withinDistrict = options.within?.district
-    ? resolveWithinDistrict(options.within.district)
-    : undefined;
-  const allowedTypes = options.types ? new Set(options.types) : undefined;
 
   const matches: SuggestResult[] = [];
 
@@ -337,23 +384,24 @@ export const suggest = (
 
     let bestScore = 0;
 
-    for (const q of queries) {
+    for (let i = 0; i < queries.length; i++) {
       const enScore = scoreTermAgainstCandidate(
-        q,
+        queries[i],
         entry.nameLower,
-        entry.wordsLower
+        entry.wordsLower,
+        foldedQueries[i],
+        entry.foldedName
       );
       if (enScore > bestScore) {
         bestScore = enScore;
       }
     }
 
-    if (entry.nameBnNorm) {
-      const bnWords = entry.nameBnNorm.split(/[\s-]+/);
+    if (entry.nameBnNorm && entry.bnWords) {
       const bnScore = scoreTermAgainstCandidate(
         bnQuery,
         entry.nameBnNorm,
-        bnWords
+        entry.bnWords
       );
       if (bnScore > bestScore) {
         bestScore = bnScore;
@@ -363,6 +411,7 @@ export const suggest = (
     if (bestScore > 0) {
       matches.push({
         ...entry.result,
+        path: { ...entry.result.path },
         score: Math.round(bestScore * 100) / 100,
       });
     }

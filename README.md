@@ -240,6 +240,42 @@ searchLocations("pur")
 // ]
 ```
 
+### Suggest (Autocomplete)
+
+Bilingual (English and Bengali) search with alias, phonetic, and typo-tolerant ranking:
+
+```javascript
+suggest("kaligonj", { within: { district: "Gazipur" }, limit: 5 })
+// [
+//   {
+//     type: "upazila",
+//     name: "Kaliganj",
+//     path: { division: "Dhaka", district: "Gazipur", upazila: "Kaliganj" },
+//     label: "Kaliganj, Gazipur, Dhaka",
+//     score: 0.89
+//   }
+// ]
+
+suggest("মিরপুর")
+// [
+//   {
+//     type: "thana",
+//     name: "Mirpur",
+//     nameBn: "মিরপুর",
+//     path: { division: "Dhaka", district: "Dhaka", thana: "Mirpur" },
+//     label: "Mirpur, Dhaka, Dhaka",
+//     labelBn: "মিরপুর, ঢাকা, ঢাকা",
+//     score: 1
+//   },
+//   ...
+// ]
+```
+
+Options:
+- `within`: filter results by `{ division?, district? }` (English, aliases, or Bengali)
+- `types`: restrict to `("division" | "district" | "upazila" | "thana")[]`
+- `limit`: maximum number of results (default `10`)
+
 ### Raw Data Access
 
 ```javascript

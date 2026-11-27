@@ -1,4 +1,8 @@
-import { suggest } from "../suggest";
+import { suggest, SuggestOptions } from "../index";
+import divisionData from "../json/bd-division.json";
+import districtData from "../json/bd-district.json";
+import upazilaData from "../json/bd-upazila.json";
+import { Division, District, Upazila } from "../types";
 
 describe("suggest", () => {
   describe("English exact, prefix, and alias queries", () => {
@@ -37,15 +41,21 @@ describe("suggest", () => {
     });
   });
 
-  describe("Fuzzy typo-tolerant matching", () => {
-    it("matches 'mirpr' to Mirpur", () => {
-      const results = suggest("mirpr");
-      const names = results.map((r) => r.name);
-      expect(names).toContain("Mirpur");
-      results.forEach((r) => {
-        expect(r.score).toBeGreaterThan(0);
-        expect(r.score).toBeLessThanOrEqual(1);
-      });
+  describe("Issue #55 expected first results table", () => {
+    it.each([
+      ["mirpr", "Mirpur"],
+      ["মিরপুর", "Mirpur"],
+      ["jessore", "Jessore"],
+      ["sabhar", "Savar"],
+      ["rangpoor", "Rangpur"],
+      ["kaligunj", "Kaliganj"],
+      ["dhnmondi", "Dhanmondi"],
+      ["barishal", "Barisal"],
+      ["cumilla", "Comilla"],
+    ])("suggest(%p) returns %p as first result", (query, expectedName) => {
+      const results = suggest(query);
+      expect(results.length).toBeGreaterThan(0);
+      expect(results[0].name).toBe(expectedName);
     });
 
     it("matches 'kaligonj' within Gazipur to Kaliganj", () => {
@@ -54,6 +64,44 @@ describe("suggest", () => {
       expect(results[0].name).toBe("Kaliganj");
       expect(results[0].path.district).toBe("Gazipur");
       expect(results[0].score).toBeGreaterThanOrEqual(0.75);
+    });
+  });
+
+  describe("All dataset entries lookup", () => {
+    it("finds every division, district, and upazila by English name and Bengali name (where present)", () => {
+      for (const div of divisionData as Division[]) {
+        const en = suggest(div.name, { types: ["division"], limit: 5 });
+        expect(en.some((r) => r.name === div.name)).toBe(true);
+
+        const bn = suggest(div.nameBn, { types: ["division"], limit: 5 });
+        expect(bn.some((r) => r.name === div.name)).toBe(true);
+      }
+
+      for (const dist of districtData as District[]) {
+        const en = suggest(dist.name, { types: ["district"], limit: 5 });
+        expect(en.some((r) => r.name === dist.name)).toBe(true);
+
+        const bn = suggest(dist.nameBn, { types: ["district"], limit: 5 });
+        expect(bn.some((r) => r.name === dist.name)).toBe(true);
+      }
+
+      for (const upa of upazilaData as Upazila[]) {
+        const en = suggest(upa.upazila, {
+          types: ["upazila"],
+          within: { district: upa.district },
+          limit: 5,
+        });
+        expect(en.some((r) => r.name === upa.upazila)).toBe(true);
+
+        if (upa.upazilaBn) {
+          const bn = suggest(upa.upazilaBn, {
+            types: ["upazila"],
+            within: { district: upa.district },
+            limit: 5,
+          });
+          expect(bn.some((r) => r.name === upa.upazila)).toBe(true);
+        }
+      }
     });
   });
 
@@ -81,7 +129,7 @@ describe("suggest", () => {
     });
   });
 
-  describe("Options: within, types, limit, and edge cases", () => {
+  describe("Options: within, types, limit, and safety guards", () => {
     it("filters by within.division (including alias)", () => {
       const results = suggest("Sadar", { within: { division: "Barishal" }, limit: 20 });
       expect(results.length).toBeGreaterThan(0);
@@ -105,6 +153,38 @@ describe("suggest", () => {
     it("respects limit option", () => {
       const results = suggest("Sadar", { limit: 3 });
       expect(results).toHaveLength(3);
+    });
+
+    it("never throws on null options or non-string within fields", () => {
+      expect(() => suggest("dhaka", null as unknown as SuggestOptions)).not.toThrow();
+      expect(suggest("dhaka", null as unknown as SuggestOptions).length).toBeGreaterThan(0);
+
+      expect(() =>
+        suggest("dhaka", { within: { division: 123 as unknown as string } })
+      ).not.toThrow();
+      expect(
+        suggest("dhaka", { within: { division: 123 as unknown as string } }).length
+      ).toBeGreaterThan(0);
+
+      expect(() =>
+        suggest("dhaka", { within: { district: 123 as unknown as string } })
+      ).not.toThrow();
+
+      expect(() =>
+        suggest("dhaka", { within: null as unknown as SuggestOptions["within"] })
+      ).not.toThrow();
+    });
+
+    it("isolates returned path objects from the internal index", () => {
+      const first = suggest("dhaka")[0];
+      first.path.division = "x";
+      const second = suggest("dhaka")[0];
+      expect(second.path.division).toBe("Dhaka");
+    });
+
+    it("returns empty array for overly long queries (> 64 chars)", () => {
+      expect(suggest("a".repeat(65))).toEqual([]);
+      expect(suggest("a".repeat(5000))).toEqual([]);
     });
 
     it("returns empty array for empty, whitespace, non-string, or limit <= 0", () => {
