@@ -333,6 +333,10 @@ The data can also be fetched directly, without installing anything:
 
 Add a version after the package name (for example `bangladesh-address@2.2.0`) to pin the data to a release.
 
+## Example: cascading dropdown
+
+See [examples/react-dropdown/](examples/react-dropdown/) for a small React example with cascading Division → District → Upazila → Thana `<select>` dropdowns.
+
 ## Contribution
 
 If you want to contribute please follow the guideline. [Contribution](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/CONTRIBUTING.md)

@@ -1,0 +1,48 @@
+.card {
+  font-family: system-ui, sans-serif;
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 24px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+}
+
+h1 {
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+select {
+  padding: 8px 10px;
+  font-size: 14px;
+  min-width: 150px;
+}
+
+select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.result {
+  font-size: 14px;
+  color: #555;
+}
+
+.result span {
+  display: inline-block;
+  margin-right: 16px;
+}
