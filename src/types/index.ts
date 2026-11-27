@@ -126,3 +126,44 @@ export interface DivisionalData {
   district: string;
   upazila: string;
 }
+
+/**
+ * Administrative unit type supported by suggest()
+ */
+export type SuggestUnitType = "division" | "district" | "upazila" | "thana";
+
+/**
+ * Full administrative hierarchy path for a suggest() result
+ */
+export interface SuggestPath {
+  division: string;
+  district?: string;
+  upazila?: string;
+  thana?: string;
+}
+
+/**
+ * Single autocomplete suggestion returned by suggest()
+ */
+export interface SuggestResult {
+  type: SuggestUnitType;
+  name: string;
+  nameBn?: string;
+  path: SuggestPath;
+  label: string;
+  labelBn?: string;
+  score: number;
+}
+
+/**
+ * Options for filtering and limiting suggest() results
+ */
+export interface SuggestOptions {
+  within?: {
+    division?: string;
+    district?: string;
+  };
+  types?: SuggestUnitType[];
+  limit?: number;
+}
+
