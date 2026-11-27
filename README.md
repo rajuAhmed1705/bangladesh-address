@@ -341,3 +341,9 @@ City corporation names, district/division references and BBS codes come from [Ba
 ## Contribution
 
 If you want to contribute please follow the guideline. [Contribution](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/CONTRIBUTING.md)
+
+## Support
+
+This package is free and maintained in spare time. If it saves you work, you can support it:
+
+❤️ [Donate with PayPal](https://www.paypal.me/raju1705)
