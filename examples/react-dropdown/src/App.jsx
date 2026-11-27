@@ -7,7 +7,7 @@ import {
 } from '@bangladeshi/bangladesh-address'
 import './App.css'
 
-export default function App() {
+const App = () => {
   const [division, setDivision] = useState('')
   const [district, setDistrict] = useState('')
   const [upazila, setUpazila] = useState('')
@@ -45,6 +45,14 @@ export default function App() {
     setThana('')
   }
 
+  const onUpazilaChange = (e) => {
+    setUpazila(e.target.value)
+  }
+
+  const onThanaChange = (e) => {
+    setThana(e.target.value)
+  }
+
   const dropdown = (options, value, onChange) => ({
     value,
     onChange,
@@ -79,7 +87,7 @@ export default function App() {
 
         <label>
           Upazila
-          <select {...dropdown(upazilaOptions, upazila, (e) => setUpazila(e.target.value))}>
+          <select {...dropdown(upazilaOptions, upazila, onUpazilaChange)}>
             <option value="">Choose...</option>
             {upazilaOptions.map((name) => (
               <option key={name} value={name}>{name}</option>
@@ -90,7 +98,7 @@ export default function App() {
         {thanaOptions.length > 0 && (
           <label>
             Thana
-            <select {...dropdown(thanaOptions, thana, (e) => setThana(e.target.value))}>
+            <select {...dropdown(thanaOptions, thana, onThanaChange)}>
               <option value="">Choose...</option>
               {thanaOptions.map((name) => (
                 <option key={name} value={name}>{name}</option>
@@ -109,3 +117,5 @@ export default function App() {
     </div>
   )
 }
+
+export default App
