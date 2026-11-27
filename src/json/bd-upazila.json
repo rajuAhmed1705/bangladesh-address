@@ -901,41 +901,49 @@
     },
     {
         "upazila": "Dewanganj",
+        "upazilaBn": "দেওয়ানগঞ্জ",
         "district": "Jamalpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Baksiganj",
+        "upazilaBn": "বকশীগঞ্জ",
         "district": "Jamalpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Islampur",
+        "upazilaBn": "ইসলামপুর",
         "district": "Jamalpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Jamalpur Sadar",
+        "upazilaBn": "জামালপুর সদর",
         "district": "Jamalpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Madarganj",
+        "upazilaBn": "মাদারগঞ্জ",
         "district": "Jamalpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Melandaha",
+        "upazilaBn": "মেলান্দহ",
         "district": "Jamalpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Sarishabari",
+        "upazilaBn": "সরিষাবাড়ী",
         "district": "Jamalpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Narundi Police I.C",
+        "upazilaBn": "নরুন্দি পুলিশ তদন্ত কেন্দ্র",
         "district": "Jamalpur",
         "division": "Mymensingh"
     },
@@ -1096,66 +1104,79 @@
     },
     {
         "upazila": "Bhaluka",
+        "upazilaBn": "ভালুকা",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Trishal",
+        "upazilaBn": "ত্রিশাল",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Haluaghat",
+        "upazilaBn": "হালুয়াঘাট",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Muktagachha",
+        "upazilaBn": "মুক্তাগাছা",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Dhobaura",
+        "upazilaBn": "ধোবাউড়া",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Fulbaria",
+        "upazilaBn": "ফুলবাড়ীয়া",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Gaffargaon",
+        "upazilaBn": "গফরগাঁও",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Gauripur",
+        "upazilaBn": "গৌরীপুর",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Ishwarganj",
+        "upazilaBn": "ঈশ্বরগঞ্জ",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Mymensingh Sadar",
+        "upazilaBn": "ময়মনসিংহ সদর",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Nandail",
+        "upazilaBn": "নান্দাইল",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Phulpur",
+        "upazilaBn": "ফুলপুর",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
     {
         "upazila": "Tarakanda",
+        "upazilaBn": "তারাকান্দা",
         "district": "Mymensingh",
         "division": "Mymensingh"
     },
@@ -1221,51 +1242,61 @@
     },
     {
         "upazila": "Kendua",
+        "upazilaBn": "কেন্দুয়া",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Atpara",
+        "upazilaBn": "আটপাড়া",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Barhatta",
+        "upazilaBn": "বারহাট্টা",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Durgapur",
+        "upazilaBn": "দুর্গাপুর",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Kalmakanda",
+        "upazilaBn": "কলমাকান্দা",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Madan",
+        "upazilaBn": "মদন",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Mohanganj",
+        "upazilaBn": "মোহনগঞ্জ",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Netrokona Sadar",
+        "upazilaBn": "নেত্রকোণা সদর",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Purbadhala",
+        "upazilaBn": "পূর্বধলা",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
     {
         "upazila": "Khaliajuri",
+        "upazilaBn": "খালিয়াজুরী",
         "district": "Netrokona",
         "division": "Mymensingh"
     },
@@ -1326,26 +1357,31 @@
     },
     {
         "upazila": "Jhenaigati",
+        "upazilaBn": "ঝিনাইগাতী",
         "district": "Sherpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Nakla",
+        "upazilaBn": "নকলা",
         "district": "Sherpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Nalitabari",
+        "upazilaBn": "নালিতাবাড়ী",
         "district": "Sherpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Sherpur Sadar",
+        "upazilaBn": "শেরপুর সদর",
         "district": "Sherpur",
         "division": "Mymensingh"
     },
     {
         "upazila": "Sreebardi",
+        "upazilaBn": "শ্রীবরদী",
         "district": "Sherpur",
         "division": "Mymensingh"
     },
