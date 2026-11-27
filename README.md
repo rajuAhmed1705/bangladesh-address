@@ -54,8 +54,9 @@ A plain-text summary of the whole API for AI coding assistants is in [llms.txt](
 
 - **8 Divisions** - All administrative divisions
 - **64 Districts** - All districts
-- **495 Upazilas** - All upazilas (updated July 2021 with Eidgaon, Dasar, Madhyanagar)
+- **500 Upazilas** - All upazilas (updated July 2021 with Eidgaon, Dasar, Madhyanagar)
 - **26 Metropolitan Thanas** - Police stations in Dhaka, Chattogram, Rajshahi, Khulna
+- **12 City Corporations** - Urban administrative units from BBS/COD-AB
 
 ## Installation
 
@@ -108,7 +109,7 @@ upazilaNamesOf("Tangail")
 // Returns: Array of upazila names (strings) for Tangail district
 
 allUpazila()
-// Returns: Array of all 495 upazila names
+// Returns: Array of all 500 upazila names
 
 isUpazila("Savar")
 // Returns: true (Savar is an upazila)
@@ -239,12 +240,48 @@ searchLocations("pur")
 // ]
 ```
 
+### Suggest (Autocomplete)
+
+Bilingual (English and Bengali) search with alias, phonetic, and typo-tolerant ranking:
+
+```javascript
+suggest("kaligonj", { within: { district: "Gazipur" }, limit: 5 })
+// [
+//   {
+//     type: "upazila",
+//     name: "Kaliganj",
+//     path: { division: "Dhaka", district: "Gazipur", upazila: "Kaliganj" },
+//     label: "Kaliganj, Gazipur, Dhaka",
+//     score: 0.89
+//   }
+// ]
+
+suggest("মিরপুর")
+// [
+//   {
+//     type: "thana",
+//     name: "Mirpur",
+//     nameBn: "মিরপুর",
+//     path: { division: "Dhaka", district: "Dhaka", thana: "Mirpur" },
+//     label: "Mirpur, Dhaka, Dhaka",
+//     labelBn: "মিরপুর, ঢাকা, ঢাকা",
+//     score: 1
+//   },
+//   ...
+// ]
+```
+
+Options:
+- `within`: filter results by `{ division?, district? }` (English, aliases, or Bengali)
+- `types`: restrict to `("division" | "district" | "upazila" | "thana")[]`
+- `limit`: maximum number of results (default `10`)
+
 ### Raw Data Access
 
 ```javascript
 import { upazilaData, thanaData } from '@bangladeshi/bangladesh-address'
 
-// upazilaData: Array of all 495 upazila objects
+// upazilaData: Array of all 500 upazila objects
 // thanaData: Array of all 26 thana objects
 ```
 
@@ -337,6 +374,16 @@ Add a version after the package name (for example `bangladesh-address@2.2.0`) to
 
 See [examples/react-dropdown/](examples/react-dropdown/) for a small React example with cascading Division → District → Upazila → Thana `<select>` dropdowns.
 
+## Data sources
+
+City corporation names, district/division references and BBS codes come from [Bangladesh - Subnational Administrative Boundaries (COD-AB)](https://data.humdata.org/dataset/cod-ab-bgd) on the Humanitarian Data Exchange. The data is published by UN OCHA from Bangladesh Bureau of Statistics (BBS) sources and licensed under [CC BY-IGO](https://creativecommons.org/licenses/by/3.0/igo/legalcode).
+
 ## Contribution
 
 If you want to contribute please follow the guideline. [Contribution](https://github.com/rajuAhmed1705/bangladesh-address/blob/master/CONTRIBUTING.md)
+
+## Support
+
+This package is free and maintained in spare time. If it saves you work, you can support it:
+
+❤️ [Support on Ko-fi](https://ko-fi.com/raju1705) or [donate with PayPal](https://www.paypal.me/raju1705)

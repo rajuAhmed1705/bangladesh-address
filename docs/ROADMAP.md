@@ -13,6 +13,12 @@ This document outlines the development roadmap for `@bangladeshi/bangladesh-addr
 - 26 metropolitan thanas (Dhaka, Chattogram, Rajshahi, Khulna)
 - Functions: `allDivision()`, `divisionalDataOf()`, `districtsOf()`, `allDistricts()`, `upazilasOf()`, `upazilaNamesOf()`, `allUpazila()`, `isUpazila()`, `getUpazila()`, `allThana()`, `allThanaNames()`, `thanasOf()`, `thanaNamesOf()`, `isThana()`, `getThana()`, `isValidDivision()`, `isValidDistrict()`, `getDivisionOfDistrict()`, `getDistrictOfUpazila()`, `upazilasOfDivision()`, `upazilaNamesOfDivision()`, `searchLocations()`
 
+### On `master`, not released yet
+- 500 upazila records: added Naldanga, Mokamtola, Karnaphuli, Lalmai and Guimara
+- 12 city corporations with their official codes (data file only, no functions yet)
+- Bengali names for divisions, districts, thanas and the upazilas of Barisal, Rajshahi and Sylhet
+- New functions: `allDivisionBn()`, `allDistrictsBn()`, `districtsOfBn()`
+
 ---
 
 ## v1.1.0 - Foundation (Completed)
@@ -190,14 +196,76 @@ Focus: Make the package work on the first try, for people and for AI coding assi
 
 ---
 
-## v2.3.0 - Union Data (Planned)
+## v2.3.0 - Bengali Language Support (In Progress)
 
-Focus: Add the 4th administrative level - unions.
+Focus: Add Bengali names for all locations. Tracking issue: [#17](https://github.com/rajuAhmed1705/bangladesh-address/issues/17).
+
+The finished parts are merged on `master` but not released on npm yet.
+
+### Data
+- [x] `nameBn` for the 8 divisions and 64 districts ([#18](https://github.com/rajuAhmed1705/bangladesh-address/issues/18))
+- [x] `thanaBn` for the 26 metropolitan thanas ([#19](https://github.com/rajuAhmed1705/bangladesh-address/issues/19))
+- [x] `upazilaBn` for Barisal division ([#20](https://github.com/rajuAhmed1705/bangladesh-address/issues/20))
+- [x] `upazilaBn` for Rajshahi division ([#25](https://github.com/rajuAhmed1705/bangladesh-address/issues/25))
+- [x] `upazilaBn` for Sylhet division ([#27](https://github.com/rajuAhmed1705/bangladesh-address/issues/27))
+- [ ] `upazilaBn` for Chattogram division ([#21](https://github.com/rajuAhmed1705/bangladesh-address/issues/21))
+- [ ] `upazilaBn` for Dhaka division ([#22](https://github.com/rajuAhmed1705/bangladesh-address/issues/22))
+- [ ] `upazilaBn` for Khulna division ([#23](https://github.com/rajuAhmed1705/bangladesh-address/issues/23))
+- [ ] `upazilaBn` for Mymensingh division ([#24](https://github.com/rajuAhmed1705/bangladesh-address/issues/24))
+- [ ] `upazilaBn` for Rangpur division ([#26](https://github.com/rajuAhmed1705/bangladesh-address/issues/26))
+
+### Types and functions
+- [x] Add the Bengali fields to the TypeScript interfaces
+- [x] Add `LocalizedName` type for bilingual support
+- [x] `allDivisionBn()` - Get all division names in Bengali
+- [x] `allDistrictsBn()` - Get all district names in Bengali
+- [x] `districtsOfBn(division)` - Get the district names of a division in Bengali
+- [ ] Fill `name_bn` in the database dumps
+- [ ] Document the Bengali fields and functions in the README
+
+Searching with Bengali text will be part of the planned `suggest()` ([#55](https://github.com/rajuAhmed1705/bangladesh-address/issues/55)), see "Maps & Smart Address Tools" below.
+
+### Data corrections, also on `master`
+- [x] Add the 12 city corporations ([#36](https://github.com/rajuAhmed1705/bangladesh-address/issues/36))
+- [x] Add the missing upazilas Naldanga and Mokamtola ([#45](https://github.com/rajuAhmed1705/bangladesh-address/issues/45))
+- [x] Add the missing upazilas Karnaphuli, Lalmai and Guimara ([#46](https://github.com/rajuAhmed1705/bangladesh-address/issues/46))
+- [ ] Decide what to do with 4 records that are not upazilas ([#48](https://github.com/rajuAhmed1705/bangladesh-address/issues/48))
+- [ ] Add the units created in 2026, each one only after its gazette is published ([#47](https://github.com/rajuAhmed1705/bangladesh-address/issues/47))
+
+---
+
+## v2.4.0 - Official Codes & Coordinates (Planned)
+
+Focus: Add the official code (the BBS geocode, as published on HDX) and the centre point (latitude/longitude) for divisions, districts and upazilas. Issue: [#35](https://github.com/rajuAhmed1705/bangladesh-address/issues/35).
+
+This moved up because the map, location and API work below all join to the names through these codes.
+
+### Data Updates
+- [ ] Create `bd-geo.json` with `bbsCode`, `lat` and `lng` for the 8 divisions, 64 districts and the upazilas that are in the source
+- [ ] Add `lat`, `lng` for thanas (not covered by #35, needs its own source)
+
+### New Functions
+- [ ] `getCoordinates(location)` - Get lat/lng for any location
+- [ ] `findNearbyLocations(lat, lng, radius)` - Find locations within radius
+- [ ] `getDistanceBetween(location1, location2)` - Calculate distance
+
+### Interfaces
+- [ ] Add `Coordinates` interface `{ lat: number, lng: number }`
+- [ ] Update location interfaces to include optional coordinates
+
+---
+
+## v2.5.0 - Union Data (Planned)
+
+Focus: Add the 4th administrative level - unions. Issue: [#30](https://github.com/rajuAhmed1705/bangladesh-address/issues/30).
+
+This is about union names. Union boundaries (map shapes) are not planned: the source says that level is not officially confirmed, and the only open set is from 2020.
 
 ### Data Addition
-- [ ] Research and compile union data (~4,500 unions)
+- [ ] Compile union data (~4,500 unions) from the source named in the issue
 - [ ] Create `bd-union.json` with union, upazila, district, division fields
 - [ ] Add `Union` interface to types
+- [ ] Add `unionBn` Bengali names to union data
 
 ### New Functions
 - [ ] `allUnion()` - Get all union names
@@ -214,35 +282,12 @@ Focus: Add the 4th administrative level - unions.
 
 ---
 
-## v2.4.0 - Bengali Language Support (Planned)
+## v2.6.0 - Postal Codes (Planned)
 
-Focus: Add Bengali translations for all locations.
-
-### Data Updates
-- [ ] Add `nameBn` field to division data
-- [ ] Add `nameBn` field to district data
-- [ ] Add `upazilaBn` field to upazila data
-- [ ] Add `thanaBn` field to thana data
-- [ ] Add `unionBn` field to union data (if v2.1.0 completed)
-
-### New Functions
-- [ ] `allDivisionBn()` - Get all division names in Bengali
-- [ ] `allDistrictsBn()` - Get all district names in Bengali
-- [ ] `searchLocationsBn(query)` - Search using Bengali text
-
-### Interfaces
-- [ ] Update all interfaces to include Bengali name fields
-- [ ] Add `LocalizedName` type for bilingual support
-
----
-
-## v2.5.0 - Postal Codes (Planned)
-
-Focus: Add postal code data for Bangladesh.
+Focus: Add postal code data for Bangladesh. Issue: [#34](https://github.com/rajuAhmed1705/bangladesh-address/issues/34).
 
 ### Data Addition
-- [ ] Research postal code structure (4-digit codes)
-- [ ] Create `bd-postal.json` with postal code mappings
+- [ ] Create `bd-postal.json` with postal code mappings (4-digit codes)
 - [ ] Map postal codes to upazilas/thanas
 
 ### New Functions
@@ -253,24 +298,43 @@ Focus: Add postal code data for Bangladesh.
 
 ---
 
-## v2.6.0 - Geographic Coordinates (Planned)
+## Maps & Smart Address Tools (Planned)
 
-Focus: Add latitude/longitude for all locations.
+Focus: Maps, location lookup and smarter address entry, all from static files with no server and no API key. Tracking issue: [#53](https://github.com/rajuAhmed1705/bangladesh-address/issues/53).
 
-### Data Updates
-- [ ] Add `lat`, `lng` fields to division data (central point)
-- [ ] Add `lat`, `lng` fields to district data
-- [ ] Add `lat`, `lng` fields to upazila data
-- [ ] Add `lat`, `lng` fields to thana data
+These are not tied to a version number yet. Map data will be a separate package, so the main package stays small.
 
-### New Functions
-- [ ] `getCoordinates(location)` - Get lat/lng for any location
-- [ ] `findNearbyLocations(lat, lng, radius)` - Find locations within radius
-- [ ] `getDistanceBetween(location1, location2)` - Calculate distance
+### Foundation
+- Official codes and centre points: see v2.4.0 above ([#35](https://github.com/rajuAhmed1705/bangladesh-address/issues/35))
+- [ ] History of administrative changes, each with its official source ([#58](https://github.com/rajuAhmed1705/bangladesh-address/issues/58))
 
-### Interfaces
-- [ ] Add `Coordinates` interface `{ lat: number, lng: number }`
-- [ ] Update location interfaces to include optional coordinates
+### Maps and location
+- [ ] Map data for divisions, districts and upazilas, small enough for the web ([#54](https://github.com/rajuAhmed1705/bangladesh-address/issues/54))
+- [ ] Find the division, district and upazila of a GPS point, offline ([#56](https://github.com/rajuAhmed1705/bangladesh-address/issues/56))
+
+### Address entry
+- [ ] `suggest(query)` - One search box for Bengali and English names ([#55](https://github.com/rajuAhmed1705/bangladesh-address/issues/55))
+- [ ] `parseAddress(text)` - Paste a whole address and get the fields ([#59](https://github.com/rajuAhmed1705/bangladesh-address/issues/59))
+
+### Use from any language
+- [ ] Static JSON API and demo site on GitHub Pages ([#57](https://github.com/rajuAhmed1705/bangladesh-address/issues/57))
+
+### Extra data
+- [ ] 2022 population for divisions and districts ([#60](https://github.com/rajuAhmed1705/bangladesh-address/issues/60))
+- [ ] Research: bank routing number format ([#61](https://github.com/rajuAhmed1705/bangladesh-address/issues/61))
+
+### Sources and licences
+- Boundaries will come from the HDX dataset COD-AB (from BBS, published by UN OCHA) and population from the HDX dataset COD-PS (from UNFPA and the US Census Bureau). Both are CC BY-IGO and will be credited separately from the MIT-licensed code.
+- Only primary sources are used. New administrative units are added only after their gazette is published.
+
+---
+
+## Other Open Work
+
+Smaller items that are not tied to a version:
+
+- [ ] Add thanas for more metropolitan areas and check the existing cities are complete ([#28](https://github.com/rajuAhmed1705/bangladesh-address/issues/28))
+- [ ] Add a runnable React dropdown example in `examples/react-dropdown/` ([#29](https://github.com/rajuAhmed1705/bangladesh-address/issues/29))
 
 ---
 
@@ -299,9 +363,13 @@ Focus: Modern module system and build improvements.
 
 These items are under consideration but not yet planned:
 
-- **Metropolitan city data**: Add city corporation structures with ward mappings
-- **Autocomplete helpers**: Fuzzy matching and suggestion algorithms
+- **Ward data**: Ward mappings for the city corporations
+- **Address form component**: A ready-made form that works in any framework
+- **Plus Codes**: Short location codes for places that have no street address
+- **Other languages**: Packages for Laravel, Flutter and Python generated from the same data
 - **Offline-first**: Service worker support for offline access
+
+Not planned: union boundaries, street-level address search, courier area lists, bank branch lists, and data from GADM or OpenStreetMap inside the package. The reasons are in [#53](https://github.com/rajuAhmed1705/bangladesh-address/issues/53).
 
 ---
 

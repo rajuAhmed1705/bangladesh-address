@@ -1,7 +1,8 @@
 import data from "../json/bd-upazila.json";
+import districtData from "../json/bd-district.json";
 import { getDivision } from "../division/division";
 import { DivisionName } from "../division/types/division-name";
-import { Upazila } from "../types";
+import { Upazila, District } from "../types";
 import { normalizeDistrictName } from "../aliases";
 
 // Pre-computed set for O(1) district validation
@@ -35,6 +36,28 @@ export const allDistricts = (): string[] => {
   const districts = new Set<string>();
   (data as Upazila[]).forEach((item) => districts.add(item.district));
   return Array.from(districts);
+};
+
+// Pre-computed map for O(1) district Bengali name lookup
+const districtBnByName = new Map(
+  (districtData as District[]).map((item) => [item.name, item.nameBn])
+);
+
+/**
+ * Get all district names in Bengali (in the same order as allDistricts)
+ * @returns Array of all 64 district names in Bengali
+ */
+export const allDistrictsBn = (): string[] => {
+  return allDistricts().map((name) => districtBnByName.get(name) as string);
+};
+
+/**
+ * Get all district names in Bengali for a given division (in the same order as districtsOf)
+ * @param division - The division name, as a string or DivisionName. Case-insensitive; aliases like "Barishal" and "Chittagong" are accepted
+ * @returns Array of Bengali district names in the division
+ */
+export const districtsOfBn = (division: DivisionName | string): string[] => {
+  return districtsOf(division).map((name) => districtBnByName.get(name) as string);
 };
 
 /**

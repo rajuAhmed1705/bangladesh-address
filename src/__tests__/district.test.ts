@@ -1,4 +1,4 @@
-import { districtsOf, allDistricts, isValidDistrict, getDivisionOfDistrict } from "../district";
+import { districtsOf, districtsOfBn, allDistricts, allDistrictsBn, isValidDistrict, getDivisionOfDistrict } from "../district";
 import { DivisionName } from "../division/types/division-name";
 
 describe("District functions", () => {
@@ -142,6 +142,39 @@ describe("District functions", () => {
         expect(division).toBeDefined();
         expect(["Dhaka", "Chattogram", "Rajshahi", "Khulna", "Barisal", "Sylhet", "Rangpur", "Mymensingh"]).toContain(division);
       });
+    });
+  });
+
+  describe("allDistrictsBn", () => {
+    it("should return all 64 districts in Bengali in the same order as allDistricts", () => {
+      const districts = allDistricts();
+      const districtsBn = allDistrictsBn();
+      expect(districtsBn).toHaveLength(64);
+      expect(districtsBn[districts.indexOf("Dhaka")]).toBe("ঢাকা");
+      expect(districtsBn[districts.indexOf("Comilla")]).toBe("কুমিল্লা");
+      expect(districtsBn[districts.indexOf("Cox's Bazar")]).toBe("কক্সবাজার");
+      districtsBn.forEach((name) => {
+        expect(typeof name).toBe("string");
+        expect(name.trim().length).toBeGreaterThan(0);
+      });
+    });
+  });
+
+  describe("districtsOfBn", () => {
+    it("should return Bengali districts for a valid division and support aliases", () => {
+      const sylhetBn = districtsOfBn(DivisionName.Sylhet);
+      expect(sylhetBn).toHaveLength(4);
+      expect(sylhetBn).toContain("সিলেট");
+      expect(sylhetBn).toContain("হবিগঞ্জ");
+
+      expect(districtsOfBn("Barishal")).toHaveLength(6);
+      expect(districtsOfBn("Chittagong")).toHaveLength(11);
+    });
+
+    it("should return empty array for invalid or empty division input", () => {
+      expect(districtsOfBn("InvalidDivision")).toEqual([]);
+      expect(districtsOfBn("")).toEqual([]);
+      expect(districtsOfBn(null as unknown as string)).toEqual([]);
     });
   });
 });
