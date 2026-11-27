@@ -346,4 +346,4 @@ If you want to contribute please follow the guideline. [Contribution](https://gi
 
 This package is free and maintained in spare time. If it saves you work, you can support it:
 
-❤️ [Donate with PayPal](https://www.paypal.me/raju1705)
+❤️ [Support on Ko-fi](https://ko-fi.com/raju1705) or [donate with PayPal](https://www.paypal.me/raju1705)
