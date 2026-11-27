@@ -9,6 +9,10 @@
   "bugs": {
     "url": "https://github.com/rajuAhmed1705/bangladesh-address/issues"
   },
+  "funding": {
+    "type": "paypal",
+    "url": "https://www.paypal.me/raju1705"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
