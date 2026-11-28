@@ -17,8 +17,10 @@ import { DivisionName } from "../division/types/division-name";
 import { DistrictName } from "../types";
 import divisionData from "../json/bd-division.json";
 import districtData from "../json/bd-district.json";
+import upazilaData from "../json/bd-upazila.json";
 import thanaData from "../json/bd-thana.json";
 import cityCorporationData from "../json/bd-city-corporation.json";
+import geoData from "../json/bd-geo.json";
 
 describe("Data Integrity", () => {
   describe("Division counts", () => {
@@ -296,6 +298,126 @@ describe("Data Integrity", () => {
         expect(district.division).toBe(getDivisionOfDistrict(district.name));
         expect(typeof district.nameBn).toBe("string");
         expect(district.nameBn.trim().length).toBeGreaterThan(0);
+      });
+    });
+  });
+
+  describe("BBS geo data", () => {
+    type GeoFields = { bbsCode: string; lat: number; lng: number };
+    type MaybeGeo = { bbsCode?: string; lat?: number; lng?: number };
+
+    const hasGeo = <T extends MaybeGeo>(row: T): row is T & GeoFields =>
+      typeof row.bbsCode === "string" &&
+      typeof row.lat === "number" &&
+      typeof row.lng === "number";
+
+    const withGeo = <T extends MaybeGeo>(rows: readonly T[]): Array<T & GeoFields> =>
+      rows.filter(hasGeo);
+
+    const decimalPlaces = (value: number): number =>
+      (String(value).split(".")[1] ?? "").length;
+
+    it("should cover every package division, district and upazila in order", () => {
+      expect(geoData.divisions.map((d) => d.name)).toEqual(
+        divisionData.map((d) => d.name)
+      );
+      expect(
+        geoData.districts.map((d) => ({ name: d.name, division: d.division }))
+      ).toEqual(districtData.map((d) => ({ name: d.name, division: d.division })));
+      expect(
+        geoData.upazilas.map((u) => ({
+          upazila: u.upazila,
+          district: u.district,
+          division: u.division,
+        }))
+      ).toEqual(
+        upazilaData.map((u) => ({
+          upazila: u.upazila,
+          district: u.district,
+          division: u.division,
+        }))
+      );
+    });
+
+    it("should have exactly the expected counts and unique BBS codes", () => {
+      const divisions = withGeo(geoData.divisions);
+      const districts = withGeo(geoData.districts);
+      const upazilas = withGeo(geoData.upazilas);
+
+      expect(divisions).toHaveLength(8);
+      expect(districts).toHaveLength(64);
+      expect(upazilas).toHaveLength(495);
+
+      [divisions, districts, upazilas].forEach((rows) => {
+        const codes = rows.map((row) => row.bbsCode);
+        expect(new Set(codes).size).toBe(codes.length);
+      });
+    });
+
+    it("should leave only the five source-less package rows without geo fields", () => {
+      const sourceLess = geoData.upazilas
+        .filter((row) => !hasGeo(row))
+        .map((row) => ({ district: row.district, upazila: row.upazila }))
+        .sort((a, b) =>
+          `${a.district}|${a.upazila}`.localeCompare(`${b.district}|${b.upazila}`)
+        );
+
+      expect(sourceLess).toEqual(
+        [
+          { district: "Bogra", upazila: "Mokamtola" },
+          { district: "Brahmanbaria", upazila: "Shahbazpur Town" },
+          { district: "Gazipur", upazila: "Tongi" },
+          { district: "Jamalpur", upazila: "Narundi Police I.C" },
+          { district: "Narayanganj", upazila: "Siddirgonj" },
+        ].sort((a, b) =>
+          `${a.district}|${a.upazila}`.localeCompare(`${b.district}|${b.upazila}`)
+        )
+      );
+    });
+
+    it("should keep all coordinates inside Bangladesh at five decimal places", () => {
+      [
+        ...withGeo(geoData.divisions),
+        ...withGeo(geoData.districts),
+        ...withGeo(geoData.upazilas),
+      ].forEach((row) => {
+        expect(row.lat).toBeGreaterThanOrEqual(20);
+        expect(row.lat).toBeLessThanOrEqual(27);
+        expect(row.lng).toBeGreaterThanOrEqual(88);
+        expect(row.lng).toBeLessThanOrEqual(93);
+        expect(decimalPlaces(row.lat)).toBeLessThanOrEqual(5);
+        expect(decimalPlaces(row.lng)).toBeLessThanOrEqual(5);
+      });
+    });
+
+    it("should nest codes under their parent division and district", () => {
+      const divisions = withGeo(geoData.divisions);
+      const districts = withGeo(geoData.districts);
+      const upazilas = withGeo(geoData.upazilas);
+
+      divisions.forEach((d) => expect(d.bbsCode).toMatch(/^BD\d{2}$/));
+      districts.forEach((d) => expect(d.bbsCode).toMatch(/^BD\d{4}$/));
+      upazilas.forEach((u) => expect(u.bbsCode).toMatch(/^BD\d{8}$/));
+
+      const divisionCodes = new Map(divisions.map((d) => [d.name, d.bbsCode]));
+      const districtCodes = new Map(districts.map((d) => [d.name, d.bbsCode]));
+
+      districts.forEach((d) => {
+        expect(d.bbsCode.startsWith(divisionCodes.get(d.division) ?? "")).toBe(true);
+      });
+      upazilas.forEach((u) => {
+        expect(u.bbsCode.startsWith(districtCodes.get(u.district) ?? "")).toBe(true);
+      });
+    });
+
+    it("should not include city corporations as upazilas", () => {
+      geoData.upazilas.forEach((u) => {
+        expect(u.upazila).not.toContain("City Corporation");
+      });
+
+      const cityCodes = new Set(cityCorporationData.map((c) => c.bbsCode));
+      withGeo(geoData.upazilas).forEach((u) => {
+        expect(cityCodes.has(u.bbsCode)).toBe(false);
       });
     });
   });
