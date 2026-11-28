@@ -372,7 +372,7 @@ Add a version after the package name (for example `bangladesh-address@2.2.0`) to
 
 ## Data sources
 
-City corporation names, district/division references and BBS codes come from [Bangladesh - Subnational Administrative Boundaries (COD-AB)](https://data.humdata.org/dataset/cod-ab-bgd) on the Humanitarian Data Exchange. The data is published by UN OCHA from Bangladesh Bureau of Statistics (BBS) sources and licensed under [CC BY-IGO](https://creativecommons.org/licenses/by/3.0/igo/legalcode).
+City corporation names and BBS codes, plus the division, district and upazila geocodes and centre coordinates in `bd-geo.json`, come from [Bangladesh - Subnational Administrative Boundaries (COD-AB)](https://data.humdata.org/dataset/cod-ab-bgd) on the Humanitarian Data Exchange. The data is published by UN OCHA from Bangladesh Bureau of Statistics (BBS) sources and licensed under [CC BY-IGO](https://creativecommons.org/licenses/by/3.0/igo/legalcode). Coordinates are rounded to five decimal places.
 
 ## Contribution
 
