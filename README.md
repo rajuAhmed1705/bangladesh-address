@@ -372,7 +372,7 @@ Add a version after the package name (for example `bangladesh-address@2.2.0`) to
 
 ## Example: cascading dropdown
 
-See [examples/react-dropdown/](examples/react-dropdown/) for a small React example with cascading Division → District → Upazila → Thana `<select>` dropdowns.
+See [examples/react-dropdown/](examples/react-dropdown/) for a small React example with cascading Division → District → Upazila or Thana `<select>` dropdowns.
 
 ## Data sources
 

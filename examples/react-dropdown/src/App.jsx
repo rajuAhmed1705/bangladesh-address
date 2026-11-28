@@ -47,10 +47,12 @@ const App = () => {
 
   const onUpazilaChange = (e) => {
     setUpazila(e.target.value)
+    setThana('')
   }
 
   const onThanaChange = (e) => {
     setThana(e.target.value)
+    setUpazila('')
   }
 
   const dropdown = (options, value, onChange) => ({

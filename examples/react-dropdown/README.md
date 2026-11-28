@@ -1,10 +1,10 @@
 # React Dropdown Example
 
-A small React example of cascading dropdowns (Division → District → Upazila → Thana) using the published `@bangladeshi/bangladesh-address` npm package.
+A small React example of cascading dropdowns (Division → District → Upazila or Thana) using the published `@bangladeshi/bangladesh-address` npm package.
 
 ## Requirements
 
-- Node.js 18 or later
+- Node.js 20.19+ or 22.12+
 
 ## Install and run
 
