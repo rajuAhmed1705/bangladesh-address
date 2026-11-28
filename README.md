@@ -370,6 +370,10 @@ The data can also be fetched directly, without installing anything:
 
 Add a version after the package name (for example `bangladesh-address@2.2.0`) to pin the data to a release.
 
+## Example: cascading dropdown
+
+See [examples/react-dropdown/](examples/react-dropdown/) for a small React example with cascading Division → District → Upazila or Thana `<select>` dropdowns.
+
 ## Data sources
 
 City corporation names and BBS codes, plus the division, district and upazila geocodes and centre coordinates in `bd-geo.json`, come from [Bangladesh - Subnational Administrative Boundaries (COD-AB)](https://data.humdata.org/dataset/cod-ab-bgd) on the Humanitarian Data Exchange. The data is published by UN OCHA from Bangladesh Bureau of Statistics (BBS) sources and licensed under [CC BY-IGO](https://creativecommons.org/licenses/by/3.0/igo/legalcode). Coordinates are rounded to five decimal places.
